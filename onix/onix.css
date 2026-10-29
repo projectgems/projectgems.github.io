@@ -54,23 +54,17 @@ body.th-onix::before {
 .th-onix .page-hero .kick img { width: 2rem; height: 2rem; }
 .th-onix .clock { display: block; font-weight: 200; font-size: 1.05rem; letter-spacing: .08em; color: var(--mute); margin-top: 1.2rem; font-variant-numeric: tabular-nums; }
 
-.onix-scene { position: relative; aspect-ratio: 1; max-width: 30rem; width: 100%; justify-self: end; }
-.onix-scene svg { position: absolute; overflow: visible; }
-.onix-scene .planet { inset: 6%; width: 88%; height: 88%; animation: oxFloat 9s ease-in-out infinite alternate; }
-.onix-scene .bubble { width: 26%; height: 26%; border-radius: 50%; overflow: hidden; border: 1px solid rgba(255, 255, 255, .22);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3), 0 1rem 2rem rgba(0, 0, 0, .5); }
-.onix-scene .bubble svg { position: static; width: 100%; height: 100%; }
-.onix-scene .cat { position: absolute; left: 2%; bottom: 8%; background: radial-gradient(circle at 50% 38%, rgba(118, 128, 255, .45), rgba(118, 128, 255, .1) 52%, transparent 74%), linear-gradient(160deg, #262832, #0b0c10);
-  animation: oxBob 5s ease-in-out infinite alternate; }
-.onix-scene .astro { position: absolute; right: 0; top: 4%; width: 21%; height: 21%; background: radial-gradient(circle at 50% 38%, rgba(255, 104, 104, .42), rgba(255, 104, 104, .1) 52%, transparent 74%), linear-gradient(160deg, #262832, #0b0c10);
-  animation: oxBob 6s ease-in-out 1s infinite alternate-reverse; }
-.onix-scene .spark { width: 6%; height: 6%; animation: oxTwinkle 2.6s ease-in-out infinite alternate; }
-.onix-scene .comet { position: absolute; left: 4%; top: 12%; width: 34%; height: 2px; border-radius: 2px; transform: rotate(-24deg); transform-origin: right center;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .9)); opacity: 0; animation: oxComet 7s ease-in 2s infinite; }
-@keyframes oxFloat { to { transform: translateY(-.8rem) rotate(2deg); } }
-@keyframes oxBob { to { transform: translateY(-.6rem); } }
+.onix-scene { position: relative; aspect-ratio: 1; max-width: 28rem; width: 100%; justify-self: end; }
+.onix-scene svg { width: 100%; height: 100%; overflow: visible; }
+/* O desenho do menu lateral do Onix, maior: Saturno em linha branca nas órbitas pontilhadas, que
+   giram devagar, com luas, brilhos em cruz e uma estrela cadente. */
+.onix-scene .orb { transform-origin: 160px 168px; animation: oxSpin 60s linear infinite; }
+.onix-scene .orb-out { animation-duration: 110s; animation-direction: reverse; }
+.onix-scene .tw { transform-box: fill-box; transform-origin: center; animation: oxTwinkle 2.4s ease-in-out infinite alternate; }
+.onix-scene .comet { stroke-dasharray: 40 200; stroke-dashoffset: 40; opacity: 0; animation: oxComet 7s ease-in 2s infinite; }
+@keyframes oxSpin { to { transform: rotate(360deg); } }
 @keyframes oxTwinkle { from { opacity: .3; transform: scale(.8); } to { opacity: 1; transform: none; } }
-@keyframes oxComet { 0% { opacity: 0; transform: rotate(-24deg) translateX(-40%) scaleX(.4); } 6% { opacity: 1; } 14% { opacity: 0; transform: rotate(-24deg) translateX(60%) scaleX(1); } 100% { opacity: 0; } }
+@keyframes oxComet { 0% { opacity: 0; stroke-dashoffset: 40; } 5% { opacity: .8; } 14% { opacity: 0; stroke-dashoffset: -60; } 100% { opacity: 0; stroke-dashoffset: -60; } }
 
 /* Cartões de recurso com um planetinha no traço do Onix. */
 .th-onix .feat .glass { position: relative; overflow: hidden; }
@@ -95,5 +89,4 @@ body.th-onix::before {
 }
 @media (max-width: 640px) {
   .th-onix .page-hero h1 { font-size: 3.2rem; }
-  .onix-scene .comet { display: none; }
 }
