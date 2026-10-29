@@ -20,23 +20,30 @@ html { scroll-behavior: smooth; background: var(--bg); }
 body {
   margin: 0; min-height: 100vh; color: var(--ink); line-height: 1.55; overflow-x: hidden;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Google Sans", Arial, sans-serif;
+}
+/* O céu fica numa camada fixa própria: com background-attachment: fixed, o navegador redesenhava
+   o fundo inteiro a cada rolagem (pesado no celular). */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
   background:
     radial-gradient(1px 1px at 12% 18%, #fff8, transparent), radial-gradient(1px 1px at 72% 12%, #fff6, transparent),
     radial-gradient(1.5px 1.5px at 40% 64%, #fff5, transparent), radial-gradient(1px 1px at 88% 78%, #fff7, transparent),
     radial-gradient(1px 1px at 22% 86%, #fff5, transparent), radial-gradient(1.5px 1.5px at 58% 34%, #fff4, transparent),
     linear-gradient(170deg, #150c2e 0%, #0a0618 45%, #05030b 100%);
-  background-attachment: fixed;
 }
-/* Aurora lenta no fundo (some com "reduzir movimento" do sistema). */
+/* Aurora no fundo. Só se mexe em telas grandes com mouse; no celular fica parada (poupa bateria
+   e deixa a rolagem lisa). Some com "reduzir movimento" do sistema. */
 body::before {
   content: ""; position: fixed; inset: -20%; z-index: -1; pointer-events: none;
   background: radial-gradient(38% 32% at 18% 22%, rgba(255, 79, 163, .14), transparent 70%),
     radial-gradient(42% 36% at 82% 70%, rgba(61, 225, 255, .11), transparent 70%);
-  animation: aurora 28s ease-in-out infinite alternate;
+}
+@media (min-width: 861px) and (hover: hover) {
+  body::before { animation: aurora 28s ease-in-out infinite alternate; will-change: transform; }
 }
 @keyframes aurora { 50% { transform: translate(4%, -3%) rotate(3deg); } 100% { transform: translate(-3%, 4%) rotate(-2deg); } }
 a { color: inherit; }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 .wrap { width: min(1180px, 100% - 2.4rem); margin: 0 auto; }
 
 /* Topo */
@@ -109,7 +116,7 @@ img { max-width: 100%; display: block; }
 .stack { position: relative; }
 .stack .shot + .shot { position: absolute; width: 58%; right: -1.2rem; bottom: -2.2rem; }
 .locked { display: grid; place-items: center; aspect-ratio: 16 / 10; border-radius: var(--r); text-align: center; padding: 2rem;
-  background: radial-gradient(60% 60% at 50% 40%, rgba(159, 227, 255, .16), transparent 70%), var(--glass); border: 1px dashed rgba(255, 255, 255, .2); }
+  background: radial-gradient(60% 60% at 50% 40%, var(--glow, rgba(159, 227, 255, .16)), transparent 70%), var(--glass); border: 1px dashed rgba(255, 255, 255, .2); }
 .locked img { width: 7rem; height: 7rem; margin: 0 auto 1rem; animation: float 5s ease-in-out infinite; }
 .locked b { font-size: 1.3rem; }
 .locked span { color: var(--mute); display: block; margin-top: .4rem; }
@@ -161,6 +168,9 @@ img { max-width: 100%; display: block; }
 .feat i { font-style: normal; font-size: 1.6rem; }
 .shots { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-top: 1.4rem; }
 h3.t { font-size: 1.6rem; margin: 3.5rem 0 0; text-align: center; }
+.shots figure { margin: 0; }
+.shots figcaption { margin-top: .7rem; color: var(--mute); font-size: .92rem; line-height: 1.45; }
+.shots figcaption b { color: var(--ink); }
 .all { text-align: center; margin-top: 2.6rem; }
 @media (max-width: 960px) { .devices { grid-template-columns: minmax(0, 1fr); } .feat { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .feat, .shots { grid-template-columns: 1fr; } }
@@ -171,6 +181,33 @@ h3.t { font-size: 1.6rem; margin: 3.5rem 0 0; text-align: center; }
   .stack .shot + .shot { display: none; }
   .hero { padding: 4rem 0 2.5rem; }
   .brand small { display: none; }
+}
+/* Celular: topo em duas linhas (marca em cima, seções embaixo, todas à vista), sem o desfoque do
+   vidro (pesado ao rolar), e botões na largura toda, fáceis de tocar. */
+@media (max-width: 640px) {
+  .top { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(7, 4, 15, .94); }
+  .top .wrap { flex-wrap: wrap; height: auto; padding: .6rem 0 .5rem; row-gap: .35rem; }
+  .nav { margin-left: 0; width: 100%; justify-content: space-between; }
+  .nav a { padding: .4rem .7rem; }
+  .gem { padding: 3rem 0; scroll-margin-top: 6.2rem; }
+  .hero { padding: 2.6rem 0 2.2rem; }
+  .orbit { width: 12rem; height: 12rem; }
+  .orbit .core { inset: 3.6rem; }
+  .orbit .core img { width: 3.6rem; height: 3.6rem; }
+  .hero .acts, .gem .acts { flex-direction: column; align-items: stretch; }
+  .hero .acts .btn, .gem .acts .btn, .all .btn { justify-content: center; }
+  .all { display: flex; flex-direction: column; gap: .7rem; }
+  .gem .lead { font-size: 1.05rem; }
+  .page-hero { padding: 2.8rem 0 1.6rem; }
+  .dev { padding: 1.3rem; }
+  .feat .glass { padding: 1rem; }
+}
+/* Nas páginas de cada projeto o topo tem só o link de volta: cabe numa linha. */
+@media (max-width: 640px) {
+  .top .wrap:has(.nav > a:only-child) { flex-wrap: nowrap; height: 3.6rem; padding: 0; }
+  .top .wrap:has(.nav > a:only-child) .brand { letter-spacing: .12em; font-size: .88rem; gap: .5rem; }
+  .top .nav:has(> a:only-child) { width: auto; margin-left: auto; }
+  .top .nav:has(> a:only-child) a { padding: .4rem .55rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
