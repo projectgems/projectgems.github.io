@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Onix GameHub · Central de downloads</title>
+<meta name="description" content="Baixe o Onix GameHub para Google TV, celular Android ou PC com Windows: jogos clássicos de NES, Super Nintendo, Game Boy Advance e Mega Drive.">
+<meta name="theme-color" content="#07040f">
+<link rel="icon" href="../img/gamehub-icon.png">
+<link rel="stylesheet" href="../style.css">
+
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../img/onix.svg" alt="">PROJECT GEMS <small>by Ruan</small></a>
+    <nav class="nav"><a href="../">← Todos os projetos</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="page-hero">
+    <img class="logo" src="../img/gamehub-icon.png" alt="Onix GameHub">
+    <h1>Onix GameHub</h1>
+    <p>Jogos clássicos de <b>Nintendinho</b>, <b>Super Nintendo</b>, <b>Game Boy Advance</b> e <b>Mega Drive</b>, no visual do Onix. Grátis e sem anúncios.</p>
+    <span class="chip ver" id="ver">Versão mais nova</span>
+  </section>
+
+  <p class="ask">Onde você vai jogar?</p>
+  <div class="devices" id="devices">
+    <!-- TV -->
+    <article class="dev glass" data-dev="tv">
+      <div class="ic">📺</div>
+      <h2>Google TV e Android TV</h2>
+      <p class="req">Android TV 5.0 ou mais novo</p>
+      <a class="btn primary" data-asset="onix-gamehub.apk" href="https://github.com/ruan2311/onix-gamehub/releases/latest/download/onix-gamehub.apk">Baixar para Google TV <span class="sz"></span></a>
+      <ol>
+        <li><b>Com o Onix:</b> abra a aba <b>Jogos</b> e clique em <b>Instalar o GameHub</b>. É o jeito mais fácil.</li>
+        <li><b>Sem o Onix:</b> no app <b>Downloader</b> da TV, digite o link abaixo e instale.</li>
+      </ol>
+      <div class="code"><code id="tvLink">github.com/ruan2311/onix-gamehub/releases/latest/download/onix-gamehub.apk</code><button class="btn" data-copy="tvLink">Copiar</button></div>
+      <details>
+        <summary>Mandar jogos para a TV</summary>
+        <ol>
+          <li>No GameHub, abra <b>Adicionar jogos</b> (o <b>+</b> no topo).</li>
+          <li>Aponte a câmera do celular para o <b>QR code</b> (celular e TV no mesmo Wi-Fi).</li>
+          <li>Escolha os jogos no celular: eles chegam na TV com capa e nome.</li>
+        </ol>
+      </details>
+    </article>
+
+    <!-- Celular -->
+    <article class="dev glass" data-dev="phone">
+      <div class="ic">📱</div>
+      <h2>Celular Android</h2>
+      <p class="req">Android 5.0 ou mais novo · 🧪 experimental</p>
+      <a class="btn primary" data-asset="onix-gamehub-android.apk" href="https://github.com/ruan2311/onix-gamehub/releases/latest/download/onix-gamehub-android.apk">Baixar para Android <span class="sz"></span></a>
+      <ol>
+        <li>Toque em <b>Baixar</b> e abra o arquivo.</li>
+        <li>Se o Android pedir, deixe o navegador <b>instalar apps</b> e toque em <b>Instalar</b>.</li>
+        <li>Em <b>Adicionar jogos</b>, toque em <b>Escolher pasta</b> e aponte a pasta dos seus jogos.</li>
+      </ol>
+      <details>
+        <summary>Controles na tela e atualização</summary>
+        <ol>
+          <li>Cada console tem os <b>controles na tela</b>; dá para mudar posição, tamanho e transparência.</li>
+          <li>Com um controle Bluetooth conectado, eles somem.</li>
+          <li>As próximas versões <b>baixam sozinhas</b>, e o GameHub pergunta se pode instalar.</li>
+        </ol>
+      </details>
+    </article>
+
+    <!-- PC -->
+    <article class="dev glass" data-dev="pc">
+      <div class="ic">🖥️</div>
+      <h2>PC com Windows</h2>
+      <p class="req">Windows 10 ou 11, 64 bits · 🧪 em teste</p>
+      <a class="btn primary" data-asset="Onix-GameHub-win64.zip" href="https://github.com/ruan2311/onix-gamehub/releases/latest/download/Onix-GameHub-win64.zip">Baixar para PC <span class="sz"></span></a>
+      <ol>
+        <li>Baixe o <b>.zip</b>, extraia e abra o <b>Onix GameHub.exe</b>.</li>
+        <li>Se o Windows avisar, clique em <b>Mais informações → Executar assim mesmo</b>.</li>
+        <li>Em <b>Adicionar jogos</b>, clique em <b>Escolher pasta</b>: os jogos novos dela entram sozinhos a cada abertura.</li>
+      </ol>
+      <details>
+        <summary>Teclado e controles</summary>
+        <ol>
+          <li>Controles de Xbox, PlayStation e 8BitDo funcionam direto.</li>
+          <li>Teclado: setas, <b>X</b> = A, <b>Z</b> = B, <b>Enter</b> = Start. <b>Esc</b> abre o menu; <b>F11</b>, tela cheia.</li>
+          <li>Segure <b>Tab</b> para acelerar e <b>Backspace</b> para rebobinar.</li>
+        </ol>
+      </details>
+    </article>
+  </div>
+
+  <div class="warn glass">⚖️ <b>Nenhum jogo vem com o GameHub.</b> Use só jogos que você tem o direito de usar, como cópias dos seus próprios cartuchos.</div>
+
+  <h3 class="t">O que tem no GameHub</h3>
+  <div class="feat">
+    <div class="glass reveal"><i>⏯️</i><b>Continuar jogando</b><span>Volta do ponto exato onde parou, com a imagem do momento.</span></div>
+    <div class="glass reveal"><i>💾</i><b>Estados salvos</b><span>Quatro espaços por jogo, cada um com miniatura.</span></div>
+    <div class="glass reveal"><i>📺</i><b>Filtros de imagem</b><span>Nítido, CRT, LCD e, no PC, CRT curvado e fundo ambiente.</span></div>
+    <div class="glass reveal"><i>🎮</i><b>Do seu jeito</b><span>Controle 1 e 2, trocar botões, trapaças, avançar e rebobinar.</span></div>
+  </div>
+  <div class="shots">
+    <img class="shot reveal" src="../img/gamehub-tv.jpg" alt="Continuar jogando na TV" loading="lazy">
+    <img class="shot reveal" src="../img/gamehub-consoles.jpg" alt="Consoles e jogos" loading="lazy">
+  </div>
+  <p class="all"><a class="btn" href="https://github.com/ruan2311/onix-gamehub/releases">Todas as versões e novidades</a> <a class="btn" href="https://github.com/ruan2311/onix-gamehub#readme">Guia completo</a></p>
+</main>
+
+<footer class="foot wrap">
+  <p>Onix GameHub é gratuito e de código aberto (GPL-3.0). Emuladores do projeto libretro: FCEUmm, Snes9x, mGBA e Genesis Plus GX.</p>
+  <p><a href="../">Project Gems</a> · feito por Ruan Amaral</p>
+</footer>
+
+<script>
+/* Este aparelho primeiro: Windows → PC; Android com cara de TV → TV; outro Android → celular. */
+const ua = navigator.userAgent;
+const here = /Windows/i.test(ua) ? 'pc'
+  : /Android/i.test(ua) ? (/Android ?TV|GoogleTV|BRAVIA|AFT|SHIELD|MiBOX|Chromecast|\bTV\b|SmartTV/i.test(ua) ? 'tv' : 'phone') : null;
+if (here) {
+  const card = document.querySelector('[data-dev="' + here + '"]');
+  card.classList.add('here');
+  card.insertAdjacentHTML('afterbegin', '<span class="badge">Para este aparelho</span>');
+  document.getElementById('devices').prepend(card);
+}
+
+/* Versão, tamanho e links da release mais nova, direto do GitHub. Sem internet para a API, os
+   links "latest/download" já levam à versão mais nova do mesmo jeito. */
+const mb = n => (n / 1048576).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + ' MB';
+fetch('https://api.github.com/repos/ruan2311/onix-gamehub/releases/latest')
+  .then(r => (r.ok ? r.json() : null))
+  .then(rel => {
+    if (!rel) return;
+    const v = (rel.tag_name || '').replace(/^gamehub-v/, '');
+    const total = rel.assets.reduce((t, a) => t + a.download_count, 0);
+    document.getElementById('ver').textContent = 'Versão ' + v + (total ? ' · ' + total.toLocaleString('pt-BR') + ' downloads' : '');
+    for (const a of rel.assets) {
+      const btn = document.querySelector('[data-asset="' + a.name + '"]');
+      if (!btn) continue;
+      btn.href = a.browser_download_url;
+      btn.querySelector('.sz').textContent = mb(a.size);
+    }
+  })
+  .catch(() => { });
+
+/* Copiar o link do Downloader */
+document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', () => {
+  navigator.clipboard.writeText(document.getElementById(b.dataset.copy).textContent).then(() => {
+    b.textContent = 'Copiado!';
+    setTimeout(() => { b.textContent = 'Copiar'; }, 1800);
+  });
+}));
+
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), { threshold: .15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Onix · o launcher para TVs</title>
+<meta name="description" content="Onix: tela inicial para Android TV, Google TV, Samsung e LG, com visual de vidro escuro, indicações, notícias dos games e o Onix GameHub.">
+<meta name="theme-color" content="#07040f">
+<link rel="icon" href="../img/onix.svg">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../img/onix.svg" alt="">PROJECT GEMS <small>by Ruan</small></a>
+    <nav class="nav"><a href="../">← Todos os projetos</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="page-hero">
+    <img class="logo" src="../img/onix.svg" alt="Onix" style="image-rendering:auto">
+    <h1>Onix</h1>
+    <p>A tela inicial da TV com visual de <b>vidro escuro</b>, rápida no controle remoto, com indicações da semana, notícias dos games e o <b>Onix GameHub</b>. Grátis e sem anúncios.</p>
+    <span class="chip ver" id="ver">Versão mais nova</span>
+  </section>
+
+  <p class="ask">Qual é a sua TV?</p>
+  <div class="devices" id="devices">
+    <!-- Android TV / Google TV -->
+    <article class="dev glass" data-dev="tv">
+      <div class="ic">📺</div>
+      <h2>Google TV e Android TV</h2>
+      <p class="req">Android 5.0 ou mais novo</p>
+      <a class="btn primary" data-asset="onix-app.apk" href="https://github.com/ruan2311/onix/releases/latest/download/onix-app.apk">Onix App <span class="sz"></span></a>
+      <a class="btn" data-asset="onix-launcher.apk" href="https://github.com/ruan2311/onix/releases/latest/download/onix-launcher.apk">Onix Launcher <span class="sz"></span></a>
+      <ol>
+        <li><b>Onix App</b> para experimentar; <b>Onix Launcher</b> para virar a tela inicial. Na dúvida, comece pelo App.</li>
+        <li>Na TV, instale o <b>Downloader</b> pela Play Store, digite o link abaixo e clique em <b>Load</b>.</li>
+        <li>Clique em <b>Instalar</b> e depois em <b>Abrir</b>.</li>
+      </ol>
+      <div class="code"><code id="appLink">github.com/ruan2311/onix/releases/latest/download/onix-app.apk</code><button class="btn" data-copy="appLink">Copiar</button></div>
+      <details>
+        <summary>Se aparecer um aviso</summary>
+        <ol>
+          <li>Se a TV disser que o Downloader não pode instalar apps, clique em <b>Configurações</b>, ligue a chave dele e aperte <b>Voltar</b>.</li>
+          <li>Se o <b>Play Protect</b> avisar, clique em <b>Mais detalhes → Instalar mesmo assim</b>: o Onix não vem da Play Store.</li>
+          <li>Depois de instalado, o Onix se atualiza sozinho.</li>
+        </ol>
+      </details>
+    </article>
+
+    <!-- Samsung -->
+    <article class="dev glass" data-dev="samsung">
+      <div class="ic">🟦</div>
+      <h2>TVs Samsung</h2>
+      <p class="req">Tizen, de 2022 em diante · 🧪 beta</p>
+      <a class="btn primary" data-asset="onix-tizen.wgt" href="https://github.com/ruan2311/onix/releases/latest/download/onix-tizen.wgt">Baixar para Samsung <span class="sz"></span></a>
+      <ol>
+        <li>A Samsung só aceita apps assinados para a sua TV: o jeito mais fácil é pelo <b>celular Android</b>, com o app <b>Apps2Samsung</b>.</li>
+        <li>Ligue o <b>Modo Desenvolvedor</b> da TV (em Apps, digite <b>1 2 3 4 5</b>) com o IP do celular.</li>
+        <li>No Apps2Samsung, escolha a TV e instale o <b>onix-tizen.wgt</b>.</li>
+      </ol>
+      <a class="btn" href="https://github.com/ruan2311/onix#tvs-samsung-tizen">Passo a passo completo</a>
+    </article>
+
+    <!-- LG -->
+    <article class="dev glass" data-dev="lg">
+      <div class="ic">🟥</div>
+      <h2>TVs LG</h2>
+      <p class="req">webOS, de 2022 em diante · 🧪 beta</p>
+      <a class="btn primary" data-asset="onix-webos.ipk" href="https://github.com/ruan2311/onix/releases/latest/download/onix-webos.ipk">Baixar para LG <span class="sz"></span></a>
+      <ol>
+        <li>A instalação na LG é pelo <b>computador</b>, sem precisar de terminal.</li>
+        <li>Siga o passo a passo para ligar o modo de desenvolvedor da TV e mandar o <b>onix-webos.ipk</b>.</li>
+      </ol>
+      <a class="btn" href="https://github.com/ruan2311/onix#tvs-lg-webos">Passo a passo completo</a>
+    </article>
+  </div>
+
+  <article class="dev glass" data-dev="phone" style="margin-top:1.2rem">
+    <div class="ic">📱</div>
+    <h2>Onix Controle: o celular vira o controle</h2>
+    <p class="req">Celular Android, com a TV Google TV ou Android TV no mesmo Wi-Fi (não funciona em iPhone, nem nas TVs Samsung e LG)</p>
+    <p style="margin:0;color:var(--dim)">Controla a TV inteira, dentro de qualquer app. No Onix, em <b>Configurações → Controle pelo celular</b>, também dá para usar o <b>Controle web</b>, que abre no navegador do celular sem instalar nada.</p>
+    <div class="acts" style="display:flex;flex-wrap:wrap;gap:.7rem">
+      <a class="btn primary" href="https://github.com/ruan2311/onix/releases/download/controle-v1.0.3/onix-controle.apk">Baixar o Onix Controle</a>
+      <a class="btn" href="https://github.com/ruan2311/onix#onix-controle-app-de-celular">Como usar</a>
+    </div>
+  </article>
+
+  <h3 class="t">O que tem no Onix</h3>
+  <div class="feat">
+    <div class="glass reveal"><i>🪟</i><b>Vidro escuro</b><span>Três estilos de tela inicial: Onix Glass, Clean Glass e Onix Cosmos.</span></div>
+    <div class="glass reveal"><i>🍿</i><b>Indicações</b><span>Netflix, Disney+, HBO Max e Globoplay, pelo que você assiste.</span></div>
+    <div class="glass reveal"><i>🎮</i><b>Jogos</b><span>Notícias dos games, minijogos e o Onix GameHub de clássicos.</span></div>
+    <div class="glass reveal"><i>👨‍👩‍👧</i><b>Perfis</b><span>Um para cada pessoa da casa, com Modo Infantil e limite de tempo.</span></div>
+  </div>
+  <div class="shots">
+    <img class="shot reveal" src="../img/onix-inicio.jpg" alt="Tela inicial do Onix" loading="lazy">
+    <img class="shot reveal" src="../img/onix-jogos.jpg" alt="Aba Jogos do Onix" loading="lazy">
+  </div>
+  <p class="all"><a class="btn" href="https://github.com/ruan2311/onix/releases">Todas as versões e novidades</a> <a class="btn" href="https://github.com/ruan2311/onix#readme">Guia completo</a></p>
+</main>
+
+<footer class="foot wrap">
+  <p>O Onix é gratuito e de código aberto (licença MIT).</p>
+  <p><a href="../">Project Gems</a> · feito por Ruan Amaral</p>
+</footer>
+
+<script>
+/* Este aparelho primeiro: TV Samsung, TV LG, Android TV; celular Android → Onix Controle. */
+const ua = navigator.userAgent;
+const here = /Tizen/i.test(ua) ? 'samsung' : /Web0S|webOS|NetCast/i.test(ua) ? 'lg'
+  : /Android/i.test(ua) ? (/Android ?TV|GoogleTV|BRAVIA|AFT|SHIELD|MiBOX|Chromecast|\bTV\b|SmartTV/i.test(ua) ? 'tv' : 'phone') : null;
+if (here && here !== 'phone') {
+  const card = document.querySelector('[data-dev="' + here + '"]');
+  card.classList.add('here');
+  card.insertAdjacentHTML('afterbegin', '<span class="badge">Para esta TV</span>');
+  document.getElementById('devices').prepend(card);
+} else if (here === 'phone') {
+  const card = document.querySelector('[data-dev="phone"]');
+  card.classList.add('here');
+  card.insertAdjacentHTML('afterbegin', '<span class="badge">Para este celular</span>');
+  document.querySelector('.ask').before(card);
+}
+
+const mb = n => (n / 1048576).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + ' MB';
+fetch('https://api.github.com/repos/ruan2311/onix/releases/latest')
+  .then(r => (r.ok ? r.json() : null))
+  .then(rel => {
+    if (!rel) return;
+    document.getElementById('ver').textContent = 'Versão ' + (rel.tag_name || '').replace(/^v/, '').replace('-beta', ' beta');
+    for (const a of rel.assets) {
+      const btn = document.querySelector('[data-asset="' + a.name + '"]');
+      if (!btn) continue;
+      btn.href = a.browser_download_url;
+      btn.querySelector('.sz').textContent = mb(a.size);
+    }
+  })
+  .catch(() => { });
+
+document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', () => {
+  navigator.clipboard.writeText(document.getElementById(b.dataset.copy).textContent).then(() => {
+    b.textContent = 'Copiado!';
+    setTimeout(() => { b.textContent = 'Copiar'; }, 1800);
+  });
+}));
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), { threshold: .15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

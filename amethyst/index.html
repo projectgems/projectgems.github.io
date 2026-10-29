@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amethyst · karaokê para Windows</title>
+<meta name="description" content="Amethyst: karaokê para Windows com biblioteca dos seus vídeos, nota pelo microfone e tela da TV para os convidados.">
+<meta name="theme-color" content="#07040f">
+<link rel="icon" href="../img/amethyst.svg">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body style="--grad:linear-gradient(90deg,#9b5cff,#ff6fb5)">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../img/onix.svg" alt="">PROJECT GEMS <small>by Ruan</small></a>
+    <nav class="nav"><a href="../">← Todos os projetos</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="page-hero">
+    <img class="logo" src="../img/amethyst.svg" alt="Amethyst" style="image-rendering:auto">
+    <h1>Amethyst</h1>
+    <p>Karaokê para Windows: seus vídeos numa biblioteca, <b>nota pelo microfone</b> e a <b>TV mostrando tudo</b> para os convidados, enquanto você controla pelo notebook.</p>
+    <span class="chip ver" id="ver">Versão mais nova</span>
+  </section>
+
+  <div class="devices" style="grid-template-columns:minmax(0,1fr);max-width:44rem;margin:0 auto">
+    <article class="dev glass here">
+      <span class="badge">Windows 10 e 11</span>
+      <div class="ic">🎤</div>
+      <h2>Amethyst para Windows</h2>
+      <a class="btn primary" data-asset="Amethyst-win64.zip" href="https://github.com/ruan2311/amethyst/releases/latest/download/Amethyst-win64.zip">Baixar para Windows <span class="sz"></span></a>
+      <ol>
+        <li>Baixe o <b>.zip</b>, extraia em qualquer pasta e abra o <b>Amethyst.exe</b>.</li>
+        <li>Se o Windows avisar, clique em <b>Mais informações → Executar assim mesmo</b> (o programa ainda não tem assinatura digital).</li>
+        <li>Escolha a pasta dos seus vídeos de karaokê. Nomeie os arquivos como <b>Artista - Música.mp4</b>.</li>
+      </ol>
+      <details>
+        <summary>Mostrar na TV</summary>
+        <ol>
+          <li>Ligue a TV no notebook pelo HDMI e aperte <b>Win + P → Estender</b>.</li>
+          <li>No Amethyst, clique em <b>Tela da TV</b>: a TV mostra quem vai cantar, o vídeo, a nota ao vivo e a fila.</li>
+          <li>O notebook fica com os controles; o som sai pela TV.</li>
+        </ol>
+      </details>
+    </article>
+  </div>
+
+  <h3 class="t">O que tem no Amethyst</h3>
+  <div class="feat">
+    <div class="glass reveal"><i>📚</i><b>Biblioteca</b><span>Seus vídeos por artistas, gêneros, favoritas e mais cantadas.</span></div>
+    <div class="glass reveal"><i>🎯</i><b>Nota pelo microfone</b><span>Afinação, presença e estabilidade da voz, em tempo real.</span></div>
+    <div class="glass reveal"><i>🎉</i><b>Comemoração</b><span>Quem tira 70 ou mais ganha festa no fundo, no notebook e na TV.</span></div>
+    <div class="glass reveal"><i>📺</i><b>YouTube e letras</b><span>Músicas que não estão na biblioteca e videoclipes com a letra na TV.</span></div>
+  </div>
+  <p class="all"><a class="btn" href="https://github.com/ruan2311/amethyst/releases">Todas as versões e novidades</a> <a class="btn" href="https://github.com/ruan2311/amethyst#readme">Guia completo</a></p>
+</main>
+
+<footer class="foot wrap">
+  <p>O Amethyst é gratuito.</p>
+  <p><a href="../">Project Gems</a> · feito por Ruan Amaral</p>
+</footer>
+
+<script>
+const mb = n => (n / 1048576).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + ' MB';
+fetch('https://api.github.com/repos/ruan2311/amethyst/releases/latest')
+  .then(r => (r.ok ? r.json() : null))
+  .then(rel => {
+    if (!rel) return;
+    document.getElementById('ver').textContent = 'Versão ' + (rel.tag_name || '').replace(/^v/, '');
+    for (const a of rel.assets) {
+      const btn = document.querySelector('[data-asset="' + a.name + '"]');
+      if (btn) { btn.href = a.browser_download_url; btn.querySelector('.sz').textContent = mb(a.size); }
+    }
+  })
+  .catch(() => { });
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), { threshold: .15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
