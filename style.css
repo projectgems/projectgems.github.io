@@ -85,7 +85,7 @@ img { max-width: 100%; height: auto; display: block; }
 .orbit::before { content: ""; position: absolute; inset: 1.5rem; border-radius: 50%; border: 1px dashed rgba(255, 255, 255, .16); }
 /* No meio da órbita, a logo do Project Gems (um buraco negro com uma gema no centro), pulsando de leve. */
 .orbit .core { position: absolute; inset: 3.4rem; display: grid; place-items: center; border-radius: 50%; }
-.orbit .core img { width: 8.2rem; height: 8.2rem; max-width: none; animation: pulse 6s ease-in-out infinite alternate; }
+.orbit .core img { width: 6.6rem; height: 6.6rem; max-width: none; animation: pulse 6s ease-in-out infinite alternate; }
 @keyframes pulse { to { transform: scale(1.05) rotate(-2deg); filter: brightness(1.12); } }
 .orbit .ring { position: absolute; inset: 0; animation: spin 26s linear infinite; }
 .orbit .ring img { position: absolute; width: 2.6rem; height: 2.6rem; animation: spin 26s linear infinite reverse; }
@@ -194,7 +194,7 @@ h3.t { font-size: 1.6rem; margin: 3.5rem 0 0; text-align: center; }
   .hero { padding: 2.6rem 0 2.2rem; }
   .orbit { width: 12rem; height: 12rem; }
   .orbit .core { inset: 2.6rem; }
-  .orbit .core img { width: 6.6rem; height: 6.6rem; }
+  .orbit .core img { width: 5.2rem; height: 5.2rem; }
   .hero .acts, .gem .acts { flex-direction: column; align-items: stretch; }
   .hero .acts .btn, .gem .acts .btn, .all .btn { justify-content: center; }
   .all { display: flex; flex-direction: column; gap: .7rem; }
