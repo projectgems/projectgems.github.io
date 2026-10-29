@@ -1,0 +1,65 @@
+/* Página do Amethyst: o palco do karaokê. Grafite com brilho violeta, a fonte Outfit do app, o
+   degradê rosa → violeta dos botões de destaque, um buraco de minhoca em linhas brancas e cristais
+   de ametista flutuando (como na comemoração da nota). */
+@font-face { font-family: "Outfit"; src: url(../fonts/outfit-latin-wght-normal.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
+body.th-amethyst {
+  --bg: #060709;
+  --ink: #f5f6f8;
+  --dim: rgba(232, 234, 240, .72);
+  --mute: rgba(232, 234, 240, .52);
+  --pink: #ff2d55;
+  --violet: #5b2cff;
+  --grad: linear-gradient(90deg, #ff2d55, #5b2cff);
+  --glass: linear-gradient(135deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .03) 60%, rgba(255, 255, 255, .05));
+  --glass-hi: rgba(255, 255, 255, .1);
+  --line: rgba(255, 255, 255, .09);
+  --r: 1.4rem;
+  font-family: "Outfit", system-ui, sans-serif;
+}
+body.th-amethyst::after {
+  background: radial-gradient(55% 45% at 82% 18%, rgba(124, 92, 255, .22), transparent 70%),
+    radial-gradient(45% 40% at 4% 96%, rgba(255, 45, 85, .12), transparent 70%),
+    radial-gradient(1px 1px at 20% 30%, #fff6, transparent), radial-gradient(1px 1px at 64% 72%, #fff5, transparent),
+    radial-gradient(1px 1px at 88% 52%, #fff6, transparent), radial-gradient(1px 1px at 40% 88%, #fff4, transparent),
+    #060709;
+}
+body.th-amethyst::before { background: radial-gradient(34% 30% at 70% 30%, rgba(124, 92, 255, .14), transparent 70%); }
+.th-amethyst .top { background: rgba(6, 7, 9, .7); }
+.th-amethyst h1, .th-amethyst h2, .th-amethyst h3 { letter-spacing: -.02em; }
+.th-amethyst .glass, .th-amethyst .dev { background: var(--glass); border: 1px solid var(--line); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1.2rem 3rem rgba(0, 0, 0, .45); }
+.th-amethyst .btn { border-radius: 999px; font-weight: 600; }
+.th-amethyst .btn.primary { background: var(--grad); color: #fff; box-shadow: 0 .6rem 2rem rgba(91, 44, 255, .4), inset 0 1px 0 rgba(255, 255, 255, .25); }
+.th-amethyst .btn.primary:hover { box-shadow: 0 .8rem 2.6rem rgba(255, 45, 85, .4), inset 0 1px 0 rgba(255, 255, 255, .25); }
+.th-amethyst .dev.here { border: 2px solid transparent; background: linear-gradient(#0d0e12, #0d0e12) padding-box, var(--grad) border-box; box-shadow: 0 1.4rem 3rem rgba(91, 44, 255, .25); }
+.th-amethyst .dev .badge { background: #fff; color: #060709; }
+
+/* Ícones de linha brancos num quadrado arredondado com brilho violeta (como os do app). */
+.th-amethyst .dev .ic, .th-amethyst .feat i { display: grid; place-items: center; border-radius: 1rem; color: #fff;
+  background: radial-gradient(circle at 50% 30%, rgba(124, 92, 255, .5), transparent 75%), #121318; border: 1px solid rgba(255, 255, 255, .12); }
+.th-amethyst .dev .ic { width: 3.6rem; height: 3.6rem; }
+.th-amethyst .dev .ic svg { width: 1.8rem; height: 1.8rem; }
+.th-amethyst .feat i { width: 3rem; height: 3rem; margin-bottom: .5rem; }
+.th-amethyst .feat i svg { width: 1.5rem; height: 1.5rem; }
+.th-amethyst .feat .glass:nth-child(2n) i { background: radial-gradient(circle at 50% 30%, rgba(255, 45, 85, .45), transparent 75%), #121318; }
+
+/* Apresentação: texto à esquerda e o palco à direita, com o buraco de minhoca e os cristais. */
+.th-amethyst .page-hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 2rem; align-items: center; text-align: left; padding: 4rem 0 2.6rem; }
+.th-amethyst .page-hero p { margin-left: 0; }
+.th-amethyst .page-hero h1 { font-size: clamp(3rem, 8vw, 5.4rem); font-weight: 800; line-height: 1; text-shadow: 0 .4rem 2.6rem rgba(91, 44, 255, .55); }
+.th-amethyst .kick { display: inline-block; font-size: .82rem; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: #c9b8ff; }
+.th-amethyst .hello { display: block; margin-top: 1.2rem; font-size: 1.3rem; font-weight: 700; }
+.am-stage { position: relative; aspect-ratio: 1.1; width: 100%; max-width: 32rem; justify-self: end; }
+.am-stage .worm { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; animation: amSway 16s ease-in-out infinite alternate; }
+.am-stage .crystal { position: absolute; width: 11%; animation: amFloat 6s ease-in-out infinite alternate; filter: drop-shadow(0 .4rem 1rem rgba(124, 92, 255, .5)); }
+.am-stage .note { position: absolute; color: #ff7a9a; font-size: 2rem; font-weight: 700; opacity: .8; animation: amFloat 5s ease-in-out infinite alternate; }
+@keyframes amSway { from { transform: rotate(-3deg) scale(.98); } to { transform: rotate(3deg) scale(1.03); } }
+@keyframes amFloat { from { transform: translateY(0) rotate(-6deg); } to { transform: translateY(-1rem) rotate(8deg); } }
+.th-amethyst h3.t { font-size: 2rem; font-weight: 800; }
+.th-amethyst .shots figcaption b { color: #c9b8ff; }
+
+@media (max-width: 860px) {
+  .th-amethyst .page-hero { grid-template-columns: 1fr; text-align: center; padding-top: 2.4rem; }
+  .th-amethyst .page-hero p { margin-left: auto; }
+  .am-stage { order: -1; max-width: 19rem; justify-self: center; }
+}
+@media (max-width: 640px) { .am-stage .worm { animation: none; } }

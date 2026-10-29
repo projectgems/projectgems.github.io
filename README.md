@@ -11,4 +11,6 @@ No ar em **https://projectgems.github.io**:
 | Onix GameHub (central de downloads) | `/gamehub/` |
 | Amethyst | `/amethyst/` |
 
+Cada página de projeto tem a cara do próprio app: o vidro preto espacial do Onix (`onix/onix.css`), o pixel art neon do GameHub (`gamehub/gamehub.css`, fonte Pixelify Sans) e o palco do Amethyst (`amethyst/amethyst.css`, fonte Outfit em `fonts/`, licença OFL).
+
 HTML, CSS e JavaScript puros, sem etapa de build (publicado pelo GitHub Pages). As versões, os tamanhos e os links de download vêm da API do GitHub na hora, então o site não precisa mudar a cada versão nova.

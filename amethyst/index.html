@@ -5,11 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Amethyst · karaokê para Windows</title>
 <meta name="description" content="Amethyst: karaokê para Windows com biblioteca dos seus vídeos, nota pelo microfone e tela da TV para os convidados.">
-<meta name="theme-color" content="#07040f">
+<meta name="theme-color" content="#060709">
 <link rel="icon" href="../img/amethyst.svg">
+<link rel="preload" href="../fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="amethyst.css">
 </head>
-<body style="--grad:linear-gradient(90deg,#9b5cff,#ff6fb5)">
+<body class="th-amethyst">
 <header class="top">
   <div class="wrap">
     <a class="brand" href="../"><img src="../img/onix.svg" alt="">PROJECT GEMS <small>by Ruan</small></a>
@@ -19,16 +21,27 @@
 
 <main class="wrap">
   <section class="page-hero">
-    <img class="logo" src="../img/amethyst.svg" alt="Amethyst" style="image-rendering:auto">
-    <h1>Amethyst</h1>
-    <p>Karaokê para Windows: seus vídeos numa biblioteca, <b>nota pelo microfone</b> e a <b>TV mostrando tudo</b> para os convidados, enquanto você controla pelo notebook.</p>
-    <span class="chip ver" id="ver">Versão mais nova</span>
+    <div>
+      <span class="kick">Amethyst · karaokê</span>
+      <h1>Amethyst</h1>
+      <p>Karaokê para Windows: seus vídeos numa biblioteca, <b>nota pelo microfone</b> e a <b>TV mostrando tudo</b> para os convidados, enquanto você controla pelo notebook.</p>
+      <span class="chip ver" id="ver">Versão mais nova</span>
+      <span class="hello">Quem abre o show?</span>
+    </div>
+    <div class="am-stage" aria-hidden="true">
+      <svg class="worm" viewBox="0 0 400 360" fill="none" stroke="#fff" stroke-linecap="round"><defs><radialGradient id="amGlow" cx="230" cy="172" r="190" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#7c5cff" stop-opacity=".6"/><stop offset=".5" stop-color="#3a63ff" stop-opacity=".14"/><stop offset="1" stop-color="#3a63ff" stop-opacity="0"/></radialGradient><radialGradient id="amCore" cx="230" cy="168" r="20" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff"/><stop offset=".4" stop-color="#c9b8ff"/><stop offset="1" stop-color="#5b2cff" stop-opacity="0"/></radialGradient></defs><circle cx="230" cy="172" r="190" fill="url(#amGlow)" stroke="none"/><circle cx="215" cy="178" r="150" stroke-width="1.4" stroke-dasharray="0 9" opacity=".3"/><g transform="rotate(-14 210 180)"><ellipse cx="200" cy="180.0" rx="170.0" ry="58.0" stroke-width="2.40" opacity="0.95"/><ellipse cx="203" cy="178.8" rx="139.4" ry="47.6" stroke-width="2.28" opacity="0.89"/><ellipse cx="206" cy="177.6" rx="114.3" ry="39.0" stroke-width="2.16" opacity="0.83"/><ellipse cx="209" cy="176.4" rx="93.7" ry="32.0" stroke-width="2.04" opacity="0.77"/><ellipse cx="212" cy="175.2" rx="76.9" ry="26.2" stroke-width="1.92" opacity="0.71"/><ellipse cx="215" cy="174.0" rx="63.0" ry="21.5" stroke-width="1.80" opacity="0.65"/><ellipse cx="218" cy="172.8" rx="51.7" ry="17.6" stroke-width="1.68" opacity="0.59"/><ellipse cx="221" cy="171.6" rx="42.4" ry="14.5" stroke-width="1.56" opacity="0.53"/><ellipse cx="224" cy="170.4" rx="34.8" ry="11.9" stroke-width="1.44" opacity="0.47"/><ellipse cx="227" cy="169.2" rx="28.5" ry="9.7" stroke-width="1.32" opacity="0.41"/></g><circle cx="230" cy="168" r="20" fill="url(#amCore)" stroke="none"/></svg>
+      <svg class="crystal" style="left:6%;top:10%;animation-delay:0s" viewBox="0 0 40 64"><path d="M20 0L36 18L28 64H12L4 18z" fill="#8b6cf0"/><path d="M20 0L4 18L12 64L20 20z" fill="#c9b8ff"/><path d="M20 0L36 18L28 64L20 20z" fill="#5438c4"/><path d="M9 20l5 30" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".6"/></svg>
+      <svg class="crystal" style="right:4%;bottom:12%;width:9%;animation-delay:-2s" viewBox="0 0 40 64"><path d="M20 0L36 18L28 64H12L4 18z" fill="#ff6f91"/><path d="M20 0L4 18L12 64L20 20z" fill="#ffb3c6"/><path d="M20 0L36 18L28 64L20 20z" fill="#c2185b"/><path d="M9 20l5 30" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".6"/></svg>
+      <svg class="crystal" style="left:24%;bottom:4%;width:7%;animation-delay:-4s" viewBox="0 0 40 64"><path d="M20 0L36 18L28 64H12L4 18z" fill="#a78bfa"/><path d="M20 0L4 18L12 64L20 20z" fill="#d6c8ff"/><path d="M20 0L36 18L28 64L20 20z" fill="#6d4ae0"/><path d="M9 20l5 30" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".6"/></svg>
+      <span class="note" style="right:16%;top:6%">♪</span>
+      <span class="note" style="left:2%;bottom:30%;color:#c9b8ff;animation-delay:-2.5s">♫</span>
+    </div>
   </section>
 
   <div class="devices" style="grid-template-columns:minmax(0,1fr);max-width:44rem;margin:0 auto">
     <article class="dev glass here">
       <span class="badge">Windows 10 e 11</span>
-      <div class="ic">🎤</div>
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg></div>
       <h2>Amethyst para Windows</h2>
       <a class="btn primary" data-asset="Amethyst-win64.zip" href="https://github.com/ruan2311/amethyst/releases/latest/download/Amethyst-win64.zip">Baixar para Windows <span class="sz"></span></a>
       <ol>
@@ -49,10 +62,10 @@
 
   <h3 class="t">O que tem no Amethyst</h3>
   <div class="feat">
-    <div class="glass reveal"><i>📚</i><b>Biblioteca</b><span>Seus vídeos por artistas, gêneros, favoritas e mais cantadas.</span></div>
-    <div class="glass reveal"><i>🎯</i><b>Nota pelo microfone</b><span>Afinação, presença e estabilidade da voz, em tempo real.</span></div>
-    <div class="glass reveal"><i>🎉</i><b>Comemoração</b><span>Quem tira 70 ou mais ganha festa no fundo, no notebook e na TV.</span></div>
-    <div class="glass reveal"><i>📺</i><b>YouTube e letras</b><span>Músicas que não estão na biblioteca e videoclipes com a letra na TV.</span></div>
+    <div class="glass reveal"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4v16H4zM10 4h4v16h-4z"/><path d="M16.5 4.5l3.8 1-3.9 14.6-3.8-1"/></svg></i><b>Biblioteca</b><span>Seus vídeos por artistas, gêneros, favoritas e mais cantadas.</span></div>
+    <div class="glass reveal"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg></i><b>Nota pelo microfone</b><span>Afinação, presença e estabilidade da voz, em tempo real.</span></div>
+    <div class="glass reveal"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.6H20l-5 3.6 1.9 5.8L12 14.4 7.1 18l1.9-5.8-5-3.6h6.2z"/></svg></i><b>Comemoração</b><span>Quem tira 70 ou mais ganha festa no fundo, no notebook e na TV.</span></div>
+    <div class="glass reveal"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z"/></svg></i><b>YouTube e letras</b><span>Músicas que não estão na biblioteca e videoclipes com a letra na TV.</span></div>
   </div>
   <h3 class="t">Telas do Amethyst</h3>
   <div class="shots">

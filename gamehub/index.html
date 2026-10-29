@@ -4,13 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Onix GameHub · Central de downloads</title>
-<meta name="description" content="Baixe o Onix GameHub para Google TV, celular Android ou PC com Windows: jogos clássicos de NES, Super Nintendo, Game Boy Advance e Mega Drive.">
-<meta name="theme-color" content="#07040f">
+<meta name="description" content="Baixe o Onix GameHub para Google TV, celular Android ou PC com Windows: um multi-emulador de NES, Super Nintendo, Game Boy Advance e Mega Drive.">
+<meta name="theme-color" content="#0d0722">
 <link rel="icon" href="../img/gamehub-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap">
 <link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="gamehub.css">
 
 </head>
-<body>
+<body class="th-gamehub">
+<div class="gh-sky" aria-hidden="true"><span class="px-star " style="left:21%;top:53%;--c:#ff5a6e;animation-delay:-0.12s"></span><span class="px-star lg" style="left:14%;top:49%;--c:#ffffff;animation-delay:-0.14s"></span><span class="px-star lg" style="left:29%;top:7%;--c:#ff3d9a;animation-delay:-1.04s"></span><span class="px-star sm" style="left:32%;top:14%;--c:#ffffff;animation-delay:-1.02s"></span><span class="px-star lg" style="left:17%;top:31%;--c:#ff5a6e;animation-delay:-1.51s"></span><span class="px-star sm" style="left:75%;top:77%;--c:#a78bfa;animation-delay:-0.12s"></span><span class="px-star sm" style="left:7%;top:74%;--c:#38bdf8;animation-delay:-0.32s"></span><span class="px-star " style="left:20%;top:72%;--c:#ff3d9a;animation-delay:-1.37s"></span><span class="px-star lg" style="left:89%;top:26%;--c:#ff3d9a;animation-delay:-1.40s"></span><span class="px-star sm" style="left:49%;top:15%;--c:#ffffff;animation-delay:-1.71s"></span><span class="px-star lg" style="left:9%;top:82%;--c:#3de1ff;animation-delay:-1.19s"></span><span class="px-star lg" style="left:56%;top:43%;--c:#a78bfa;animation-delay:-1.41s"></span><span class="px-star " style="left:48%;top:41%;--c:#3de1ff;animation-delay:-1.91s"></span><span class="px-star sm" style="left:12%;top:76%;--c:#fbbf24;animation-delay:-1.26s"></span><span class="px-star " style="left:95%;top:60%;--c:#fbbf24;animation-delay:-1.46s"></span><span class="px-star sm" style="left:17%;top:68%;--c:#a78bfa;animation-delay:-0.40s"></span><span class="px-star " style="left:21%;top:65%;--c:#a78bfa;animation-delay:-0.09s"></span><span class="px-star sm" style="left:73%;top:76%;--c:#38bdf8;animation-delay:-2.10s"></span><span class="px-star " style="left:45%;top:91%;--c:#fbbf24;animation-delay:-1.43s"></span><span class="px-star lg" style="left:60%;top:11%;--c:#38bdf8;animation-delay:-0.22s"></span><span class="px-star " style="left:62%;top:92%;--c:#ff5a6e;animation-delay:-0.16s"></span><span class="px-star " style="left:84%;top:76%;--c:#ff5a6e;animation-delay:-1.97s"></span></div>
+<div class="gh-floor" aria-hidden="true"></div>
 <header class="top">
   <div class="wrap">
     <a class="brand" href="../"><img src="../img/onix.svg" alt="">PROJECT GEMS <small>by Ruan</small></a>
@@ -20,17 +26,30 @@
 
 <main class="wrap">
   <section class="page-hero">
-    <img class="logo" src="../img/gamehub-icon.png" alt="Onix GameHub">
-    <h1>Onix GameHub</h1>
-    <p>Jogos clássicos de <b>Nintendinho</b>, <b>Super Nintendo</b>, <b>Game Boy Advance</b> e <b>Mega Drive</b>, no visual do Onix. Grátis e sem anúncios.</p>
-    <span class="chip ver" id="ver">Versão mais nova</span>
+    <div>
+      <span class="kick">Hub de emulação</span>
+      <h1>Onix GameHub</h1>
+      <p>Hub de emulação com <b>Nintendinho</b>, <b>Super Nintendo</b>, <b>Game Boy Advance</b> e <b>Mega Drive</b>, no visual do Onix. Grátis e sem anúncios.</p>
+      <div class="consoles"><span class="chip" style="--c:var(--nes)"><i></i>NES</span><span class="chip" style="--c:var(--snes)"><i></i>SNES</span><span class="chip" style="--c:var(--gba)"><i></i>GBA</span><span class="chip" style="--c:var(--md)"><i></i>Mega Drive</span></div>
+      <span class="chip ver" id="ver">Versão mais nova</span>
+      <br><a class="start" href="#devices">▶ ESCOLHA ONDE JOGAR</a>
+    </div>
+    <div class="gh-hero" aria-hidden="true">
+      <span class="shadow"></span>
+      <img class="mark" src="../img/gamehub.svg" alt="" width="32" height="32">
+      <span class="px-star lg" style="left:6%;top:14%;--c:#ff3d9a"></span>
+      <span class="px-star" style="right:8%;top:6%;--c:#3de1ff;animation-delay:-.8s"></span>
+      <span class="px-star" style="right:2%;bottom:30%;--c:#fbbf24;animation-delay:-1.5s"></span>
+      <span class="px-star sm" style="left:14%;bottom:24%;--c:#a78bfa;animation-delay:-.4s"></span>
+      <span class="px-star sm" style="left:46%;top:2%;--c:#fff;animation-delay:-2s"></span>
+    </div>
   </section>
 
   <p class="ask">Onde você vai jogar?</p>
   <div class="devices" id="devices">
     <!-- TV -->
     <article class="dev glass" data-dev="tv">
-      <div class="ic">📺</div>
+      <div class="ic" style="--c:var(--gba)"><svg viewBox="0 0 16 15" shape-rendering="crispEdges"><path fill="currentColor" d="M0 0h1v1h-1zM1 0h1v1h-1zM2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM7 0h1v1h-1zM8 0h1v1h-1zM9 0h1v1h-1zM10 0h1v1h-1zM11 0h1v1h-1zM12 0h1v1h-1zM13 0h1v1h-1zM14 0h1v1h-1zM15 0h1v1h-1zM0 1h1v1h-1zM15 1h1v1h-1zM0 2h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM5 2h1v1h-1zM6 2h1v1h-1zM7 2h1v1h-1zM8 2h1v1h-1zM9 2h1v1h-1zM10 2h1v1h-1zM11 2h1v1h-1zM12 2h1v1h-1zM13 2h1v1h-1zM15 2h1v1h-1zM0 3h1v1h-1zM2 3h1v1h-1zM13 3h1v1h-1zM15 3h1v1h-1zM0 4h1v1h-1zM2 4h1v1h-1zM13 4h1v1h-1zM15 4h1v1h-1zM0 5h1v1h-1zM2 5h1v1h-1zM7 5h1v1h-1zM13 5h1v1h-1zM15 5h1v1h-1zM0 6h1v1h-1zM2 6h1v1h-1zM7 6h1v1h-1zM8 6h1v1h-1zM13 6h1v1h-1zM15 6h1v1h-1zM0 7h1v1h-1zM2 7h1v1h-1zM7 7h1v1h-1zM8 7h1v1h-1zM9 7h1v1h-1zM13 7h1v1h-1zM15 7h1v1h-1zM0 8h1v1h-1zM2 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM13 8h1v1h-1zM15 8h1v1h-1zM0 9h1v1h-1zM2 9h1v1h-1zM7 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM0 10h1v1h-1zM2 10h1v1h-1zM3 10h1v1h-1zM4 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM7 10h1v1h-1zM8 10h1v1h-1zM9 10h1v1h-1zM10 10h1v1h-1zM11 10h1v1h-1zM12 10h1v1h-1zM13 10h1v1h-1zM15 10h1v1h-1zM0 11h1v1h-1zM15 11h1v1h-1zM0 12h1v1h-1zM1 12h1v1h-1zM2 12h1v1h-1zM3 12h1v1h-1zM4 12h1v1h-1zM5 12h1v1h-1zM6 12h1v1h-1zM7 12h1v1h-1zM8 12h1v1h-1zM9 12h1v1h-1zM10 12h1v1h-1zM11 12h1v1h-1zM12 12h1v1h-1zM13 12h1v1h-1zM14 12h1v1h-1zM15 12h1v1h-1zM6 13h1v1h-1zM7 13h1v1h-1zM8 13h1v1h-1zM9 13h1v1h-1zM4 14h1v1h-1zM5 14h1v1h-1zM6 14h1v1h-1zM7 14h1v1h-1zM8 14h1v1h-1zM9 14h1v1h-1zM10 14h1v1h-1zM11 14h1v1h-1z"/></svg></div>
       <h2>Google TV e Android TV</h2>
       <p class="req">Android TV 5.0 ou mais novo</p>
       <a class="btn primary" data-asset="onix-gamehub.apk" href="https://github.com/ruan2311/onix-gamehub/releases/latest/download/onix-gamehub.apk">Baixar para Google TV <span class="sz"></span></a>
@@ -51,7 +70,7 @@
 
     <!-- Celular -->
     <article class="dev glass" data-dev="phone">
-      <div class="ic">📱</div>
+      <div class="ic" style="--c:var(--nes)"><svg viewBox="0 0 12 14" shape-rendering="crispEdges"><path fill="currentColor" d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM7 0h1v1h-1zM8 0h1v1h-1zM9 0h1v1h-1zM1 1h1v1h-1zM10 1h1v1h-1zM1 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM5 2h1v1h-1zM6 2h1v1h-1zM7 2h1v1h-1zM8 2h1v1h-1zM10 2h1v1h-1zM1 3h1v1h-1zM3 3h1v1h-1zM8 3h1v1h-1zM10 3h1v1h-1zM1 4h1v1h-1zM3 4h1v1h-1zM8 4h1v1h-1zM10 4h1v1h-1zM1 5h1v1h-1zM3 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM1 6h1v1h-1zM3 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM1 7h1v1h-1zM3 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM1 8h1v1h-1zM3 8h1v1h-1zM8 8h1v1h-1zM10 8h1v1h-1zM1 9h1v1h-1zM3 9h1v1h-1zM4 9h1v1h-1zM5 9h1v1h-1zM6 9h1v1h-1zM7 9h1v1h-1zM8 9h1v1h-1zM10 9h1v1h-1zM1 10h1v1h-1zM10 10h1v1h-1zM1 11h1v1h-1zM5 11h1v1h-1zM6 11h1v1h-1zM10 11h1v1h-1zM1 12h1v1h-1zM10 12h1v1h-1zM2 13h1v1h-1zM3 13h1v1h-1zM4 13h1v1h-1zM5 13h1v1h-1zM6 13h1v1h-1zM7 13h1v1h-1zM8 13h1v1h-1zM9 13h1v1h-1z"/></svg></div>
       <h2>Celular Android</h2>
       <p class="req">Android 5.0 ou mais novo · 🧪 experimental</p>
       <a class="btn primary" data-asset="onix-gamehub-android.apk" href="https://github.com/ruan2311/onix-gamehub/releases/latest/download/onix-gamehub-android.apk">Baixar para Android <span class="sz"></span></a>
@@ -72,7 +91,7 @@
 
     <!-- PC -->
     <article class="dev glass" data-dev="pc">
-      <div class="ic">🖥️</div>
+      <div class="ic" style="--c:var(--md)"><svg viewBox="0 0 16 14" shape-rendering="crispEdges"><path fill="currentColor" d="M0 0h1v1h-1zM1 0h1v1h-1zM2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM7 0h1v1h-1zM8 0h1v1h-1zM9 0h1v1h-1zM10 0h1v1h-1zM11 0h1v1h-1zM12 0h1v1h-1zM13 0h1v1h-1zM14 0h1v1h-1zM15 0h1v1h-1zM0 1h1v1h-1zM15 1h1v1h-1zM0 2h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM5 2h1v1h-1zM6 2h1v1h-1zM7 2h1v1h-1zM8 2h1v1h-1zM9 2h1v1h-1zM10 2h1v1h-1zM11 2h1v1h-1zM12 2h1v1h-1zM13 2h1v1h-1zM15 2h1v1h-1zM0 3h1v1h-1zM2 3h1v1h-1zM13 3h1v1h-1zM15 3h1v1h-1zM0 4h1v1h-1zM2 4h1v1h-1zM4 4h1v1h-1zM5 4h1v1h-1zM9 4h1v1h-1zM10 4h1v1h-1zM13 4h1v1h-1zM15 4h1v1h-1zM0 5h1v1h-1zM2 5h1v1h-1zM13 5h1v1h-1zM15 5h1v1h-1zM0 6h1v1h-1zM2 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM7 6h1v1h-1zM8 6h1v1h-1zM9 6h1v1h-1zM10 6h1v1h-1zM13 6h1v1h-1zM15 6h1v1h-1zM0 7h1v1h-1zM2 7h1v1h-1zM13 7h1v1h-1zM15 7h1v1h-1zM0 8h1v1h-1zM2 8h1v1h-1zM3 8h1v1h-1zM4 8h1v1h-1zM5 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM9 8h1v1h-1zM10 8h1v1h-1zM11 8h1v1h-1zM12 8h1v1h-1zM13 8h1v1h-1zM15 8h1v1h-1zM0 9h1v1h-1zM15 9h1v1h-1zM0 10h1v1h-1zM1 10h1v1h-1zM2 10h1v1h-1zM3 10h1v1h-1zM4 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM7 10h1v1h-1zM8 10h1v1h-1zM9 10h1v1h-1zM10 10h1v1h-1zM11 10h1v1h-1zM12 10h1v1h-1zM13 10h1v1h-1zM14 10h1v1h-1zM15 10h1v1h-1zM6 11h1v1h-1zM7 11h1v1h-1zM8 11h1v1h-1zM9 11h1v1h-1zM6 12h1v1h-1zM7 12h1v1h-1zM8 12h1v1h-1zM9 12h1v1h-1zM2 13h1v1h-1zM3 13h1v1h-1zM4 13h1v1h-1zM5 13h1v1h-1zM6 13h1v1h-1zM7 13h1v1h-1zM8 13h1v1h-1zM9 13h1v1h-1zM10 13h1v1h-1zM11 13h1v1h-1zM12 13h1v1h-1zM13 13h1v1h-1z"/></svg></div>
       <h2>PC com Windows</h2>
       <p class="req">Windows 10 ou 11, 64 bits · 🧪 em teste</p>
       <a class="btn primary" data-asset="Onix-GameHub-win64.zip" href="https://github.com/ruan2311/onix-gamehub/releases/latest/download/Onix-GameHub-win64.zip">Baixar para PC <span class="sz"></span></a>
@@ -96,10 +115,10 @@
 
   <h3 class="t">O que tem no GameHub</h3>
   <div class="feat">
-    <div class="glass reveal"><i>⏯️</i><b>Continuar jogando</b><span>Volta do ponto exato onde parou, com a imagem do momento.</span></div>
-    <div class="glass reveal"><i>💾</i><b>Estados salvos</b><span>Quatro espaços por jogo, cada um com miniatura.</span></div>
-    <div class="glass reveal"><i>📺</i><b>Filtros de imagem</b><span>Nítido, CRT, LCD e, no PC, CRT curvado e fundo ambiente.</span></div>
-    <div class="glass reveal"><i>🎮</i><b>Do seu jeito</b><span>Controle 1 e 2, trocar botões, trapaças, avançar e rebobinar.</span></div>
+    <div class="glass reveal" style="--c:var(--nes)"><i><svg viewBox="0 0 8 9" shape-rendering="crispEdges"><path fill="currentColor" d="M0 0h1v1h-1zM0 1h1v1h-1zM1 1h1v1h-1zM0 2h1v1h-1zM1 2h1v1h-1zM2 2h1v1h-1zM0 3h1v1h-1zM1 3h1v1h-1zM2 3h1v1h-1zM3 3h1v1h-1zM0 4h1v1h-1zM1 4h1v1h-1zM2 4h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM0 5h1v1h-1zM1 5h1v1h-1zM2 5h1v1h-1zM3 5h1v1h-1zM0 6h1v1h-1zM1 6h1v1h-1zM2 6h1v1h-1zM0 7h1v1h-1zM1 7h1v1h-1zM0 8h1v1h-1z"/></svg></i><b>Continuar jogando</b><span>Volta do ponto exato onde parou, com a imagem do momento.</span></div>
+    <div class="glass reveal" style="--c:var(--snes)"><i><svg viewBox="0 0 11 9" shape-rendering="crispEdges"><path fill="currentColor" d="M0 0h1v1h-1zM1 0h1v1h-1zM2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM7 0h1v1h-1zM8 0h1v1h-1zM9 0h1v1h-1zM0 1h1v1h-1zM2 1h1v1h-1zM7 1h1v1h-1zM9 1h1v1h-1zM10 1h1v1h-1zM0 2h1v1h-1zM2 2h1v1h-1zM7 2h1v1h-1zM10 2h1v1h-1zM0 3h1v1h-1zM2 3h1v1h-1zM3 3h1v1h-1zM4 3h1v1h-1zM5 3h1v1h-1zM6 3h1v1h-1zM7 3h1v1h-1zM10 3h1v1h-1zM0 4h1v1h-1zM10 4h1v1h-1zM0 5h1v1h-1zM2 5h1v1h-1zM3 5h1v1h-1zM4 5h1v1h-1zM5 5h1v1h-1zM6 5h1v1h-1zM7 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM0 6h1v1h-1zM2 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM0 7h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM0 8h1v1h-1zM1 8h1v1h-1zM2 8h1v1h-1zM3 8h1v1h-1zM4 8h1v1h-1zM5 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM9 8h1v1h-1zM10 8h1v1h-1z"/></svg></i><b>Estados salvos</b><span>Quatro espaços por jogo, cada um com miniatura.</span></div>
+    <div class="glass reveal" style="--c:var(--gba)"><i><svg viewBox="0 0 16 15" shape-rendering="crispEdges"><path fill="currentColor" d="M0 0h1v1h-1zM1 0h1v1h-1zM2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM7 0h1v1h-1zM8 0h1v1h-1zM9 0h1v1h-1zM10 0h1v1h-1zM11 0h1v1h-1zM12 0h1v1h-1zM13 0h1v1h-1zM14 0h1v1h-1zM15 0h1v1h-1zM0 1h1v1h-1zM15 1h1v1h-1zM0 2h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM5 2h1v1h-1zM6 2h1v1h-1zM7 2h1v1h-1zM8 2h1v1h-1zM9 2h1v1h-1zM10 2h1v1h-1zM11 2h1v1h-1zM12 2h1v1h-1zM13 2h1v1h-1zM15 2h1v1h-1zM0 3h1v1h-1zM2 3h1v1h-1zM13 3h1v1h-1zM15 3h1v1h-1zM0 4h1v1h-1zM2 4h1v1h-1zM13 4h1v1h-1zM15 4h1v1h-1zM0 5h1v1h-1zM2 5h1v1h-1zM7 5h1v1h-1zM13 5h1v1h-1zM15 5h1v1h-1zM0 6h1v1h-1zM2 6h1v1h-1zM7 6h1v1h-1zM8 6h1v1h-1zM13 6h1v1h-1zM15 6h1v1h-1zM0 7h1v1h-1zM2 7h1v1h-1zM7 7h1v1h-1zM8 7h1v1h-1zM9 7h1v1h-1zM13 7h1v1h-1zM15 7h1v1h-1zM0 8h1v1h-1zM2 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM13 8h1v1h-1zM15 8h1v1h-1zM0 9h1v1h-1zM2 9h1v1h-1zM7 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM0 10h1v1h-1zM2 10h1v1h-1zM3 10h1v1h-1zM4 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM7 10h1v1h-1zM8 10h1v1h-1zM9 10h1v1h-1zM10 10h1v1h-1zM11 10h1v1h-1zM12 10h1v1h-1zM13 10h1v1h-1zM15 10h1v1h-1zM0 11h1v1h-1zM15 11h1v1h-1zM0 12h1v1h-1zM1 12h1v1h-1zM2 12h1v1h-1zM3 12h1v1h-1zM4 12h1v1h-1zM5 12h1v1h-1zM6 12h1v1h-1zM7 12h1v1h-1zM8 12h1v1h-1zM9 12h1v1h-1zM10 12h1v1h-1zM11 12h1v1h-1zM12 12h1v1h-1zM13 12h1v1h-1zM14 12h1v1h-1zM15 12h1v1h-1zM6 13h1v1h-1zM7 13h1v1h-1zM8 13h1v1h-1zM9 13h1v1h-1zM4 14h1v1h-1zM5 14h1v1h-1zM6 14h1v1h-1zM7 14h1v1h-1zM8 14h1v1h-1zM9 14h1v1h-1zM10 14h1v1h-1zM11 14h1v1h-1z"/></svg></i><b>Filtros de imagem</b><span>Nítido, CRT, LCD e, no PC, CRT curvado e fundo ambiente.</span></div>
+    <div class="glass reveal" style="--c:var(--md)"><i><svg viewBox="0 0 14 7" shape-rendering="crispEdges"><path fill="currentColor" d="M2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM7 0h1v1h-1zM8 0h1v1h-1zM9 0h1v1h-1zM10 0h1v1h-1zM11 0h1v1h-1zM1 1h1v1h-1zM12 1h1v1h-1zM0 2h1v1h-1zM3 2h1v1h-1zM9 2h1v1h-1zM10 2h1v1h-1zM13 2h1v1h-1zM0 3h1v1h-1zM2 3h1v1h-1zM3 3h1v1h-1zM4 3h1v1h-1zM8 3h1v1h-1zM9 3h1v1h-1zM11 3h1v1h-1zM13 3h1v1h-1zM0 4h1v1h-1zM3 4h1v1h-1zM10 4h1v1h-1zM11 4h1v1h-1zM13 4h1v1h-1zM1 5h1v1h-1zM12 5h1v1h-1zM2 6h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM7 6h1v1h-1zM8 6h1v1h-1zM9 6h1v1h-1zM10 6h1v1h-1zM11 6h1v1h-1z"/></svg></i><b>Do seu jeito</b><span>Controle 1 e 2, trocar botões, trapaças, avançar e rebobinar.</span></div>
   </div>
   <div class="shots">
     <img class="shot reveal" alt="Continuar jogando na TV" src="../img/gamehub-tv-1280.webp" srcset="../img/gamehub-tv-640.webp 640w, ../img/gamehub-tv-1280.webp 1280w" sizes="(max-width: 860px) 92vw, 560px" width="1280" height="720" loading="lazy" decoding="async">

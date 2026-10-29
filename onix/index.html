@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Onix · o launcher para TVs</title>
 <meta name="description" content="Onix: tela inicial para Android TV, Google TV, Samsung e LG, com visual de vidro escuro, indicações, notícias dos games e o Onix GameHub.">
-<meta name="theme-color" content="#07040f">
+<meta name="theme-color" content="#060709">
 <link rel="icon" href="../img/onix.svg">
 <link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="onix.css">
 </head>
-<body>
+<body class="th-onix">
 <header class="top">
   <div class="wrap">
     <a class="brand" href="../"><img src="../img/onix.svg" alt="">PROJECT GEMS <small>by Ruan</small></a>
@@ -19,17 +20,29 @@
 
 <main class="wrap">
   <section class="page-hero">
-    <img class="logo" src="../img/onix.svg" alt="Onix" style="image-rendering:auto">
-    <h1>Onix</h1>
-    <p>A tela inicial da TV com visual de <b>vidro escuro</b>, rápida no controle remoto, com indicações da semana, notícias dos games e o <b>Onix GameHub</b>. Grátis e sem anúncios.</p>
-    <span class="chip ver" id="ver">Versão mais nova</span>
+    <div>
+      <span class="kick"><img src="../img/onix.svg" alt="">Launcher para TVs</span>
+      <h1><b>Onix</b></h1>
+      <p>A tela inicial da TV com visual de <b>vidro escuro</b>, rápida no controle remoto, com indicações da semana, notícias dos games e o <b>Onix GameHub</b>. Grátis e sem anúncios.</p>
+      <span class="chip ver" id="ver">Versão mais nova</span>
+      <span class="clock" id="clock" aria-hidden="true"></span>
+    </div>
+    <div class="onix-scene" aria-hidden="true">
+      <span class="comet"></span>
+      <svg class="planet" viewBox="0 0 200 200"><defs><radialGradient id="oxPl" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".26" stop-color="#ff2d55"/><stop offset="1" stop-color="#05061a"/></radialGradient><radialGradient id="oxGl" r="50%"><stop offset=".5" stop-color="#5b2cff" stop-opacity=".5"/><stop offset="1" stop-color="#5b2cff" stop-opacity="0"/></radialGradient></defs><circle cx="100" cy="100" r="98" fill="url(#oxGl)"/><ellipse cx="100" cy="104" rx="92" ry="20" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2.6" transform="rotate(-16 100 100)"/><circle cx="100" cy="100" r="52" fill="url(#oxPl)"/><path d="M14 122A92 20 0 0 0 186 86" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="2.6" stroke-linecap="round" transform="rotate(-16 100 100)"/><circle cx="160" cy="42" r="4" fill="#fff" opacity=".8"/><circle cx="38" cy="150" r="2.5" fill="#fff" opacity=".6"/></svg>
+      <div class="bubble cat"><svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 104c0-16 12-22 26-22s26 6 26 22z" fill="#0e1015"/><path d="M30 46l-1-25 18 12zM70 46l1-25-18 12z" fill="#0e1015"/><path d="M33.5 38l-.5-9 7 5zM66.5 38l.5-9-7 5z" fill="#ff9ec4" stroke="none" opacity=".75"/><circle cx="50" cy="55" r="23" fill="#0e1015"/><g fill="#fff" stroke="none"><ellipse cx="41" cy="53" rx="2.6" ry="3.6"/><ellipse cx="59" cy="53" rx="2.6" ry="3.6"/></g><g fill="#ff9ec4" stroke="none" opacity=".45"><circle cx="35" cy="62" r="3"/><circle cx="65" cy="62" r="3"/></g><path d="M47.6 60h4.8l-2.4 2.4z" fill="#ff9ec4" stroke="#ff9ec4" stroke-width="1.4"/><path d="M45.5 65q2.2 2.6 4.5 0q2.3 2.6 4.5 0" stroke-width="2"/></svg></div>
+      <div class="bubble astro"><svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 104c0-17 15-23 32-23s32 6 32 23z" fill="#0e1015"/><path d="M50 21v-6" stroke-width="2.2"/><circle cx="50" cy="12" r="3" fill="#ff9ec4" stroke="none"/><circle cx="50" cy="51" r="29" fill="#0e1015"/><rect x="29" y="35" width="42" height="34" rx="17" fill="#0e1015" stroke-width="2.2"/><path d="M34.5 47c1-5 4-8 9-9" stroke-width="2" opacity=".6"/><g fill="#fff" stroke="none"><ellipse cx="42.5" cy="52" rx="2.5" ry="3.5"/><ellipse cx="57.5" cy="52" rx="2.5" ry="3.5"/></g><path d="M46 60q4 3 8 0" stroke-width="2.2"/></svg></div>
+      <svg class="spark" style="left:18%;top:8%" viewBox="-10 -10 20 20"><path d="M0-9l2 7 7 2-7 2-2 7-2-7-7-2 7-2z" fill="#fff"/></svg>
+      <svg class="spark" style="right:12%;bottom:22%;animation-delay:.9s" viewBox="-10 -10 20 20"><path d="M0-9l2 7 7 2-7 2-2 7-2-7-7-2 7-2z" fill="#fff"/></svg>
+      <svg class="spark" style="left:48%;bottom:2%;width:4%;height:4%;animation-delay:1.6s" viewBox="-10 -10 20 20"><path d="M0-9l2 7 7 2-7 2-2 7-2-7-7-2 7-2z" fill="#fff"/></svg>
+    </div>
   </section>
 
   <p class="ask">Qual é a sua TV?</p>
   <div class="devices" id="devices">
     <!-- Android TV / Google TV -->
     <article class="dev glass" data-dev="tv">
-      <div class="ic">📺</div>
+      <div class="ic" style="--c:#7680ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="12.5" rx="2.5"/><path d="M8 20.5h8M12 17v3.5"/><path d="M10 8.5l4 2.3-4 2.3z" fill="currentColor" stroke="none"/></svg></div>
       <h2>Google TV e Android TV</h2>
       <p class="req">Android 5.0 ou mais novo</p>
       <a class="btn primary" data-asset="onix-app.apk" href="https://github.com/ruan2311/onix/releases/latest/download/onix-app.apk">Onix App <span class="sz"></span></a>
@@ -52,7 +65,7 @@
 
     <!-- Samsung -->
     <article class="dev glass" data-dev="samsung">
-      <div class="ic">🟦</div>
+      <div class="ic" style="--c:#4e8aff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="12.5" rx="2.5"/><path d="M8 20.5h8M12 17v3.5"/><path d="M7 10.8h10" opacity=".6"/></svg></div>
       <h2>TVs Samsung</h2>
       <p class="req">Tizen, de 2022 em diante · 🧪 beta</p>
       <a class="btn primary" data-asset="onix-tizen.wgt" href="https://github.com/ruan2311/onix/releases/latest/download/onix-tizen.wgt">Baixar para Samsung <span class="sz"></span></a>
@@ -66,7 +79,7 @@
 
     <!-- LG -->
     <article class="dev glass" data-dev="lg">
-      <div class="ic">🟥</div>
+      <div class="ic" style="--c:#ff6868"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="12.5" rx="2.5"/><path d="M8 20.5h8M12 17v3.5"/><circle cx="12" cy="10.8" r="2.4"/></svg></div>
       <h2>TVs LG</h2>
       <p class="req">webOS, de 2022 em diante · 🧪 beta</p>
       <a class="btn primary" data-asset="onix-webos.ipk" href="https://github.com/ruan2311/onix/releases/latest/download/onix-webos.ipk">Baixar para LG <span class="sz"></span></a>
@@ -79,7 +92,7 @@
   </div>
 
   <article class="dev glass" data-dev="phone" style="margin-top:1.2rem">
-    <div class="ic">📱</div>
+    <div class="ic" style="--c:#34ceae"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></div>
     <h2>Onix Controle: o celular vira o controle</h2>
     <p class="req">Celular Android, com a TV Google TV ou Android TV no mesmo Wi-Fi (não funciona em iPhone, nem nas TVs Samsung e LG)</p>
     <p style="margin:0;color:var(--dim)">Controla a TV inteira, dentro de qualquer app. No Onix, em <b>Configurações → Controle pelo celular</b>, também dá para usar o <b>Controle web</b>, que abre no navegador do celular sem instalar nada.</p>
@@ -91,10 +104,10 @@
 
   <h3 class="t">O que tem no Onix</h3>
   <div class="feat">
-    <div class="glass reveal"><i>🪟</i><b>Vidro escuro</b><span>Três estilos de tela inicial: Onix Glass, Clean Glass e Onix Cosmos.</span></div>
-    <div class="glass reveal"><i>🍿</i><b>Indicações</b><span>Netflix, Disney+, HBO Max e Globoplay, pelo que você assiste.</span></div>
-    <div class="glass reveal"><i>🎮</i><b>Jogos</b><span>Notícias dos games, minijogos e o Onix GameHub de clássicos.</span></div>
-    <div class="glass reveal"><i>👨‍👩‍👧</i><b>Perfis</b><span>Um para cada pessoa da casa, com Modo Infantil e limite de tempo.</span></div>
+    <div class="glass reveal"><i style="--c:#a880ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="3.5"/><path d="M7.5 8.5l3-3M7.5 13l7.5-7.5" opacity=".7"/></svg></i><b>Vidro escuro</b><span>Três estilos de tela inicial: Onix Glass, Clean Glass e Onix Cosmos.</span></div>
+    <div class="glass reveal"><i style="--c:#ff2d55"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></i><b>Indicações</b><span>Netflix, Disney+, HBO Max e Globoplay, pelo que você assiste.</span></div>
+    <div class="glass reveal"><i style="--c:#5b2cff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10a5 5 0 0 1 4.6 7l-.6 1.4a2.5 2.5 0 0 1-4.2.6L15 15H9l-1.8 2a2.5 2.5 0 0 1-4.2-.6L2.4 15A5 5 0 0 1 7 8z"/><path d="M7 11v3M5.5 12.5h3"/></svg></i><b>Jogos</b><span>Notícias dos games, minijogos e o Onix GameHub, o hub de emulação.</span></div>
+    <div class="glass reveal"><i style="--c:#f472b0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19c0-3.5 2.5-5.5 5.5-5.5s5.5 2 5.5 5.5"/><circle cx="17" cy="9.5" r="2.3"/><path d="M15.5 13.8c3 0 5 1.8 5 4.7"/></svg></i><b>Perfis</b><span>Um para cada pessoa da casa, com Modo Infantil e limite de tempo.</span></div>
   </div>
   <div class="shots">
     <img class="shot reveal" alt="Tela inicial do Onix" src="../img/onix-inicio-1280.webp" srcset="../img/onix-inicio-640.webp 640w, ../img/onix-inicio-1280.webp 1280w" sizes="(max-width: 860px) 92vw, 560px" width="1280" height="720" loading="lazy" decoding="async">
@@ -148,6 +161,10 @@ document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click'
 }));
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), { threshold: .15 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+// Relógio como o da tela inicial do Onix.
+const clock = document.getElementById('clock');
+const tick = () => { const d = new Date(); clock.textContent = d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) + ' · ' + d.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' }); };
+tick(); setInterval(tick, 30000);
 </script>
 </body>
 </html>
