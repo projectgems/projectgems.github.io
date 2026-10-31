@@ -87,10 +87,15 @@ body.th-gamehub::before {
 .th-gamehub h3.t { font-size: 1.9rem; color: var(--ink); }
 .th-gamehub .ask { font-size: 1.6rem; color: var(--cyan); }
 
+.th-gamehub .hero-acts { margin-top: 1.4rem; display: flex; flex-wrap: wrap; gap: .85rem; align-items: center; }
+.th-gamehub .hero-acts .start { margin-top: 0; }
+.th-gamehub .hero-acts .btn svg { width: 1.05rem; height: 1.15rem; }
+
 @media (max-width: 860px) {
   .th-gamehub .page-hero { grid-template-columns: 1fr; text-align: center; padding-top: 2.2rem; }
   .th-gamehub .page-hero p { margin-left: auto; }
   .th-gamehub .consoles { justify-content: center; }
+  .th-gamehub .hero-acts { justify-content: center; }
   .gh-hero { order: -1; max-width: 13rem; justify-self: center; }
 }
 @media (prefers-reduced-motion: reduce) { .px-star, .th-gamehub .start, .gh-hero .mark { animation: none !important; } }
