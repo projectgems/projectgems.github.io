@@ -1,7 +1,7 @@
 // Service worker do GameHub no iPhone: deixa o app abrir sem internet e entrega às telas as capas
 // e miniaturas, que ficam no IndexedDB. O build.sh preenche a lista de arquivos e a versão.
 'use strict';
-const CACHE = 'gamehub-2079c17208d9';
+const CACHE = 'gamehub-fe2f3125e463';
 const FILES = ["./","./audio.js","./common.css","./common.js","./cores/fceumm.js","./cores/fceumm.wasm","./cores/gpgx.js","./cores/gpgx.wasm","./cores/mgba.js","./cores/mgba.wasm","./cores/snes9x.js","./cores/snes9x.wasm","./db/gba.tsv","./db/md.tsv","./db/nes.tsv","./db/snes.tsv","./edit.html","./game.html","./game.js","./hub.html","./icon-180.png","./icon-512.png","./index.html","./ios.css","./licenses/fceumm.txt","./licenses/genesis_plus_gx.txt","./licenses/libretro_database.txt","./licenses/mgba.txt","./licenses/snes9x.txt","./manifest.webmanifest","./menu.html","./pc.css","./shell.js","./touch.js"];
 
 self.addEventListener('install', e => {

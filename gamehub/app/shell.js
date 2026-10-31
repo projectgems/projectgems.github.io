@@ -11,7 +11,7 @@
 // memória ao abrir e gravados no banco em seguida. O sw.js entrega capas e miniaturas às telas.
 'use strict';
 
-const VERSION = '1.1.3';
+const VERSION = '1.2.0';
 const ID = /^[0-9a-f]{16}$/, SLOT = /^(auto|[1-4])$/;
 const MB = 1024 * 1024;
 const LANG = (navigator.language || '').toLowerCase().startsWith('es') ? 'es' : 'pt';
