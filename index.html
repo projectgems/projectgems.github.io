@@ -10,7 +10,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <link rel="icon" href="img/projectgems.svg">
-<link rel="stylesheet" href="style.css?v=1.2">
+<link rel="stylesheet" href="style.css?v=1.3">
 </head>
 <body>
 <header class="top">
@@ -30,104 +30,121 @@
     </div>
     <h1>Project <b>Gems</b></h1>
     <p>Os projetos do Ruan remetem a pedras preciosas, as <b>gems</b>: Onix, Cobalt, Amethyst e Opala. Cada um nasceu da vontade de ter algo mais bonito, mais rápido ou mais divertido, e todos são gratuitos.</p>
-    <!-- Card de Últimas Atualizações das Gems (substitui os antigos botões) -->
-    <div class="updates-card reveal">
-      <div class="updates-header">
-        <div class="updates-badge">
-          <span class="updates-badge-dot"></span>
-          Últimas atualizações das Gems
-        </div>
-        <div class="updates-date">Outubro de 2026</div>
-      </div>
-      <div class="updates-intro">
-        <h2>O que há de novo em cada projeto</h2>
-        <p>Acompanhe os recursos recém-lançados, melhorias e novidades das nossas pedras preciosas:</p>
-      </div>
-
-      <div class="updates-grid">
-        <!-- Onix -->
-        <div class="update-item">
-          <div class="update-item-top">
-            <img class="update-item-icon" src="img/onix.svg" alt="">
-            <div>
-              <div class="update-item-title">Onix</div>
-              <small style="color: var(--mute);">Launcher para TVs</small>
-            </div>
-            <span class="update-item-tag" style="color: #ffffff; border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.08);">v16.3.2</span>
+    <!-- Card Expansível de Últimas Atualizações das Gems (inicia fechado) -->
+    <details class="updates-card reveal" id="updatesCard">
+      <summary class="updates-summary">
+        <div class="updates-summary-left">
+          <div class="updates-badge">
+            <span class="updates-badge-dot"></span>
+            Últimas atualizações das Gems
           </div>
-          <ul class="update-item-list">
-            <li style="color: #ffffff;"><span style="color: var(--dim);"><b>Onix Controle no iPhone/iPad</b>: web app instalável (<code style="font-size: .85em; color: #fff;">/onix/controle</code>) para controlar a TV pelo navegador, com D-Pad, Touchpad e Gamepad virtual.</span></li>
-            <li style="color: #ffffff;"><span style="color: var(--dim);"><b>Escolha Inteligente de Download</b>: modal na página inicial para escolher entre a versão <i>App</i> (testar) ou <i>Launcher</i> (permanente) com tutorial passo a passo.</span></li>
-            <li style="color: #ffffff;"><span style="color: var(--dim);"><b>Aba Jogos integrada</b>: Cobalt GameHub e jogos rápidos na tela da TV.</span></li>
-          </ul>
-          <a class="update-item-link" href="#onix">Ver detalhes do Onix →</a>
+          <span class="updates-summary-title">Confira o que há de novo em cada projeto</span>
+        </div>
+        <div class="updates-summary-right">
+          <span class="updates-date">Outubro de 2026</span>
+          <span class="updates-toggle-btn">
+            <span class="updates-toggle-text">Ver novidades</span>
+            <svg class="updates-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </div>
+      </summary>
+
+      <div class="updates-content">
+        <div class="updates-intro">
+          <h2>O que há de novo em cada projeto</h2>
+          <p>Acompanhe os recursos recém-lançados, melhorias e novidades das nossas pedras preciosas:</p>
         </div>
 
-        <!-- Cobalt GameHub -->
-        <div class="update-item">
-          <div class="update-item-top">
-            <img class="update-item-icon" src="img/gamehub.svg" alt="" style="image-rendering:pixelated">
-            <div>
-              <div class="update-item-title">Cobalt GameHub</div>
-              <small style="color: var(--mute);">Hub de emulação</small>
+        <div class="updates-grid">
+          <!-- Onix -->
+          <div class="update-item">
+            <div class="update-item-top">
+              <img class="update-item-icon" src="img/onix.svg" alt="">
+              <div>
+                <div class="update-item-title">Onix</div>
+                <small style="color: var(--mute);">Launcher para TVs</small>
+              </div>
+              <span class="update-item-tag" style="color: #ffffff; border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.08);">v16.3.2</span>
             </div>
-            <span class="update-item-tag" style="color: #ff6fb5; border-color: rgba(255,111,181,.4); background: rgba(255,111,181,.1);">v1.2.0</span>
+            <ul class="update-item-list">
+              <li style="color: #ffffff;"><span style="color: var(--dim);"><b>Onix Controle no iPhone/iPad</b>: web app instalável (<code style="font-size: .85em; color: #fff;">/onix/controle</code>) para controlar a TV pelo navegador, com D-Pad, Touchpad e Gamepad virtual.</span></li>
+              <li style="color: #ffffff;"><span style="color: var(--dim);"><b>Escolha Inteligente de Download</b>: modal na página inicial para escolher entre a versão <i>App</i> (testar) ou <i>Launcher</i> (permanente) com tutorial passo a passo.</span></li>
+              <li style="color: #ffffff;"><span style="color: var(--dim);"><b>Aba Jogos integrada</b>: Cobalt GameHub e jogos rápidos na tela da TV.</span></li>
+            </ul>
+            <a class="update-item-link" href="#onix">Ver detalhes do Onix →</a>
           </div>
-          <ul class="update-item-list">
-            <li style="color: #ff6fb5;"><span style="color: var(--dim);"><b>Suporte ao Onix Controle</b>: jogue clássicos de NES, SNES, GBA e Mega Drive na TV usando o celular (Android ou iPhone) como controle.</span></li>
-            <li style="color: #ff6fb5;"><span style="color: var(--dim);"><b>Web App no iOS</b>: emulador direto pelo navegador no iPhone e iPad com controles táteis na tela.</span></li>
-            <li style="color: #ff6fb5;"><span style="color: var(--dim);"><b>Versão PC (Windows)</b>: núcleos WebAssembly, shaders CRT e sincronização de versões.</span></li>
-          </ul>
-          <a class="update-item-link" href="gamehub/">Ir para a Central de Downloads →</a>
+
+          <!-- Cobalt GameHub -->
+          <div class="update-item">
+            <div class="update-item-top">
+              <img class="update-item-icon" src="img/gamehub.svg" alt="" style="image-rendering:pixelated">
+              <div>
+                <div class="update-item-title">Cobalt GameHub</div>
+                <small style="color: var(--mute);">Hub de emulação</small>
+              </div>
+              <span class="update-item-tag" style="color: #ff6fb5; border-color: rgba(255,111,181,.4); background: rgba(255,111,181,.1);">v1.2.0</span>
+            </div>
+            <ul class="update-item-list">
+              <li style="color: #ff6fb5;"><span style="color: var(--dim);"><b>Suporte ao Onix Controle</b>: jogue clássicos de NES, SNES, GBA e Mega Drive na TV usando o celular (Android ou iPhone) como controle.</span></li>
+              <li style="color: #ff6fb5;"><span style="color: var(--dim);"><b>Web App no iOS</b>: emulador direto pelo navegador no iPhone e iPad com controles táteis na tela.</span></li>
+              <li style="color: #ff6fb5;"><span style="color: var(--dim);"><b>Versão PC (Windows)</b>: núcleos WebAssembly, shaders CRT e sincronização de versões.</span></li>
+            </ul>
+            <a class="update-item-link" href="gamehub/">Ir para a Central de Downloads →</a>
+          </div>
+
+          <!-- Amethyst -->
+          <div class="update-item">
+            <div class="update-item-top">
+              <img class="update-item-icon" src="img/amethyst.svg" alt="">
+              <div>
+                <div class="update-item-title">Amethyst</div>
+                <small style="color: var(--mute);">Karaokê para Windows</small>
+              </div>
+              <span class="update-item-tag" style="color: #c4a8ff; border-color: rgba(196,168,255,.4); background: rgba(196,168,255,.1);">v1.7.1</span>
+            </div>
+            <ul class="update-item-list">
+              <li style="color: #c4a8ff;"><span style="color: var(--dim);"><b>Nota ao Vivo pelo Microfone</b>: pontuação de afinação, presença de palco e estabilidade vocal em tempo real.</span></li>
+              <li style="color: #c4a8ff;"><span style="color: var(--dim);"><b>Modo TV Palco</b>: exibe a letra e notas na TV enquanto você controla as músicas pelo notebook.</span></li>
+              <li style="color: #c4a8ff;"><span style="color: var(--dim);"><b>Biblioteca local de clipes</b>: organização de músicas sem travamentos.</span></li>
+            </ul>
+            <a class="update-item-link" href="amethyst/">Página do Amethyst →</a>
+          </div>
+
+          <!-- Opala -->
+          <div class="update-item">
+            <div class="update-item-top">
+              <img class="update-item-icon" src="img/opala.svg" alt="">
+              <div>
+                <div class="update-item-title">Opala</div>
+                <small style="color: var(--mute);">Bot de WhatsApp</small>
+              </div>
+              <span class="update-item-tag" style="color: #f0a46b; border-color: rgba(240,164,107,.4); background: rgba(240,164,107,.1);">🔒 Em lapidação</span>
+            </div>
+            <ul class="update-item-list">
+              <li style="color: #f0a46b;"><span style="color: var(--dim);"><b>Operação 24 Horas</b>: rodando em servidor na nuvem sem interrupções com o prefixo <code style="font-size: .85em; color: #ffd27a;">!</code>.</span></li>
+              <li style="color: #f0a46b;"><span style="color: var(--dim);"><b>Respostas Instantâneas</b>: menus dinâmicos, comandos interativos e gerenciamento inteligente.</span></li>
+              <li style="color: #f0a46b;"><span style="color: var(--dim);"><b>Código Privado</b>: em lapidação contínua antes da abertura pública.</span></li>
+            </ul>
+            <a class="update-item-link" href="#opala">Ver sobre o Opala →</a>
+          </div>
         </div>
 
-        <!-- Amethyst -->
-        <div class="update-item">
-          <div class="update-item-top">
-            <img class="update-item-icon" src="img/amethyst.svg" alt="">
-            <div>
-              <div class="update-item-title">Amethyst</div>
-              <small style="color: var(--mute);">Karaokê para Windows</small>
+        <div class="updates-footer">
+          <div class="updates-footer-left">
+            <span>Navegar pelas seções da página:</span>
+            <div class="updates-footer-nav">
+              <a href="#onix">📺 Onix</a>
+              <a href="#gamehub">🎮 Cobalt GameHub</a>
+              <a href="#amethyst">🎤 Amethyst</a>
+              <a href="#opala">🔒 Opala</a>
             </div>
-            <span class="update-item-tag" style="color: #c4a8ff; border-color: rgba(196,168,255,.4); background: rgba(196,168,255,.1);">v1.7.1</span>
           </div>
-          <ul class="update-item-list">
-            <li style="color: #c4a8ff;"><span style="color: var(--dim);"><b>Nota ao Vivo pelo Microfone</b>: pontuação de afinação, presença de palco e estabilidade vocal em tempo real.</span></li>
-            <li style="color: #c4a8ff;"><span style="color: var(--dim);"><b>Modo TV Palco</b>: exibe a letra e notas na TV enquanto você controla as músicas pelo notebook.</span></li>
-            <li style="color: #c4a8ff;"><span style="color: var(--dim);"><b>Biblioteca local de clipes</b>: organização de músicas sem travamentos.</span></li>
-          </ul>
-          <a class="update-item-link" href="amethyst/">Página do Amethyst →</a>
-        </div>
-
-        <!-- Opala -->
-        <div class="update-item">
-          <div class="update-item-top">
-            <img class="update-item-icon" src="img/opala.svg" alt="">
-            <div>
-              <div class="update-item-title">Opala</div>
-              <small style="color: var(--mute);">Bot de WhatsApp</small>
-            </div>
-            <span class="update-item-tag" style="color: #f0a46b; border-color: rgba(240,164,107,.4); background: rgba(240,164,107,.1);">🔒 Em lapidação</span>
-          </div>
-          <ul class="update-item-list">
-            <li style="color: #f0a46b;"><span style="color: var(--dim);"><b>Operação 24 Horas</b>: rodando em servidor na nuvem sem interrupções com o prefixo <code style="font-size: .85em; color: #ffd27a;">!</code>.</span></li>
-            <li style="color: #f0a46b;"><span style="color: var(--dim);"><b>Respostas Instantâneas</b>: menus dinâmicos, comandos interativos e gerenciamento inteligente.</span></li>
-            <li style="color: #f0a46b;"><span style="color: var(--dim);"><b>Código Privado</b>: em lapidação contínua antes da abertura pública.</span></li>
-          </ul>
-          <a class="update-item-link" href="#opala">Ver sobre o Opala →</a>
+          <button type="button" class="updates-collapse-btn" id="btnCollapseUpdates">
+            Recolher atualizações ▴
+          </button>
         </div>
       </div>
-
-      <div class="updates-footer">
-        <span>Navegar pelas seções da página:</span>
-        <div class="updates-footer-nav">
-          <a href="#onix">📺 Onix</a>
-          <a href="#gamehub">🎮 Cobalt GameHub</a>
-          <a href="#amethyst">🎤 Amethyst</a>
-          <a href="#opala">🔒 Opala</a>
-        </div>
-      </div>
-    </div>
+    </details>
   </section>
 
   <div class="sep"></div>
@@ -347,6 +364,25 @@ window.addEventListener('hashchange', () => {
 if (btnClose) btnClose.addEventListener('click', closeModal);
 modal.addEventListener('click', e => { if (e.target === modal) closeModal(e); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(e); });
+
+// Controle do Card Expansível de Atualizações
+const updatesCard = document.getElementById('updatesCard');
+const btnCollapseUpdates = document.getElementById('btnCollapseUpdates');
+if (updatesCard) {
+  const toggleText = updatesCard.querySelector('.updates-toggle-text');
+  updatesCard.addEventListener('toggle', () => {
+    if (toggleText) {
+      toggleText.textContent = updatesCard.open ? 'Recolher' : 'Ver novidades';
+    }
+  });
+  if (btnCollapseUpdates) {
+    btnCollapseUpdates.addEventListener('click', (e) => {
+      e.preventDefault();
+      updatesCard.removeAttribute('open');
+      updatesCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  }
+}
 
 // Tamanhos dos arquivos direto da release mais nova no GitHub
 const mb = n => (n / 1048576).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + ' MB';
