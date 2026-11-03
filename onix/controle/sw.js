@@ -1,7 +1,7 @@
-// Service worker do Onix Controle no iPhone (PWA)
+// Service worker do Controle do Cobalt GameHub no iPhone (PWA)
 'use strict';
-const CACHE = 'onix-controle-c3cdc83438be';
-const FILES = ["./","./controle.css","./controle.js","./icon-180.png","./icon-512.png","./index.html","./manifest.webmanifest","./touch.js"];
+const CACHE = 'onix-controle-5addff534463';
+const FILES = ["./","./controle.css","./controle.js","./icon-180.png","./icon-512.png","./index.html","./manifest.webmanifest"];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));
