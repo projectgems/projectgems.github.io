@@ -1,0 +1,105 @@
+/* Página do Opala: o bot fofo. Noite quentinha com brilho laranja, estrelinhas laranja piscando
+   (✦ ✧ ⋆) e uma conversa de WhatsApp mostrando o jeito do bot, com os enfeites ⋆｡˚ ♡ das respostas. */
+@font-face { font-family: "Outfit"; src: url(../fonts/outfit-latin-wght-normal.woff2) format("woff2"); font-weight: 100 900; font-display: swap; }
+body.th-opala {
+  --bg: #0f0907;
+  --ink: #fff7f0;
+  --dim: rgba(255, 236, 222, .74);
+  --mute: rgba(255, 236, 222, .52);
+  --or: #ff9a4d;
+  --or2: #ffc58f;
+  --or3: #e0662a;
+  --grad: linear-gradient(90deg, #ffb066, #ff7a3d 55%, #f25a6a);
+  --glass: linear-gradient(135deg, rgba(255, 170, 110, .12), rgba(255, 255, 255, .03) 60%, rgba(255, 170, 110, .06));
+  --line: rgba(255, 180, 120, .16);
+  --r: 1.4rem;
+  font-family: "Outfit", system-ui, sans-serif;
+}
+body.th-opala::after {
+  background: radial-gradient(50% 42% at 80% 14%, rgba(255, 138, 61, .24), transparent 70%),
+    radial-gradient(42% 38% at 6% 92%, rgba(242, 90, 106, .14), transparent 70%),
+    radial-gradient(60% 50% at 50% 50%, rgba(120, 50, 20, .18), transparent 80%),
+    #0f0907;
+}
+body.th-opala::before { background: radial-gradient(34% 30% at 70% 30%, rgba(255, 154, 77, .14), transparent 70%); }
+.th-opala .top { background: rgba(15, 9, 7, .72); }
+.th-opala h1, .th-opala h2, .th-opala h3 { letter-spacing: -.02em; }
+.th-opala .glass { background: var(--glass); border: 1px solid var(--line); box-shadow: inset 0 1px 0 rgba(255, 220, 190, .1), 0 1.2rem 3rem rgba(0, 0, 0, .45); }
+.th-opala .btn { border-radius: 999px; font-weight: 600; }
+.th-opala .btn.primary { background: var(--grad); color: #2a1206; box-shadow: 0 .6rem 2rem rgba(255, 122, 61, .4), inset 0 1px 0 rgba(255, 255, 255, .35); }
+.th-opala .btn.primary:hover { box-shadow: 0 .8rem 2.6rem rgba(255, 154, 77, .5), inset 0 1px 0 rgba(255, 255, 255, .35); }
+
+/* Estrelinhas laranja espalhadas pela página toda, piscando devagar. */
+.op-sky { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.op-sky span { position: absolute; color: var(--or); text-shadow: 0 0 .6rem rgba(255, 154, 77, .8); animation: opTwinkle 3.4s ease-in-out infinite; line-height: 1; }
+.op-sky span:nth-child(3n) { color: var(--or2); }
+.op-sky span:nth-child(4n) { color: #ff7a6b; }
+@keyframes opTwinkle { 0%, 100% { opacity: .15; transform: scale(.7) rotate(0); } 50% { opacity: 1; transform: scale(1.1) rotate(20deg); } }
+
+/* Apresentação: texto à esquerda e a conversa à direita. */
+.th-opala .page-hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 2.4rem; align-items: center; text-align: left; padding: 4rem 0 2.6rem; }
+.th-opala .page-hero p { margin-left: 0; }
+.th-opala .page-hero h1 { font-size: clamp(3.2rem, 9vw, 6rem); font-weight: 800; line-height: 1; background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 .4rem 2rem rgba(255, 122, 61, .45)); }
+.th-opala .page-hero h1 small { font-size: .4em; -webkit-text-fill-color: var(--or2); vertical-align: super; margin-left: .2em; }
+.th-opala .kick { display: inline-block; font-size: .82rem; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--or2); }
+.th-opala .deco { display: block; color: var(--or2); letter-spacing: .3em; margin: .2rem 0 1rem; opacity: .85; }
+.th-opala .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.2rem 0; }
+.th-opala .chip { border-color: rgba(255, 180, 120, .35); background: rgba(255, 154, 77, .1); color: var(--or2); }
+.th-opala .acts { display: flex; flex-wrap: wrap; gap: .7rem; }
+
+/* A conversa de exemplo, no estilo do WhatsApp com fundo escuro. */
+.op-chat { position: relative; text-align: left; justify-self: end; width: 100%; max-width: 25rem; border-radius: 1.8rem; padding: 1rem; background: linear-gradient(160deg, #1d1410, #120c09); border: 1px solid var(--line); box-shadow: 0 2rem 4rem rgba(0, 0, 0, .55), 0 0 4rem rgba(255, 122, 61, .18); }
+.op-chat .head { display: flex; align-items: center; gap: .7rem; padding: .3rem .4rem .9rem; border-bottom: 1px solid var(--line); margin-bottom: .9rem; }
+.op-chat .head img { width: 2.4rem; height: 2.4rem; border-radius: 50%; background: #2a1a12; padding: .35rem; }
+.op-chat .head b { display: block; font-size: 1rem; }
+.op-chat .head small { color: #7fd99a; font-size: .78rem; }
+.bub { position: relative; max-width: 88%; padding: .55rem .8rem; border-radius: 1rem; font-size: .86rem; line-height: 1.45; margin-bottom: .6rem; white-space: pre-wrap; animation: opPop .5s both; }
+.bub.eu { margin-left: auto; background: #6b3418; border-bottom-right-radius: .3rem; animation-delay: .2s; }
+.bub.bot { background: #22180f; border: 1px solid var(--line); border-bottom-left-radius: .3rem; font-family: ui-monospace, "SFMono-Regular", Menlo, monospace; font-size: .74rem; color: #ffe8d6; animation-delay: .7s; }
+.bub.bot b { color: var(--or2); }
+.bub .hora { display: block; text-align: right; font-family: "Outfit", sans-serif; font-size: .66rem; color: var(--mute); margin-top: .2rem; }
+@keyframes opPop { from { opacity: 0; transform: translateY(.6rem) scale(.96); } to { opacity: 1; transform: none; } }
+.op-chat .gema { position: absolute; width: 3.4rem; right: -1.2rem; top: -1.4rem; animation: opFloat 5s ease-in-out infinite alternate; filter: drop-shadow(0 .4rem 1rem rgba(255, 122, 61, .6)); }
+.op-chat .st { position: absolute; color: var(--or); font-size: 1.5rem; animation: opTwinkle 2.6s ease-in-out infinite; text-shadow: 0 0 .8rem rgba(255, 154, 77, .9); }
+@keyframes opFloat { from { transform: translateY(0) rotate(-8deg); } to { transform: translateY(-.8rem) rotate(8deg); } }
+
+/* Títulos de seção com enfeite. */
+.th-opala h3.t { font-size: 2rem; font-weight: 800; }
+.th-opala h3.t::before { content: "✦ "; color: var(--or); }
+.th-opala .sub { text-align: center; color: var(--dim); margin: -.6rem auto 1.6rem; max-width: 36rem; }
+
+/* Seis cartões: três por linha (duas no tablet, uma no celular). */
+.th-opala .feat { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* Ícones em quadradinho com brilho laranja. */
+.th-opala .feat i { display: grid; place-items: center; width: 3rem; height: 3rem; margin-bottom: .5rem; border-radius: 1rem; color: #fff;
+  background: radial-gradient(circle at 50% 30%, rgba(255, 138, 61, .55), transparent 75%), #1a110c; border: 1px solid rgba(255, 190, 140, .18); font-style: normal; font-size: 1.4rem; }
+.th-opala .feat b { color: var(--ink); }
+
+/* Instalação: um cartão por lugar. */
+.op-inst { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.op-inst article { padding: 1.4rem; border-radius: var(--r); }
+.op-inst h4 { margin: 0 0 .3rem; font-size: 1.2rem; }
+.op-inst p { margin: 0 0 .8rem; color: var(--dim); font-size: .92rem; }
+.op-inst pre { margin: 0 0 .9rem; padding: .8rem .9rem; border-radius: .9rem; background: #120b08; border: 1px solid var(--line); color: #ffe2cc; font-size: .78rem; line-height: 1.6; overflow-x: auto; white-space: pre; }
+.op-inst a.mais { color: var(--or2); font-weight: 600; font-size: .9rem; text-decoration: none; }
+.op-inst a.mais:hover { text-decoration: underline; }
+
+/* Recadinho de cuidado (número secundário). */
+.op-aviso { display: flex; gap: 1rem; align-items: flex-start; max-width: 44rem; margin: 2rem auto 0; padding: 1.2rem 1.4rem; border-radius: var(--r); }
+.op-aviso span { font-size: 1.8rem; line-height: 1; }
+.op-aviso p { margin: 0; color: var(--dim); }
+.op-aviso b { color: var(--or2); }
+.th-opala .all { text-align: center; margin-top: 2.4rem; }
+.th-opala .foot .deco { margin: 0 auto .6rem; }
+
+@media (max-width: 860px) {
+  .th-opala .page-hero { grid-template-columns: minmax(0, 1fr); text-align: center; padding-top: 2.4rem; }
+  .th-opala .page-hero p { margin-left: auto; }
+  .th-opala .chips, .th-opala .acts { justify-content: center; }
+  .op-chat { justify-self: center; }
+  .op-inst { grid-template-columns: minmax(0, 1fr); }
+  .th-opala .feat { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) { .th-opala .feat { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 480px) { .op-chat .gema { right: -.4rem; } }

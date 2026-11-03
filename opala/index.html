@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opala · bot de WhatsApp</title>
+<meta name="description" content="Opala: bot de WhatsApp fofo, leve e de código aberto, com figurinhas, músicas, brincadeiras, RPG e proteção de grupo.">
+<meta name="theme-color" content="#0f0907">
+<link rel="icon" href="../img/opala.svg">
+<link rel="preload" href="../fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="opala.css">
+</head>
+<body class="th-opala">
+<div class="op-sky" id="ceu" aria-hidden="true"></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../img/projectgems.svg" alt="">PROJECT GEMS <small>by Ruan</small></a>
+    <nav class="nav"><a href="../">← Todos os projetos</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="page-hero">
+    <div>
+      <span class="kick">Opala · bot de WhatsApp</span>
+      <h1>Opala<small>♡</small></h1>
+      <span class="deco">⋆｡˚ ✦ ˚｡⋆</span>
+      <p>Um bot de WhatsApp <b>fofo, leve e completo</b>: figurinhas, músicas, brincadeiras, RPG e proteção para o seu grupo, tudo com um jeitinho carinhoso de responder.</p>
+      <div class="chips"><span class="chip">💎 Código aberto</span><span class="chip">✿ Grátis</span><span class="chip">⚡ Cabe em 400 MB</span></div>
+      <div class="acts">
+        <a class="btn primary" href="#instalar">Como instalar</a>
+        <a class="btn" href="https://github.com/ruan2311/opala">Ver no GitHub</a>
+      </div>
+    </div>
+
+    <div class="op-chat" aria-label="Exemplo de conversa com o Opala">
+      <img class="gema" src="../img/opala.svg" alt="">
+      <span class="st" style="left:-1rem;bottom:22%">✦</span>
+      <span class="st" style="right:12%;bottom:-1rem;font-size:1.1rem;animation-delay:-1.3s">✧</span>
+      <div class="head"><img src="../img/opala.svg" alt=""><div><b>Opala 💎</b><small>online</small></div></div>
+      <div class="bub eu">!ping<span class="hora">20:14</span></div>
+      <div class="bub bot">╭─ ⋆｡˚ 💎 <b>Opala</b> 💎 ˚｡⋆ ─╮
+│ Pong! Tô acordadinha ♡
+╰───────────────────╯
+
+╭─ ✦ <b>Como eu tô</b>
+│ ♡ Velocidade: <b>0.84s</b>
+│ ♡ Sinal: ▰▰▰▰▰
+│ ♡ Humor: <b>⚡ Voando</b>
+╰─────── ⋆｡˚ ✧ ───────
+
+✧ Respondo rapidinho, tô ótima! ♡<span class="hora">20:14</span></div>
+    </div>
+  </section>
+
+  <h3 class="t">O que o Opala faz</h3>
+  <p class="sub">Tudo organizado no <b>!menu</b>, com uma frase explicando cada comando.</p>
+  <div class="feat">
+    <div class="glass reveal"><i>🎵</i><b>Músicas e downloads</b><span>YouTube, TikTok, Spotify, SoundCloud e letras de música.</span></div>
+    <div class="glass reveal"><i>✨</i><b>Figurinhas</b><span>De fotos e vídeos, brat, emojimix e figurinhas com texto.</span></div>
+    <div class="glass reveal"><i>🎮</i><b>Brincadeiras</b><span>Jogo da velha, UNO, quiz, wordle, casal do dia e testes de %.</span></div>
+    <div class="glass reveal"><i>⚔️</i><b>RPG</b><span>Carteira, banco, empregos, pesca, mineração, pets e clãs.</span></div>
+    <div class="glass reveal"><i>🛡️</i><b>Proteção do grupo</b><span>Antilink, boas-vindas com cartão, advertências e moderadores.</span></div>
+    <div class="glass reveal"><i>🧰</i><b>Ferramentas</b><span>Lembretes, notas, tradutor, calculadora, QR code e voz.</span></div>
+  </div>
+
+  <h3 class="t" id="instalar">Como instalar</h3>
+  <p class="sub">Escolha onde ele vai morar. Na primeira vez, o Opala pergunta seu nome, seu número e o prefixo, e depois você conecta o número do bot.</p>
+  <div class="op-inst">
+    <article class="glass reveal">
+      <h4>📱 Termux (celular)</h4>
+      <p>Bom para testar ou usar com o celular na tomada. Instale o Termux pelo F-Droid.</p>
+<pre>pkg install -y nodejs-lts git ffmpeg python
+pip install -U yt-dlp
+git clone https://github.com/ruan2311/opala.git
+cd opala/bot && npm start</pre>
+      <a class="mais" href="https://github.com/ruan2311/opala#-termux-celular-android">Passo a passo completo →</a>
+    </article>
+    <article class="glass reveal">
+      <h4>🐧 Linux ou VPS</h4>
+      <p>Para deixar ligado 24 horas num PC antigo, Raspberry Pi ou servidor.</p>
+<pre>sudo apt install -y nodejs git ffmpeg
+git clone https://github.com/ruan2311/opala.git
+cd opala/bot && npm start</pre>
+      <a class="mais" href="https://github.com/ruan2311/opala#-linux-pc-ou-vps">Passo a passo completo →</a>
+    </article>
+    <article class="glass reveal">
+      <h4>🪟 Windows</h4>
+      <p>Instale o Node.js e o Git, e o resto pelo PowerShell.</p>
+<pre>winget install --id Gyan.FFmpeg -e
+winget install --id yt-dlp.yt-dlp -e
+git clone https://github.com/ruan2311/opala.git
+cd opala\bot; npm start</pre>
+      <a class="mais" href="https://github.com/ruan2311/opala#-windows">Passo a passo completo →</a>
+    </article>
+    <article class="glass reveal">
+      <h4>🦖 Pterodactyl (Waifly e parecidos)</h4>
+      <p>Hospedagens de bot com painel. Envie a pasta <b>bot</b> em .zip, coloque o ffmpeg e o yt-dlp na pasta <b>bin</b> e use o comando:</p>
+<pre>sh iniciar.sh</pre>
+      <a class="mais" href="https://github.com/ruan2311/opala#-pterodactyl-waifly-e-outras-hospedagens-com-painel">Passo a passo completo →</a>
+    </article>
+  </div>
+
+  <div class="op-aviso glass reveal">
+    <span>📱</span>
+    <p><b>Use sempre um número secundário.</b> O bot usa o número como se fosse uma pessoa, e o WhatsApp pode banir números que agem como robô. Nunca use o seu número principal.</p>
+  </div>
+
+  <p class="all"><a class="btn primary" href="https://github.com/ruan2311/opala#readme">Guia completo</a> <a class="btn" href="https://github.com/ruan2311/opala">Código no GitHub</a></p>
+</main>
+
+<footer class="foot wrap">
+  <span class="deco">⋆｡˚ ✦ ˚｡⋆</span>
+  <p>O Opala é gratuito e de código aberto ♡</p>
+  <p><a href="../">Project Gems</a> · feito por Ruan Amaral</p>
+</footer>
+
+<script>
+// Estrelinhas laranja em lugares e ritmos diferentes a cada visita
+const ceu = document.getElementById('ceu');
+const formas = ['✦', '✧', '⋆', '✦', '˚'];
+for (let i = 0; i < 38; i++) {
+  const s = document.createElement('span');
+  s.textContent = formas[i % formas.length];
+  s.style.left = (Math.random() * 100) + '%';
+  s.style.top = (Math.random() * 100) + '%';
+  s.style.fontSize = (0.5 + Math.random() * 1.1) + 'rem';
+  s.style.animationDelay = (-Math.random() * 4) + 's';
+  s.style.animationDuration = (2.6 + Math.random() * 2.6) + 's';
+  ceu.appendChild(s);
+}
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), { threshold: .15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
