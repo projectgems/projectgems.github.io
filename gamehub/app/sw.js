@@ -1,8 +1,8 @@
 // Service worker do GameHub no iPhone: deixa o app abrir sem internet e entrega às telas as capas
 // e miniaturas, que ficam no IndexedDB. O build.sh preenche a lista de arquivos e a versão.
 'use strict';
-const CACHE = 'gamehub-b7e4f88356d4';
-const FILES = ["./","./audio.js","./common.css","./common.js","./cores/fceumm.js","./cores/fceumm.wasm","./cores/gpgx.js","./cores/gpgx.wasm","./cores/mgba.js","./cores/mgba.wasm","./cores/pcsx_rearmed.js","./cores/pcsx_rearmed.wasm","./cores/snes9x.js","./cores/snes9x.wasm","./db/gba.tsv","./db/md.tsv","./db/nes.tsv","./db/snes.tsv","./edit.html","./game.html","./game.js","./hub.html","./icon-180.png","./icon-512.png","./index.html","./ios.css","./licenses/fceumm.txt","./licenses/genesis_plus_gx.txt","./licenses/libretro_database.txt","./licenses/mgba.txt","./licenses/pcsx_rearmed.txt","./licenses/snes9x.txt","./manifest.webmanifest","./menu.html","./pc.css","./shell.js","./touch.js"];
+const CACHE = 'gamehub-e004eea303e7';
+const FILES = ["./","./audio.js","./common.css","./common.js","./cores/fceumm.js","./cores/fceumm.wasm","./cores/gpgx.js","./cores/gpgx.wasm","./cores/mgba.js","./cores/mgba.wasm","./cores/pcsx_rearmed.js","./cores/pcsx_rearmed.wasm","./cores/snes9x.js","./cores/snes9x.wasm","./db/arcade.tsv","./db/atari.tsv","./db/gba.tsv","./db/gbc.tsv","./db/md.tsv","./db/nes.tsv","./db/snes.tsv","./edit.html","./game.html","./game.js","./hub.html","./icon-180.png","./icon-512.png","./index.html","./ios.css","./licenses/fbneo.txt","./licenses/fceumm.txt","./licenses/genesis_plus_gx.txt","./licenses/libretro_database.txt","./licenses/mgba.txt","./licenses/pcsx_rearmed.txt","./licenses/prosystem.txt","./licenses/retroarch.txt","./licenses/snes9x.txt","./licenses/stella2014.txt","./manifest.webmanifest","./menu.html","./pc.css","./shell.js","./touch.js"];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(FILES)).then(() => self.skipWaiting()));

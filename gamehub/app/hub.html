@@ -94,6 +94,9 @@ main{flex:1;position:relative;overflow:hidden;margin-top:1rem}
 .xfer .ok{color:#7ef0b0}.xfer .err{color:#ff8aa5}
 .store{padding:1.4rem 1.6rem;border-radius:1.2rem;background:var(--glass);display:flex;flex-direction:column;gap:.8rem}
 .store .legend{display:flex;gap:1.8rem;font-size:1.1rem;color:var(--dim);flex-wrap:wrap}
+.store .parts{display:flex;gap:1.4rem;font-size:1.05rem;color:var(--mute);flex-wrap:wrap}
+.store .parts b{color:var(--text,#fff);font-weight:600}
+.store .btn{align-self:flex-start}
 .store .legend i{display:inline-block;width:.9rem;height:.9rem;border-radius:.3rem;margin-right:.5rem;vertical-align:-.05rem}
 
 /* Configurações */
@@ -307,7 +310,7 @@ function loadLibrary() { LIB = json(call('library'), []); }
 /* ---------------- Topo ---------------- */
 const TABS = () => [
   { id: 'home', label: t('Início') },
-  ...CONSOLES.map(c => ({ id: 'console:' + c.id, label: c.id === 'md' ? 'Mega Drive' : c.short, color: c.color })),
+  ...CONSOLES.map(c => ({ id: 'console:' + c.id, label: c.id === 'md' && CONSOLES.length <= 8 ? 'Mega Drive' : t(c.short), color: c.color })),
   ...(INFO.kids ? [] : [{ id: 'add', label: t('Adicionar jogos'), icon: 'plus' }, { id: 'settings', label: t('Configurações'), icon: 'gear' }]),
 ];
 function renderNav() {
@@ -364,6 +367,7 @@ function show(id, keepFocus) {
   if (PAGE === 'add' && id !== 'add') call('uploadStop');
   PAGE = id;
   renderNav();
+  renderStore();   // o espaço livre do topo acompanha o que saiu ou entrou (apagar um jogo, por exemplo)
   const main = $('#main');
   let page;
   if (id === 'home') page = homePage();
@@ -421,7 +425,7 @@ function homePage() {
       h('div', { class: 'kicker', text: t('Continuar jogando') }),
       h('h1', { text: g.name }),
       h('div', { class: 'meta' }, h('span', { style: { color: c.color }, text: t(c.name) }), ' · ', ago(g.last), ' · ', t('Jogado por {t}', { t: fmtTime(g.time) })),
-      h('div', { class: 'acts' }, play, h('button', { class: 'f btn', act: () => openGame(g), text: t('Estados salvos') }))), where));
+      h('div', { class: 'acts' }, play, consoleOf(g.console).ra ? null : h('button', { class: 'f btn', act: () => openGame(g), text: t('Estados salvos') }))), where));
     if (rec.length > 1) page.append(h('div', { class: 'row-title', text: t('Jogados recentemente') }), h('div', { class: 'row' }, rec.slice(1, 9).map(x => tile(x))));
   }
   const favs = LIB.filter(g => g.fav);
@@ -432,14 +436,21 @@ function homePage() {
   return page;
 }
 
-/* Os formatos aceitos (o PC também abre discos de PS1). */
-const formatsText = () => (CONSOLES.some(c => c.id === 'ps1')
-  ? t('Formatos: .nes, .sfc, .smc, .gba, .md, .gen, .bin e .zip; PlayStation: .cue (com os .bin), .chd e .pbp')
+/* Os formatos aceitos (o PC também abre discos de PS1; a TV, Atari e fliperama). */
+const formatsText = () => (CONSOLES.some(c => c.id === 'arcade')
+  ? t('Formatos: .nes, .sfc, .smc, .gba, .gbc, .gb, .md, .gen, .bin e .zip; PlayStation: .chd, .pbp ou .cue (com os .bin); Atari: .a26 e .a78; Fliperama: o .zip com o nome do jogo (como sf2.zip)')
+  : CONSOLES.some(c => c.ra)
+  ? t('Formatos: .nes, .sfc, .smc, .gba, .gbc, .gb, .md, .gen, .bin e .zip; PlayStation: .cue (com os .bin), .chd e .pbp; N64: .z64, .n64 e .v64; DS: .nds; PSP: .iso e .cso; GameCube e Wii: .iso, .rvz, .gcz, .wbfs e .gcm; PS2: .iso e .chd')
+  : CONSOLES.some(c => c.id === 'ps1')
+  ? t('Formatos: .nes, .sfc, .smc, .gba, .gbc, .gb, .md, .gen, .bin e .zip; PlayStation: .cue (com os .bin), .chd e .pbp')
   : t('Formatos: .nes, .sfc, .smc, .gba, .md, .gen, .bin e .zip'));
 
 function consoleTiles() {
   // Mais de 4 consoles (PC, com o PS1): todos numa linha só.
-  return h('div', { class: 'consoles', style: CONSOLES.length > 4 ? { gridTemplateColumns: 'repeat(' + CONSOLES.length + ',1fr)' } : null }, CONSOLES.map(c => {
+  // Com 8 (TV): 4 por linha; com mais (PC com os consoles do RetroArch): 6 por linha.
+  const cols = CONSOLES.length === 8 ? 4 : CONSOLES.length > 6 ? 6 : CONSOLES.length;
+  // No celular, sempre 2 por linha (o CSS do html.mobile cuida).
+  return h('div', { class: 'consoles', style: CONSOLES.length > 4 && !INFO.mobile ? { gridTemplateColumns: 'repeat(' + cols + ',1fr)' } : null }, CONSOLES.map(c => {
     const n = LIB.filter(g => g.console === c.id).length;
     const b = h('button', { class: 'f ctile', style: { background: 'linear-gradient(150deg,' + c.color + '2e,rgba(255,255,255,.03) 70%)' } },
       h('span', { style: { color: c.color } }, svg(CONSOLE_ART[c.id])),
@@ -497,8 +508,14 @@ function openGame(g) {
   fav._act = () => { call('setFavorite', g.id, !g.fav); loadLibrary(); closeLayer(); show(PAGE, true); openGame(g); };
   list.append(fav);
   if (!INFO.kids) {
-    list.append(h('button', { class: 'f item', act: () => cheatsSheet(g) }, icon('code'), h('span', { class: 'grow', text: t('Trapaças') }), icon('chev')));
-    list.append(h('button', { class: 'f item', act: () => scopeSheet('game:' + g.id, g.name, g.console) }, icon('sliders'), h('span', { class: 'grow', text: t('Configurações do jogo') }), icon('chev')));
+    if (consoleOf(g.console).ra) {
+      list.append(h('button', { class: 'f item', act: () => raPadSheet(g.console) }, icon('pad'),
+        h('span', { class: 'grow' }, t('Controles'), h('span', { class: 'sub', text: t('Tecla do teclado ou botão do controle para cada botão do console.') })), icon('chev')));
+      list.append(h('button', { class: 'f item', act: () => raSheet(g.console) }, icon('sliders'), h('span', { class: 'grow', text: t('Configurações do {c}', { c: t(c.name) }) }), icon('chev')));
+    } else {
+      list.append(h('button', { class: 'f item', act: () => cheatsSheet(g) }, icon('code'), h('span', { class: 'grow', text: t('Trapaças') }), icon('chev')));
+      list.append(h('button', { class: 'f item', act: () => scopeSheet('game:' + g.id, g.name, g.console) }, icon('sliders'), h('span', { class: 'grow', text: t('Configurações do jogo') }), icon('chev')));
+    }
     const kid = h('button', { class: 'f item' + (g.kids ? ' on' : '') }, icon('kid'), h('span', { class: 'grow', text: t('Liberar no Modo Infantil') }), h('span', { class: 'val', text: g.kids ? t('Liberado') : t('Bloqueado') }));
     kid._act = () => { call('setKids', g.id, !g.kids); g.kids = !g.kids; kid.classList.toggle('on', g.kids); kid.lastChild.textContent = g.kids ? t('Liberado') : t('Bloqueado'); loadLibrary(); };
     list.append(kid);
@@ -727,7 +744,7 @@ function addPage() {
     // Celular: os jogos vêm de uma pasta do próprio aparelho (o GameHub procura nas subpastas).
     page.append(h('div', { class: 'addm' },
       h('h1', { text: t('Adicionar jogos') }),
-      h('p', { text: t('Escolha a pasta onde estão os seus jogos. O GameHub procura também nas subpastas e copia os de NES, Super Nintendo, Game Boy Advance e Mega Drive.') }),
+      h('p', { text: t('Escolha a pasta onde estão os seus jogos. O GameHub procura também nas subpastas e copia os de todos os consoles dele, até os discos de PlayStation (.cue com os .bin) e os .zip de fliperama.') }),
       h('div', { class: 'acts' },
         h('button', { class: 'f btn primary', act: () => call('pickGames', true) }, icon('plus'), t('Escolher pasta')),
         h('button', { class: 'f btn', text: t('Escolher arquivos'), act: () => call('pickGames', false) })),
@@ -790,15 +807,25 @@ function drawStore() {
   const total = s.total || 1;
   const pct = v => Math.max(0, Math.min(100, v / total * 100)) + '%';
   const other = Math.max(0, total - s.free - s.used);
+  // Na TV e no celular, o que o GameHub ocupa vem separado: jogos, saves, capas e sobras de envios.
+  const parts = s.saves == null ? null : [[t('Jogos'), s.games], [t('Saves e estados'), s.saves], [t('Capas'), s.covers], [t('Sobras de envios'), s.temp]]
+    .filter(([, v], i) => i === 0 || v >= 1048576);
+  const clean = Hub && typeof Hub.cleanStorage === 'function' && !INFO.kids;
   el.replaceChildren(
     h('div', { style: { fontSize: '1.3rem', fontWeight: 700 }, text: t('Armazenamento') }),
     h('div', { class: 'bar' }, h('span', { class: 'r', style: { width: pct(other) } }), h('span', { class: 'g', style: { width: pct(s.used || 0) } }),
       h('span', { class: 'u', style: { width: pct(s.reserve || 0) } })),
     h('div', { class: 'legend' },
-      h('span', null, h('i', { style: { background: 'var(--grad)' } }), t('Jogos') + ' ' + fmtBytes(s.used || 0)),
+      h('span', null, h('i', { style: { background: 'var(--grad)' } }), t(parts ? 'Usado pelo GameHub' : 'Jogos') + ' ' + fmtBytes(s.used || 0)),
       h('span', null, h('i', { style: { background: 'rgba(255,255,255,.12)' } }), t('Livre para jogos') + ' ' + fmtBytes(s.available || 0)),
       INFO.web ? null : h('span', null, h('i', { style: { background: '#7c6fb3' } }), t(INFO.mobile || INFO.pc ? 'Reservado para o sistema' : 'Reservado para a TV') + ' ' + fmtBytes(s.reserve || 0))),
     h('div', { style: { fontSize: '1.05rem', color: 'var(--mute)' }, text: t(INFO.web ? 'O espaço é o que o iPhone libera para o GameHub. Faça backup dos saves de vez em quando.' : INFO.pc ? 'O GameHub sempre deixa livre para o sistema 10% do disco (no mínimo 768 MB e no máximo 2 GB).' : INFO.mobile ? 'O GameHub sempre deixa livre para o sistema 10% da memória do aparelho (no mínimo 768 MB e no máximo 2 GB).' : 'O GameHub sempre deixa livre para o sistema 10% da memória desta TV (no mínimo 768 MB e no máximo 2 GB).') }));
+  if (parts) el.insertBefore(h('div', { class: 'parts' }, ...parts.map(([k, v]) => h('span', null, k + ' ', h('b', { text: fmtBytes(v || 0) })))), el.lastChild);
+  if (clean) el.append(h('button', { class: 'f btn', act: () => {
+    const freed = Number(call('cleanStorage')) || 0;
+    toast(freed >= 1048576 ? t('{n} liberados', { n: fmtBytes(freed) }) : t('Não havia nada sobrando para limpar'));
+    drawStore(); renderStore();
+  } }, icon('reset'), t('Limpar sobras')));
 }
 function drawXfers() {
   const el = $('#xfers');
@@ -817,16 +844,19 @@ handlers.upload = e => {
   // Errou o código 5 vezes no celular: a TV mostra o código novo.
   if (e.type === 'code') { const el = $('#upCode'); if (el) el.textContent = e.code; return; }
   // Celular, pasta escolhida: quantos achou e, no fim, quantos entraram.
-  if (e.type === 'scan') { importCount = 0; toast(e.count ? t('{n} arquivos de jogo encontrados', { n: e.count }) : t('Nenhum jogo de NES, SNES, GBA ou Mega Drive nessa pasta.')); return; }
+  if (e.type === 'scan') { importCount = 0; toast(e.count ? t('{n} arquivos de jogo encontrados', { n: e.count }) : t(CONSOLES.length > 4 ? 'Nenhum jogo nessa pasta.' : 'Nenhum jogo de NES, SNES, GBA ou Mega Drive nessa pasta.')); return; }
   if (e.type === 'finished') { if (e.count) toast(t('{n} jogos novos na biblioteca', { n: importCount })); drawStore(); renderStore(); return; }
-  if (e.type === 'done' && e.ok && !e.dup) importCount++;
+  if (e.type === 'done' && e.ok && !e.dup && !e.wait && !e.bios) importCount++;
   const k = e.file || e.name;
   const x = uploading[k] || (uploading[k] = { name: k });
   if (e.type === 'start') Object.assign(x, { size: e.size, sent: 0, done: false });
   if (e.type === 'progress') x.sent = e.sent;
   if (e.type === 'done') {
     Object.assign(x, { done: true, ok: e.ok, dup: e.dup, error: e.error, title: e.ok ? e.name : x.name });
-    if (e.ok && !e.dup) { loadLibrary(); toast(t('Pronto') + ': ' + e.name); }
+    // .bin antes do disco completo e BIOS do fliperama: guardados, mas ainda sem jogo novo.
+    if (e.ok && e.wait) toast(t('Esperando os .bin do disco') + ': ' + e.name);
+    else if (e.ok && e.bios) toast(t('BIOS guardada para os jogos que precisam dela') + ': ' + e.name);
+    else if (e.ok && !e.dup) { loadLibrary(); toast(t('Pronto') + ': ' + e.name); }
     drawStore();
     renderStore();
   }
@@ -875,7 +905,7 @@ function settingRow(scope, key, effective, done) {
   const s = SETS[key];
   const lv = levelOf(scope);
   const own = Object.prototype.hasOwnProperty.call(lv, key);
-  const inherit = scope !== 'global';
+  const inherit = scope !== 'global' && !s.noInherit;
   const choices = s.bool ? [[true, 'Ligado'], [false, 'Desligado']] : s.choices;
   const opts = (inherit ? [[null, scope.startsWith('game:') ? 'Igual ao console' : 'Igual ao global']] : []).concat(choices);
   const cur = own ? lv[key] : (inherit ? null : effective[key]);
@@ -939,15 +969,16 @@ function settingsPage() {
             h('span', { class: 'grow' }, t('Controles na tela'), h('span', { class: 'sub', text: t('Posição, tamanho e transparência dos botões de toque.') })), icon('chev'))));
         inner.append(playersList());
         list.append(h('div', { class: 'sep', text: t('Trocar botões') }));
-        for (const c of CONSOLES) list.append(h('button', { class: 'f item', act: () => remapSheet(c.id) }, h('span', { class: 'dot', style: { background: c.color } }), h('span', { class: 'grow', text: t(c.name) }), icon('chev')));
+        for (const c of CONSOLES) list.append(h('button', { class: 'f item', act: () => c.ra ? raPadSheet(c.id) : remapSheet(c.id) }, h('span', { class: 'dot', style: { background: c.color } }), h('span', { class: 'grow', text: t(c.name) }), icon('chev')));
       }
       if (sec === 'game') list.append(h('button', { class: 'f item', act: refreshCovers }, icon('img'),
         h('span', { class: 'grow' }, t('Atualizar capas'), h('span', { class: 'sub', text: t('Baixa de novo a capa de todos os jogos da biblioteca, inclusive as que faltam.') })), icon('reset')));
       if (sec === 'game') list.append(h('div', { class: 'item' }, h('span', { class: 'grow' }, t('Atalhos'), h('span', { class: 'sub', text: t('Segure R2: acelera · Segure L2: rebobina · Select + Start: este menu') }))));
+      if (sec === 'game' && CONSOLES.some(c => c.ra)) list.append(raKeysRow());
       if (sec === 'game' && INFO.pc) list.append(h('div', { class: 'item' }, h('span', { class: 'grow' }, t('Teclado'), h('span', { class: 'sub', text: t('Setas: direcional · X: A · Z: B · S: X · A: Y · Q/W: L/R · Enter: Start · Shift direito: Select · Tab: acelera · Backspace: rebobina · Esc: menu · F11: tela cheia') }))));
       inner.append(list);
     } else if (sec.startsWith('console:')) {
-      inner.append(scopeBody('console:' + sec.slice(8), sec.slice(8)));
+      inner.append(consoleOf(sec.slice(8)).ra ? raScopeBody(sec.slice(8)) : scopeBody('console:' + sec.slice(8), sec.slice(8)));
     } else if (sec === 'storage') {
       inner.append(h('h2', { text: t('Armazenamento') }), h('div', { class: 'store', id: 'store' }));
       if (INFO.web) inner.append(backupRows());
@@ -1058,6 +1089,140 @@ function scopeBody(scope, cid) {
   return wrap;
 }
 
+/* Consoles do RetroArch: o que o GameHub aplica antes de abrir o jogo. O automático segue o PC
+   (hardware.js); o resto das opções fica no menu do emulador (Tab ou Select + Start). */
+const RA_RES = { 1: 'Nativa', 2: '2x', 3: '3x', 4: '4x' };
+const RA_TIER = ['PC básico', 'PC intermediário', 'PC forte'];
+function raScopeBody(cid) {
+  const scope = 'console:' + cid, wrap = h('div');
+  CFG = json(call('config'), {});
+  const info = json(call('raInfo', cid), {}), hw = info.hw || {}, auto = info.auto || {};
+  const eff = json(call('effective', cid, null), {});
+  const steps = cid === 'ps2' ? [1, 2, 4] : [1, 2, 3, 4];
+  SETS.raRes = { label: 'Resolução', sub: 'Quanto maior, mais nítido e mais pesado para a placa de vídeo.', noInherit: true,
+    choices: [['auto', t('Automático') + ' (' + t(RA_RES[auto.res] || '') + ')']].concat(steps.map(n => [String(n), RA_RES[n]])) };
+  SETS.raRenderer = { label: 'Renderizador', sub: 'Vulkan costuma ser mais rápido; OpenGL funciona em mais PCs.', noInherit: true,
+    choices: [['auto', t('Automático') + ' (' + (auto.renderer === 'vulkan' ? 'Vulkan' : 'OpenGL') + ')'], ['gl', 'OpenGL'], ['vulkan', 'Vulkan']] };
+  SETS.raWide = { label: 'Tela widescreen (16:9)', sub: 'Abre a imagem para 16:9 nos jogos que aceitam. Alguns ficam com defeitos nas bordas.', bool: true, noInherit: true };
+  const refresh = row => { const i = $$('.f', wrap).indexOf(row); const fresh = raScopeBody(cid); wrap.replaceWith(fresh); ensureFocus($$('.f', fresh)[Math.max(0, i)]); };
+  wrap.append(h('h2', { text: t(consoleOf(cid).name) }), h('div', { class: 'hint', text: t('Vale para todos os jogos deste console. O GameHub aplica antes de abrir o jogo, e o Automático escolhe pelo seu PC.') }));
+  const pc = [hw.gpu || t('Placa de vídeo não identificada'), hw.threads ? t('{n} threads', { n: hw.threads }) : '', hw.ramGB ? hw.ramGB + ' GB' : ''].filter(Boolean).join(' · ');
+  const list = h('div', { class: 'list' }, h('div', { class: 'item' }, icon('info'),
+    h('span', { class: 'grow' }, t('Seu PC'), h('span', { class: 'sub', text: pc })), h('span', { class: 'val', text: t(RA_TIER[hw.tier] || RA_TIER[1]) })));
+  list.append(settingRow(scope, 'raRes', eff, refresh));
+  if (info.vulkan) list.append(settingRow(scope, 'raRenderer', eff, refresh));
+  if (cid === 'gc' || cid === 'ps2') list.append(settingRow(scope, 'raWide', eff, refresh));
+  list.append(h('button', { class: 'f item', act: () => raPadSheet(cid) }, icon('pad'), h('span', { class: 'grow' }, t('Controles'), h('span', { class: 'sub', text: t('Tecla do teclado ou botão do controle para cada botão do console.') })), icon('chev')));
+  list.append(h('div', { class: 'sep', text: t('Atalhos') }), raKeysRow());
+  wrap.append(list);
+  return wrap;
+}
+const raKeysRow = () => h('div', { class: 'item' }, h('span', { class: 'grow' }, t('Menu do emulador (N64, DS, PSP, GameCube, Wii e PS2)'),
+  h('span', { class: 'sub', text: t('Tab no teclado ou Select + Start no controle abre o menu do emulador, com mais opções de imagem e controle. Esc fecha o jogo e volta ao GameHub.') })));
+function raSheet(cid) {
+  const sheet = h('div', { class: 'sheet', style: { width: '70rem', maxWidth: '70rem' } }, h('div', { class: 'scroll', style: { overflowY: 'auto', maxHeight: '74vh' } }, raScopeBody(cid)));
+  openLayer(h('div', { class: 'layer' }, sheet));
+}
+/* Controles dos consoles do RetroArch: escolhe o botão do console e aperta a tecla do teclado ou o
+   botão do controle que vai fazer ele (retroarch.js grava na configuração do RetroArch). Os nomes são os
+   do console; no Wii, do Wiimote em pé, com o deitado entre parênteses (o Dolphin troca ao deitar). */
+const DPAD = [[4, '▲'], [5, '▼'], [6, '◀'], [7, '▶']];
+const STICK = [['lx-', 'Analógico ◀'], ['lx+', 'Analógico ▶'], ['ly-', 'Analógico ▲'], ['ly+', 'Analógico ▼']];
+const RA_BUTTONS = {
+  n64: [[0, 'A'], [1, 'B'], [12, 'Z'], [10, 'L'], [11, 'R'], [3, 'Start'], [13, 'Modo dos botões C'], ...DPAD, ...STICK],
+  ds: [[8, 'A'], [0, 'B'], [9, 'X'], [1, 'Y'], [10, 'L'], [11, 'R'], [2, 'Select'], [3, 'Start'], ...DPAD],
+  psp: [[0, '✕'], [8, '○'], [1, '□'], [9, '△'], [10, 'L'], [11, 'R'], [2, 'Select'], [3, 'Start'], ...DPAD, ...STICK],
+  gc: [[8, 'A'], [0, 'B'], [9, 'X'], [1, 'Y'], [11, 'Z'], [12, 'L'], [13, 'R'], [3, 'Start'], ...DPAD, ...STICK],
+  wii: [[8, 'A (deitado: 2)'], [0, 'B (deitado: 1)'], [9, '1 (deitado: A)'], [1, '2 (deitado: B)'], [3, '+'], [2, '−'], [15, 'Home'], [13, 'Sacudir'],
+    [14, 'Deitar ou levantar o Wiimote'], ...DPAD],
+  ps2: [[0, '✕'], [8, '○'], [1, '□'], [9, '△'], [10, 'L1'], [11, 'R1'], [12, 'L2'], [13, 'R2'], [14, 'L3'], [15, 'R3'], [2, 'Select'], [3, 'Start'], ...DPAD, ...STICK],
+};
+// Tecla do navegador → nome no RetroArch.
+const RA_KEYS = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right', Enter: 'enter', Space: 'space', Backspace: 'backspace',
+  ShiftLeft: 'shift', ShiftRight: 'rshift', ControlLeft: 'ctrl', ControlRight: 'rctrl', AltLeft: 'alt', AltRight: 'ralt', Comma: 'comma', Period: 'period',
+  Slash: 'slash', Semicolon: 'semicolon', Quote: 'quote', BracketLeft: 'leftbracket', BracketRight: 'rightbracket', Minus: 'minus', Equal: 'equals',
+  Backslash: 'backslash', Backquote: 'backquote', NumpadAdd: 'add', NumpadSubtract: 'subtract', NumpadMultiply: 'multiply', NumpadDivide: 'divide',
+  NumpadEnter: 'kp_enter', NumpadDecimal: 'kp_period', Insert: 'insert', Delete: 'del', Home: 'home', End: 'end', PageUp: 'pageup', PageDown: 'pagedown' };
+const raKey = code => /^Key[A-Z]$/.test(code) ? code.slice(3).toLowerCase() : /^Digit\d$/.test(code) ? code.slice(5) : /^Numpad\d$/.test(code) ? 'keypad' + code.slice(6)
+  : /^F([1-9]|1[0-2])$/.test(code) ? code.toLowerCase() : code === 'Tab' ? 'tab' : RA_KEYS[code] || '';
+const KEY_LABEL = { up: '▲', down: '▼', left: '◀', right: '▶', enter: 'Enter', space: 'Espaço', backspace: 'Backspace', shift: 'Shift', rshift: 'Shift dir.',
+  ctrl: 'Ctrl', rctrl: 'Ctrl dir.', alt: 'Alt', ralt: 'Alt Gr' };
+const keyLabel = k => KEY_LABEL[k] || (/^keypad\d$/.test(k) ? 'Num ' + k.slice(6) : k.toUpperCase());
+// Botão do controle (mapeamento padrão do navegador) → XInput no RetroArch; e o nome no controle de Xbox.
+const RA_JOY = ['0', '1', '2', '3', '4', '5', '+4', '+5', '6', '7', '8', '9', 'h0up', 'h0down', 'h0left', 'h0right'];
+const JOY_LABEL = { 0: 'A', 1: 'B', 2: 'X', 3: 'Y', 4: 'LB', 5: 'RB', '+4': 'LT', '+5': 'RT', 6: 'Back', 7: 'Start', 8: 'L3', 9: 'R3', h0up: '▲', h0down: '▼', h0left: '◀', h0right: '▶' };
+function raPadSheet(cid) {
+  const scope = 'console:' + cid, list = h('div', { class: 'list' });
+  const draw = () => {
+    CFG = json(call('config'), {});
+    const lv = levelOf(scope), kbd = lv.kbd || {}, joy = lv.joy || {};
+    const rows = RA_BUTTONS[cid].map(([id, name]) => {
+      const k = kbd[id], j = joy[id];
+      const val = [k ? t('Tecla {k}', { k: keyLabel(k) }) : '', j ? t('Botão {b}', { b: JOY_LABEL[j] || j }) : ''].filter(Boolean).join(' · ');
+      const it = h('button', { class: 'f item' + (val ? ' on' : '') }, h('span', { class: 'grow', text: t(name) }), h('span', { class: 'val', text: val || t('Padrão') }));
+      it._act = () => capture(String(id), t(name), typeof id === 'string', it);
+      return it;
+    });
+    list.replaceChildren(...rows,
+      h('button', { class: 'f item', act: () => raSwapSheet(cid) }, icon('pad'), h('span', { class: 'grow' }, t('Controle de outro tipo (PS4, PS5…)'),
+        h('span', { class: 'sub', text: t('Troca pela lista, com os nomes do controle de Xbox.') })), icon('chev')),
+      h('button', { class: 'f item', act: () => { for (const k of ['kbd', 'joy', 'pad']) call('setConfig', scope, k, null); draw(); ensureFocus(); } }, icon('reset'), h('span', { class: 'grow', text: t('Restaurar padrão') })));
+  };
+  const capture = (id, name, stickOnly, row) => {
+    const back = () => { const i = $$('.f', list).indexOf(row); draw(); ensureFocus($$('.f', list)[Math.max(0, i)]); };
+    const msg = h('div', { class: 'sheet' }, h('h2', { text: name }),
+      h('p', { text: (stickOnly ? t('Aperte a tecla do teclado…') : t('Aperte a tecla do teclado ou o botão do controle…')) + ' ' + t('Esc cancela.') }),
+      h('div', { style: { display: 'flex', gap: '1rem' } },
+        h('button', { class: 'f btn', text: t('Voltar ao padrão'), act: () => { call('captureKey', false); call('setConfig', scope, 'kbd.' + id, null); call('setConfig', scope, 'joy.' + id, null); closeLayer(); back(); } }),
+        h('button', { class: 'f btn', text: t('Cancelar'), act: () => { call('captureKey', false); closeLayer(); } })));
+    openLayer(h('div', { class: 'layer' }, msg), { onClose: () => { handlers.key = null; call('captureKey', false); } });
+    handlers.key = k => {
+      handlers.key = null;
+      if (k.pad != null) {
+        if (stickOnly || !RA_JOY[k.pad]) { toast(t('Aqui só vale tecla do teclado.')); closeLayer(); return; }
+        call('setConfig', scope, 'joy.' + id, JSON.stringify(RA_JOY[k.pad]));
+      } else {
+        const key = raKey(k.key || '');
+        if (key === 'tab') { toast(t('O Tab abre o menu do emulador. Escolha outra tecla.')); closeLayer(); return; }
+        if (!key) { toast(t('Essa tecla não dá para usar. Escolha outra.')); closeLayer(); return; }
+        call('setConfig', scope, 'kbd.' + id, JSON.stringify(key));
+      }
+      closeLayer(); back();
+    };
+    call('captureKey', 'ra');
+  };
+  draw();
+  openLayer(h('div', { class: 'layer' }, h('div', { class: 'sheet' }, h('h2', { text: t('Controles') + ' · ' + t(consoleOf(cid).name) }),
+    h('div', { class: 'hint', text: t('Escolha o botão do console e aperte a tecla do teclado ou o botão do controle (padrão Xbox) que vai fazer ele. Vale para o controle 1. Tab e Esc ficam para o menu e para sair.') }),
+    h('div', { class: 'scroll', style: { overflowY: 'auto', maxHeight: '60vh' } }, list))));
+}
+/* Troca pela lista (controle que não é padrão Xbox): cada botão do controle passa a fazer o que outro
+   faria. Vira o arquivo de remapeamento do emulador (retroarch.js). */
+const RA_PAD = [[0, 'A'], [8, 'B'], [1, 'X'], [9, 'Y'], [10, 'LB'], [11, 'RB'], [12, 'LT'], [13, 'RT'], [14, 'L3'], [15, 'R3'], [2, 'Select'], [3, 'Start']];
+function raSwapSheet(cid) {
+  const scope = 'console:' + cid, list = h('div', { class: 'list' });
+  const nameOf = id => id < 0 ? t('Nada') : (RA_PAD.find(p => p[0] === id) || [0, '?'])[1];
+  const draw = () => {
+    CFG = json(call('config'), {});
+    const pad = levelOf(scope).pad || {};
+    list.replaceChildren(...RA_PAD.map(([id, name]) => {
+      const own = Object.prototype.hasOwnProperty.call(pad, id);
+      const it = h('button', { class: 'f item' + (own ? ' on' : '') }, h('span', { class: 'grow', text: t('Botão {b}', { b: name }) }),
+        h('span', { class: 'val', text: own ? t('Faz o {b}', { b: nameOf(pad[id]) }) : t('Padrão') }));
+      const choices = [{ value: null, label: t('Padrão') }].concat(RA_PAD.filter(p => p[0] !== id).map(([v, n]) => ({ value: v, label: t('Faz o {b}', { b: n }) })), [{ value: -1, label: t('Nada') }]);
+      it._act = () => picker(t('Botão {b}', { b: name }), choices, own ? pad[id] : null, v => {
+        call('setConfig', scope, 'pad.' + id, v === null ? null : JSON.stringify(v));
+        const i = $$('.f', list).indexOf(it); draw(); ensureFocus($$('.f', list)[i]);
+      });
+      return it;
+    }), h('button', { class: 'f item', act: () => { call('setConfig', scope, 'pad', null); draw(); ensureFocus(); } }, icon('reset'), h('span', { class: 'grow', text: t('Restaurar padrão') })));
+  };
+  draw();
+  openLayer(h('div', { class: 'layer' }, h('div', { class: 'sheet' }, h('h2', { text: t('Controle de outro tipo (PS4, PS5…)') + ' · ' + t(consoleOf(cid).name) }),
+    h('div', { class: 'hint', text: t('Com os nomes do controle de Xbox. Vale para o controle 1.') }),
+    h('div', { class: 'scroll', style: { overflowY: 'auto', maxHeight: '60vh' } }, list))));
+}
+
 function scopeSheet(scope, title, cid) {
   CFG = json(call('config'), {});
   const sheet = h('div', { class: 'sheet', style: { width: '70rem', maxWidth: '70rem' } });
@@ -1126,8 +1291,11 @@ function aboutBody() {
       : h('button', { class: 'f item', act: () => { call('checkUpdate'); toast(t('Procurando…')); } }, icon('reset'), h('span', { class: 'grow', text: t('Procurar atualizações') })),
     h('div', { class: 'sep', text: t('Créditos e licenças') }),
     h('p', { class: 'credits', text: t('Emuladores de código aberto do projeto libretro:') }),
-    ...[['FCEUmm (NES)', 'fceumm', 'GPL-2.0'], ['Snes9x (SNES)', 'snes9x', 'Snes9x, não comercial'], ['mGBA (GBA)', 'mgba', 'MPL-2.0'], ['Genesis Plus GX (Mega Drive)', 'genesis_plus_gx', 'não comercial'],
-      ...(CONSOLES.some(c => c.id === 'ps1') ? [['PCSX ReARMed (PlayStation)', 'pcsx_rearmed', 'GPL-2.0']] : [])]
+    ...[['FCEUmm (NES)', 'fceumm', 'GPL-2.0'], ['Snes9x (SNES)', 'snes9x', 'Snes9x, não comercial'], [CONSOLES.some(c => c.id === 'gbc') ? 'mGBA (GBA e Game Boy Color)' : 'mGBA (GBA)', 'mgba', 'MPL-2.0'], ['Genesis Plus GX (Mega Drive)', 'genesis_plus_gx', 'não comercial'],
+      ...(CONSOLES.some(c => c.id === 'ps1') ? [['PCSX ReARMed (PlayStation)', 'pcsx_rearmed', 'GPL-2.0']] : []),
+      ...(CONSOLES.some(c => c.id === 'atari') ? [['Stella 2014 (Atari 2600)', 'stella2014', 'GPL-2.0'], ['ProSystem (Atari 7800)', 'prosystem', 'GPL-2.0']] : []),
+      ...(CONSOLES.some(c => c.id === 'arcade') ? [['FinalBurn Neo (Fliperama)', 'fbneo', 'FBNeo, não comercial']] : []),
+      ...(CONSOLES.some(c => c.ra) ? [['Emuladores de N64, DS, PSP, GameCube, Wii e PS2 (RetroArch)', 'retroarch', 'GPL']] : [])]
       .map(([name, file, lic]) => h('button', { class: 'f item', act: () => licenseSheet(name, file) }, h('span', { class: 'grow' }, name, h('span', { class: 'sub', text: lic })), h('span', { class: 'val', text: t('Abrir licença') }))),
     h('button', { class: 'f item', act: () => licenseSheet('libretro-database', 'libretro_database') }, h('span', { class: 'grow' }, t('Nomes dos jogos: libretro-database (No-Intro), CC BY-SA 4.0. Capas: libretro-thumbnails.')), h('span', { class: 'val', text: t('Abrir licença') })),
     h('p', { class: 'credits', text: t('O GameHub é gratuito e de código aberto (GPL-3.0). Nunca terá anúncios nem será vendido.') }),
@@ -1206,6 +1374,18 @@ handlers.covers = r => {
   loadLibrary();
   if (!layers.length && PAGE !== 'add' && PAGE !== 'settings') show(PAGE, true);
   toast(r && r.updated ? t('{n} de {t} capas atualizadas', { n: r.updated, t: r.total }) : t('Nenhuma capa baixada. Confira a internet.'));
+};
+/* Consoles do RetroArch: o download do emulador na primeira vez, a abertura e os erros. */
+handlers.engine = e => {
+  const c = consoleOf(e.console);
+  if (e.stage === 'motor') toast(t('Preparando o emulador, só na primeira vez… {n}%', { n: e.pct }));
+  else if (e.stage === 'core') toast(t('Baixando o emulador de {c}, só na primeira vez… {n}%', { c: t(c.name), n: e.pct }));
+  else if (e.stage === 'open') toast(t('Abrindo o jogo. Tab ou Select + Start abre o menu; Esc volta ao GameHub.'));
+  else if (e.stage === 'closed' && e.quick) toast(t('O jogo fechou logo ao abrir. O arquivo pode não ser deste console.'));
+  else if (e.stage === 'error' && e.msg === 'bios') ask(t('Falta o BIOS do {c}', { c: t(c.name) }),
+    t('Para jogar {c}, copie o BIOS do seu próprio console para a pasta que abriu e tente de novo. O GameHub não traz BIOS.', { c: t(c.name) }),
+    [[t('Abrir a pasta de novo'), () => call('openBios', c.id)], [t('Fechar')]]);
+  else if (e.stage === 'error') toast(t('Não deu para abrir o jogo. Tente de novo.'));
 };
 handlers.library = () => { loadLibrary(); if (!layers.length) show(PAGE, true); };
 handlers.resume = () => { renderChips(); };

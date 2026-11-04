@@ -178,7 +178,9 @@ const ES = {
   'Formatos: .nes, .sfc, .smc, .gba, .md, .gen, .bin e .zip': 'Formatos: .nes, .sfc, .smc, .gba, .md, .gen, .bin y .zip',
   'Use só jogos que você tem o direito de usar. Nenhum jogo vem com o GameHub.': 'Usa solo juegos que tengas derecho a usar. Ningún juego viene con GameHub.',
   'Recebendo': 'Recibiendo', 'Pronto': 'Listo', 'Já estava na biblioteca': 'Ya estaba en la biblioteca', 'Aguardando arquivos…': 'Esperando archivos…',
-  'Armazenamento': 'Almacenamiento', 'Jogos': 'Juegos', 'Livre para jogos': 'Libre para juegos', 'Reservado para a TV': 'Reservado para la TV',
+  'Armazenamento': 'Almacenamiento', 'Jogos': 'Juegos', 'Usado pelo GameHub': 'Usado por GameHub', 'Saves e estados': 'Partidas y estados',
+  'Capas': 'Portadas', 'Sobras de envios': 'Restos de envíos', 'Limpar sobras': 'Limpiar restos', '{n} liberados': '{n} liberados',
+  'Não havia nada sobrando para limpar': 'No había restos para limpiar', 'Livre para jogos': 'Libre para juegos', 'Reservado para a TV': 'Reservado para la TV',
   'O GameHub sempre deixa livre para o sistema 10% da memória desta TV (no mínimo 768 MB e no máximo 2 GB).': 'GameHub siempre deja libre para el sistema el 10% de la memoria de esta TV (mínimo 768 MB y máximo 2 GB).',
   'Imagem': 'Imagen', 'Som': 'Sonido', 'Jogo': 'Juego', 'Controles': 'Controles', 'Sobre': 'Acerca de',
   'Filtro': 'Filtro', 'Nítido': 'Nítido', 'Pixel puro': 'Píxel puro', 'Suave': 'Suave', 'CRT (TV antiga)': 'CRT (TV antigua)', 'LCD (portátil)': 'LCD (portátil)',
@@ -194,7 +196,7 @@ const ES = {
   'Adianta o jogo por baixo dos panos para os botões responderem mais rápido. Pesa o dobro no processador.': 'Adelanta el juego por debajo para que los botones respondan más rápido. Pesa el doble en el procesador.',
   'Velocidade do turbo': 'Velocidad del turbo', 'Botões com turbo': 'Botones con turbo', 'Nenhum': 'Ninguno',
   'Analógico como direcional': 'Analógico como direccional', 'Zona morta do analógico': 'Zona muerta del analógico',
-  'Escolha a pasta onde estão os seus jogos. O GameHub procura também nas subpastas e copia os de NES, Super Nintendo, Game Boy Advance e Mega Drive.': 'Elige la carpeta donde están tus juegos. GameHub también busca en las subcarpetas y copia los de NES, Super Nintendo, Game Boy Advance y Mega Drive.',
+  'Escolha a pasta onde estão os seus jogos. O GameHub procura também nas subpastas e copia os de todos os consoles dele, até os discos de PlayStation (.cue com os .bin) e os .zip de fliperama.': 'Elige la carpeta donde están tus juegos. GameHub busca también en las subcarpetas y copia los de todas sus consolas, incluso los discos de PlayStation (.cue con los .bin) y los .zip de arcade.',
   'Reservado para o sistema': 'Reservado para el sistema', 'O GameHub sempre deixa livre para o sistema 10% da memória do aparelho (no mínimo 768 MB e no máximo 2 GB).': 'GameHub siempre deja libre para el sistema el 10% de la memoria del dispositivo (mínimo 768 MB y máximo 2 GB).',
   'Controles na tela': 'Controles en pantalla', 'Posição, tamanho e transparência dos botões de toque.': 'Posición, tamaño y transparencia de los botones táctiles.', 'Arraste os botões e mude o tamanho.': 'Arrastra los botones y cambia el tamaño.',
   'Abra Adicionar jogos e escolha os arquivos dos seus jogos.': 'Abre Agregar juegos y elige los archivos de tus juegos.',
@@ -266,10 +268,48 @@ const ES = {
   'Instalar': 'Instalar', 'Depois': 'Después', 'Atualizar': 'Actualizar',
   'Perfil': 'Perfil', 'Modo Infantil': 'Modo Infantil', 'Sair do GameHub': 'Salir de GameHub',
   'Esse tipo de arquivo não é de NES, SNES, GBA ou Mega Drive.': 'Ese tipo de archivo no es de NES, SNES, GBA o Mega Drive.',
-  'O .zip não tem nenhum jogo de NES, SNES, GBA ou Mega Drive.': 'El .zip no tiene ningún juego de NES, SNES, GBA o Mega Drive.',
+  'O .zip não tem nenhum jogo de NES, SNES, GBA, GBC, Mega Drive, N64 ou DS.': 'El .zip no tiene ningún juego de NES, SNES, GBA, GBC, Mega Drive, N64 o DS.',
   'O arquivo não parece um jogo desse console.': 'El archivo no parece un juego de esa consola.',
   'Esse tipo de arquivo não é de nenhum console do GameHub.': 'Ese tipo de archivo no es de ninguna consola de GameHub.',
   'O .cue não está certo ou falta um arquivo do disco.': 'El .cue no está bien o falta un archivo del disco.',
+  'Preparando o emulador, só na primeira vez… {n}%': 'Preparando el emulador, solo la primera vez… {n}%',
+  'Baixando o emulador de {c}, só na primeira vez… {n}%': 'Descargando el emulador de {c}, solo la primera vez… {n}%',
+  'Abrindo o jogo. Tab ou Select + Start abre o menu; Esc volta ao GameHub.': 'Abriendo el juego. Tab o Select + Start abre el menú; Esc vuelve a GameHub.',
+  'Resolução': 'Resolución', 'Quanto maior, mais nítido e mais pesado para a placa de vídeo.': 'Cuanto mayor, más nítido y más pesado para la tarjeta de video.',
+  'Automático': 'Automático', 'Nativa': 'Nativa', 'Renderizador': 'Renderizador',
+  'Vulkan costuma ser mais rápido; OpenGL funciona em mais PCs.': 'Vulkan suele ser más rápido; OpenGL funciona en más PC.',
+  'Tela widescreen (16:9)': 'Pantalla panorámica (16:9)',
+  'Abre a imagem para 16:9 nos jogos que aceitam. Alguns ficam com defeitos nas bordas.': 'Abre la imagen a 16:9 en los juegos que lo aceptan. Algunos quedan con defectos en los bordes.',
+  'Vale para todos os jogos deste console. O GameHub aplica antes de abrir o jogo, e o Automático escolhe pelo seu PC.': 'Vale para todos los juegos de esta consola. GameHub lo aplica antes de abrir el juego, y el Automático elige según tu PC.',
+  'Seu PC': 'Tu PC', 'Placa de vídeo não identificada': 'Tarjeta de video no identificada', '{n} threads': '{n} hilos',
+  'PC básico': 'PC básica', 'PC intermediário': 'PC intermedia', 'PC forte': 'PC potente',
+  'Menu do emulador (N64, DS, PSP, GameCube, Wii e PS2)': 'Menú del emulador (N64, DS, PSP, GameCube, Wii y PS2)',
+  'Tab no teclado ou Select + Start no controle abre o menu do emulador, com mais opções de imagem e controle. Esc fecha o jogo e volta ao GameHub.': 'Tab en el teclado o Select + Start en el control abre el menú del emulador, con más opciones de imagen y control. Esc cierra el juego y vuelve a GameHub.',
+  'Configurações do {c}': 'Configuración de {c}', 'Tecla do teclado ou botão do controle para cada botão do console.': 'Tecla del teclado o botón del control para cada botón de la consola.',
+  'Tecla {k}': 'Tecla {k}', 'Controle de outro tipo (PS4, PS5…)': 'Control de otro tipo (PS4, PS5…)', 'Troca pela lista, com os nomes do controle de Xbox.': 'Cambio por lista, con los nombres del control de Xbox.',
+  'Aperte a tecla do teclado…': 'Presiona la tecla del teclado…', 'Aperte a tecla do teclado ou o botão do controle…': 'Presiona la tecla del teclado o el botón del control…',
+  'Voltar ao padrão': 'Volver al predeterminado', 'Esc cancela.': 'Esc cancela.', 'Aqui só vale tecla do teclado.': 'Aquí solo vale una tecla del teclado.',
+  'O Tab abre o menu do emulador. Escolha outra tecla.': 'Tab abre el menú del emulador. Elige otra tecla.', 'Essa tecla não dá para usar. Escolha outra.': 'Esa tecla no se puede usar. Elige otra.',
+  'Escolha o botão do console e aperte a tecla do teclado ou o botão do controle (padrão Xbox) que vai fazer ele. Vale para o controle 1. Tab e Esc ficam para o menu e para sair.': 'Elige el botón de la consola y presiona la tecla del teclado o el botón del control (estándar Xbox) que lo hará. Vale para el control 1. Tab y Esc quedan para el menú y para salir.',
+  'Modo dos botões C': 'Modo de los botones C', 'Sacudir': 'Agitar', 'Deitar ou levantar o Wiimote': 'Acostar o levantar el Wiimote',
+  'A (deitado: 2)': 'A (acostado: 2)', 'B (deitado: 1)': 'B (acostado: 1)', '1 (deitado: A)': '1 (acostado: A)', '2 (deitado: B)': '2 (acostado: B)',
+  'Analógico ◀': 'Analógico ◀', 'Analógico ▶': 'Analógico ▶', 'Analógico ▲': 'Analógico ▲', 'Analógico ▼': 'Analógico ▼', 'Botão {b}': 'Botón {b}', 'Faz o {b}': 'Hace de {b}', 'Nada': 'Nada',
+  'Com os nomes do controle de Xbox. Vale para o controle 1.': 'Con los nombres del control de Xbox. Vale para el control 1.',
+  'O jogo fechou logo ao abrir. O arquivo pode não ser deste console.': 'El juego se cerró enseguida al abrir. El archivo puede no ser de esta consola.',
+  'Falta o BIOS do {c}': 'Falta el BIOS de {c}',
+  'Para jogar {c}, copie o BIOS do seu próprio console para a pasta que abriu e tente de novo. O GameHub não traz BIOS.': 'Para jugar {c}, copia el BIOS de tu propia consola a la carpeta que se abrió e inténtalo de nuevo. GameHub no trae BIOS.',
+  'Abrir a pasta de novo': 'Abrir la carpeta de nuevo',
+  'Não deu para abrir o jogo. Tente de novo.': 'No se pudo abrir el juego. Inténtalo de nuevo.',
+  'Formatos: .nes, .sfc, .smc, .gba, .gbc, .gb, .md, .gen, .bin e .zip; PlayStation: .cue (com os .bin), .chd e .pbp; N64: .z64, .n64 e .v64; DS: .nds; PSP: .iso e .cso; GameCube e Wii: .iso, .rvz, .gcz, .wbfs e .gcm; PS2: .iso e .chd': 'Formatos: .nes, .sfc, .smc, .gba, .gbc, .gb, .md, .gen, .bin y .zip; PlayStation: .cue (con los .bin), .chd y .pbp; N64: .z64, .n64 y .v64; DS: .nds; PSP: .iso y .cso; GameCube y Wii: .iso, .rvz, .gcz, .wbfs y .gcm; PS2: .iso y .chd',
+  'Formatos: .nes, .sfc, .smc, .gba, .gbc, .gb, .md, .gen, .bin e .zip; PlayStation: .cue (com os .bin), .chd e .pbp': 'Formatos: .nes, .sfc, .smc, .gba, .gbc, .gb, .md, .gen, .bin y .zip; PlayStation: .cue (con los .bin), .chd y .pbp',
+  'Formatos: .nes, .sfc, .smc, .gba, .gbc, .gb, .md, .gen, .bin e .zip; PlayStation: .chd, .pbp ou .cue (com os .bin); Atari: .a26 e .a78; Fliperama: o .zip com o nome do jogo (como sf2.zip)': 'Formatos: .nes, .sfc, .smc, .gba, .gbc, .gb, .md, .gen, .bin y .zip; PlayStation: .chd, .pbp o .cue (con los .bin); Atari: .a26 y .a78; Arcade: el .zip con el nombre del juego (como sf2.zip)',
+  'Nenhum jogo nessa pasta.': 'No hay juegos en esa carpeta.',
+  'Esse tipo de arquivo não é de nenhum console do GameHub.': 'Ese tipo de archivo no es de ninguna consola de GameHub.',
+  'O .zip não tem nenhum jogo que o GameHub conheça. No fliperama, o nome do .zip tem que ser o do jogo, como sf2.zip.': 'El .zip no tiene ningún juego que GameHub conozca. En arcade, el nombre del .zip tiene que ser el del juego, como sf2.zip.',
+  'Esse .cue não diz quais arquivos .bin são do disco.': 'Ese .cue no dice qué archivos .bin son del disco.',
+  'Fliperama': 'Arcade', 'Botão': 'Botón', 'Botão 2 (7800)': 'Botón 2 (7800)', 'Botão 1': 'Botón 1', 'Botão 2': 'Botón 2', 'Botão 3': 'Botón 3', 'Botão 4': 'Botón 4', 'Botão 5': 'Botón 5', 'Botão 6': 'Botón 6', 'Ficha': 'Ficha',
+  'Esperando os .bin do disco': 'Esperando los .bin del disco', 'BIOS guardada para os jogos que precisam dela': 'BIOS guardada para los juegos que la necesitan',
+  'Ele pode precisar de outro .zip na mesma pasta: o do jogo principal (nas variações) ou o da BIOS, como neogeo.zip. Mande esse arquivo também.': 'Puede necesitar otro .zip en la misma carpeta: el del juego principal (en las variantes) o el del BIOS, como neogeo.zip. Envía ese archivo también.',
   'Formatos: .nes, .sfc, .smc, .gba, .md, .gen, .bin e .zip; PlayStation: .cue (com os .bin), .chd e .pbp': 'Formatos: .nes, .sfc, .smc, .gba, .md, .gen, .bin y .zip; PlayStation: .cue (con los .bin), .chd y .pbp',
   'Sem espaço seguro no aparelho para esse jogo.': 'No hay espacio seguro en el dispositivo para ese juego.',
   'Não deu para guardar o jogo.': 'No se pudo guardar el juego.', 'Não deu para ler esse arquivo.': 'No se pudo leer ese archivo.',
@@ -405,12 +445,23 @@ const CONSOLES = [
   { id: 'nes', name: 'Nintendinho', short: 'NES', color: '#ff5a6e' },
   { id: 'snes', name: 'Super Nintendo', short: 'SNES', color: '#a78bfa' },
   { id: 'gba', name: 'Game Boy Advance', short: 'GBA', color: '#38bdf8' },
+  { id: 'gbc', name: 'Game Boy Color', short: 'GBC', color: '#c084fc' },
   { id: 'md', name: 'Mega Drive', short: 'MD', color: '#fbbf24' },
-  { id: 'ps1', name: 'PlayStation', short: 'PS1', color: '#34d399' },   // só no PC
+  { id: 'ps1', name: 'PlayStation', short: 'PS1', color: '#34d399' },
+  // Só na TV e no celular Android (o PC não manda estes na lista).
+  { id: 'atari', name: 'Atari', short: 'Atari', color: '#f97316' },
+  { id: 'arcade', name: 'Fliperama', short: 'Fliperama', color: '#e879f9' },
+  // Só no PC, pelo RetroArch (ra): sem filtros, trapaças nem troca de botões do GameHub.
+  { id: 'n64', name: 'Nintendo 64', short: 'N64', color: '#f97316', ra: true },
+  { id: 'ds', name: 'Nintendo DS', short: 'DS', color: '#f472b6', ra: true },
+  { id: 'psp', name: 'PSP', short: 'PSP', color: '#2dd4bf', ra: true },
+  { id: 'gc', name: 'GameCube', short: 'GC', color: '#818cf8', ra: true },
+  { id: 'wii', name: 'Wii', short: 'Wii', color: '#e5e7eb', ra: true },
+  { id: 'ps2', name: 'PlayStation 2', short: 'PS2', color: '#3b82f6', ra: true },
 ];
 const consoleOf = id => CONSOLES.find(c => c.id === id) || CONSOLES[0];
-/* Deixa só os consoles que este aparelho roda: o PC manda a lista no init; a TV e o iPhone não
-   mandam e ficam com os 4 de sempre. */
+/* Deixa só os consoles que este aparelho roda: o PC e a TV (Android) mandam a lista no init; o
+   iPhone não manda e fica com os 4 de sempre. */
 function limitConsoles(ids) {
   const have = Array.isArray(ids) && ids.length ? ids : ['nes', 'snes', 'gba', 'md'];
   for (let i = CONSOLES.length - 1; i >= 0; i--) if (!have.includes(CONSOLES[i].id)) CONSOLES.splice(i, 1);
@@ -420,15 +471,27 @@ const BUTTONS = {
   nes: [[8, 'A'], [0, 'B'], [2, 'Select'], [3, 'Start']],
   snes: [[8, 'A'], [0, 'B'], [9, 'X'], [1, 'Y'], [10, 'L'], [11, 'R'], [2, 'Select'], [3, 'Start']],
   gba: [[8, 'A'], [0, 'B'], [10, 'L'], [11, 'R'], [2, 'Select'], [3, 'Start']],
+  gbc: [[8, 'A'], [0, 'B'], [2, 'Select'], [3, 'Start']],
   md: [[1, 'A'], [0, 'B'], [8, 'C'], [10, 'X'], [9, 'Y'], [11, 'Z'], [3, 'Start'], [2, 'Mode']],
   ps1: [[0, '✕'], [8, '○'], [1, '□'], [9, '△'], [10, 'L1'], [11, 'R1'], [12, 'L2'], [13, 'R2'], [2, 'Select'], [3, 'Start']],
+  atari: [[0, 'Botão'], [8, 'Botão 2 (7800)'], [2, 'Select'], [3, 'Reset']],
+  arcade: [[0, 'Botão 1'], [8, 'Botão 2'], [1, 'Botão 3'], [9, 'Botão 4'], [10, 'Botão 5'], [11, 'Botão 6'], [2, 'Ficha'], [3, 'Start']],
 };
 // Desenho simples de cada console (traço), para os cartões.
 const CONSOLE_ART = {
   nes: '<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="4" y="8" width="56" height="26" rx="3"/><path d="M4 18h56M10 26h12M40 24h6M50 24h4"/><rect x="12" y="11" width="22" height="4" rx="1"/></svg>',
   snes: '<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M8 12h48a6 6 0 0 1 6 6v6a6 6 0 0 1-6 6H8a6 6 0 0 1-6-6v-6a6 6 0 0 1 6-6z"/><rect x="18" y="5" width="28" height="9" rx="2"/><circle cx="48" cy="21" r="2.2"/><circle cx="54" cy="21" r="2.2"/><path d="M10 21h8M14 17v8"/></svg>',
   gba: '<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 6h40a10 10 0 0 1 10 10v8a10 10 0 0 1-10 10H12A10 10 0 0 1 2 24v-8A10 10 0 0 1 12 6z"/><rect x="20" y="11" width="24" height="18" rx="2"/><path d="M7 20h7M10.5 16.5v7"/><circle cx="52" cy="18" r="2"/><circle cx="56" cy="22" r="2"/></svg>',
+  gbc: '<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="20" y="2" width="24" height="36" rx="3"/><rect x="24" y="6" width="16" height="13" rx="1"/><path d="M25.5 28h5M28 25.5v5"/><circle cx="36" cy="29" r="1.6"/><circle cx="39.5" cy="26" r="1.6"/><path d="M29 34.5h2.5M33 34.5h2.5"/></svg>',
+  n64: '<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M6 17h52l-4 15H10z"/><rect x="22" y="9" width="20" height="8" rx="1"/><circle cx="16" cy="24" r="2"/><circle cx="48" cy="24" r="2"/><path d="M28 24h8"/></svg>',
+  ds: '<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><rect x="17" y="2" width="30" height="17" rx="2"/><rect x="22" y="5" width="20" height="11"/><rect x="17" y="21" width="30" height="17" rx="2"/><rect x="26" y="23.5" width="12" height="9"/><path d="M19.5 29h4M21.5 27v4"/><circle cx="43" cy="27" r="1"/><circle cx="43" cy="31" r="1"/></svg>',
+  psp: '<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M13 10h38a10 10 0 0 1 0 20H13a10 10 0 0 1 0-20z"/><rect x="21" y="13" width="22" height="14" rx="1"/><path d="M8.5 20h6M11.5 17v6"/><circle cx="52.5" cy="16.5" r="1.4"/><circle cx="56" cy="20" r="1.4"/><circle cx="52.5" cy="23.5" r="1.4"/><circle cx="49" cy="20" r="1.4"/></svg>',
+  gc: '<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><rect x="17" y="9" width="30" height="27" rx="3"/><circle cx="32" cy="22" r="7"/><path d="M21 9V5h22v4"/><path d="M22 31h4"/></svg>',
+  wii: '<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><rect x="16" y="4" width="12" height="32" rx="2"/><path d="M19 9h6M19 31h6"/><rect x="37" y="7" width="9" height="29" rx="4.5"/><circle cx="41.5" cy="13" r="1.8"/><path d="M41.5 20v4"/></svg>',
+  ps2: '<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M6 12h52v17H6z"/><path d="M6 19h52"/><path d="M11 24h12"/><circle cx="50" cy="24" r="1.6"/><path d="M58 12l-3 17"/></svg>',
   md: '<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 14l6-6h44l6 6v18H4z"/><circle cx="24" cy="21" r="7"/><path d="M38 18h16M38 24h16M10 28h6"/></svg>',
+  atari: '<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M14 22h36l4 12H10z"/><path d="M32 22V9"/><circle cx="32" cy="7" r="3.5"/><circle cx="20" cy="27" r="2.2"/><path d="M38 28h8"/></svg>',
+  arcade: '<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"><path d="M20 38V8l4-6h16l4 6v30z"/><rect x="24" y="9" width="16" height="12" rx="1"/><path d="M20 25h24"/><path d="M28 31v-4"/><circle cx="28" cy="26" r="1.6"/><circle cx="35" cy="30" r="1.4"/><circle cx="39" cy="28" r="1.4"/></svg>',
   ps1: '<svg viewBox="0 0 64 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="4" y="6" width="56" height="28" rx="3"/><circle cx="25" cy="20" r="10"/><circle cx="25" cy="20" r="2.5"/><path d="M43 13h11M43 19h11M8 30h8M47 28h7"/></svg>',
 };
 
@@ -678,7 +741,7 @@ function coverEl(g, opts) {
     img.onerror = () => img.remove();
     el.append(img);
   }
-  if (opts.tag !== false) el.append(h('span', { class: 'tag', style: { color: c.color }, text: c.short }));
+  if (opts.tag !== false) el.append(h('span', { class: 'tag', style: { color: c.color }, text: t(c.short) }));
   if (g.fav) el.append(h('span', { class: 'fav' }, icon('star')));
   return el;
 }
