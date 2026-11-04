@@ -76,6 +76,34 @@ body.th-opala::before { background: radial-gradient(34% 30% at 70% 30%, rgba(255
   background: radial-gradient(circle at 50% 30%, rgba(255, 138, 61, .55), transparent 75%), #1a110c; border: 1px solid rgba(255, 190, 140, .18); font-style: normal; font-size: 1.4rem; }
 .th-opala .feat b { color: var(--ink); }
 
+/* Teste do !menu: a pessoa toca, digita !menu e a Opala responde com o resumo de cada menu. */
+.op-try { justify-self: auto; max-width: 40rem; margin: 0 auto; display: flex; flex-direction: column; }
+.op-try .msgs { height: 26rem; overflow-y: auto; overscroll-behavior: contain; padding-right: .3rem; scroll-behavior: smooth; }
+.op-try .msgs::-webkit-scrollbar { width: 6px; }
+.op-try .msgs::-webkit-scrollbar-thumb { background: rgba(255, 180, 120, .25); border-radius: 3px; }
+.op-try .bub { animation-delay: 0s; overflow-wrap: anywhere; }
+.op-try .bub.bot { font-size: .76rem; }
+.op-try .bub .cmd { font: inherit; color: var(--or); font-weight: 700; background: rgba(255, 154, 77, .12); border: 0; border-radius: .35rem; padding: 0 .25rem; cursor: pointer; }
+.op-try .bub .cmd:hover, .op-try .bub .cmd:focus-visible { background: rgba(255, 154, 77, .28); outline: none; }
+.op-try .bub i { color: var(--dim); }
+.op-try .digitando { display: inline-flex; gap: .3rem; padding: .7rem .9rem; }
+.op-try .digitando span { width: .4rem; height: .4rem; border-radius: 50%; background: var(--or2); animation: opDots 1s infinite ease-in-out; }
+.op-try .digitando span:nth-child(2) { animation-delay: .15s; }
+.op-try .digitando span:nth-child(3) { animation-delay: .3s; }
+@keyframes opDots { 0%, 80%, 100% { opacity: .25; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-.2rem); } }
+.op-start { position: absolute; inset: 4.4rem 1rem 1rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .4rem; border-radius: 1.2rem; border: 1px dashed rgba(255, 180, 120, .4); background: rgba(18, 11, 8, .72); color: var(--ink); font: inherit; cursor: pointer; backdrop-filter: blur(3px); transition: background .2s; }
+.op-start:hover, .op-start:focus-visible { background: rgba(40, 22, 12, .8); outline: none; }
+.op-start span { font-size: 2.2rem; color: var(--or); animation: opTwinkle 2.6s ease-in-out infinite; text-shadow: 0 0 .8rem rgba(255, 154, 77, .9); }
+.op-start b { font-size: 1.1rem; }
+.op-start small { color: var(--dim); }
+.op-send { display: flex; gap: .5rem; margin-top: .8rem; padding-top: .8rem; border-top: 1px solid var(--line); }
+.op-send[hidden] { display: none; }
+.op-send input { flex: 1; min-width: 0; padding: .7rem 1rem; border-radius: 999px; border: 1px solid var(--line); background: #120b08; color: var(--ink); font: inherit; font-size: 1rem; }
+.op-send input:focus { outline: none; border-color: var(--or); box-shadow: 0 0 0 3px rgba(255, 154, 77, .2); }
+.op-send button { flex: none; width: 2.9rem; height: 2.9rem; border-radius: 50%; border: 0; background: var(--grad); color: #2a1206; font-size: 1.1rem; cursor: pointer; }
+.op-try.pulse .op-send input { animation: opPulse 1.4s ease-in-out 2; }
+@keyframes opPulse { 50% { border-color: var(--or); box-shadow: 0 0 0 5px rgba(255, 154, 77, .25); } }
+
 /* Instalação: um cartão por lugar. */
 .op-inst { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
 .op-inst article { padding: 1.4rem; border-radius: var(--r); }
