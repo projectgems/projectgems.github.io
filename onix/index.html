@@ -24,41 +24,102 @@
       <span class="kick"><img src="../img/onix.svg" alt="">Launcher para TVs</span>
       <h1><b>Onix</b></h1>
       <p>A tela inicial da TV com visual de <b>vidro escuro</b>, rápida no controle remoto, com indicações da semana, notícias dos games e o <b>Cobalt GameHub</b>. Grátis e sem anúncios.</p>
-      <span class="chip ver" id="ver">Versão 16.4.1</span>
+      <div class="ver-row"><span class="chip ver" id="ver">Versão 17.0.0</span><a class="chip new" href="#temas">Novo: 4 temas, 10 fontes e 8 relógios →</a></div>
       <span class="clock" id="clock" aria-hidden="true"></span>
       <div class="acts hero-acts">
         <a class="btn primary" href="#devices">Baixar para TV</a>
-        <a class="btn" href="https://github.com/ruan2311/onix/releases/download/controle-v1.0.7/onix-controle.apk">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:1.15rem;height:1.15rem"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>
+        <a class="btn" href="#controle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg>
           Baixar o Onix Controle
         </a>
       </div>
     </div>
-    <div class="onix-scene" aria-hidden="true">
-      <svg viewBox="0 0 320 320" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
-        <defs><radialGradient id="oxGlow" cx="160" cy="168" r="150" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5b2cff" stop-opacity=".38"/><stop offset=".55" stop-color="#ff2d55" stop-opacity=".08"/><stop offset="1" stop-color="#5b2cff" stop-opacity="0"/></radialGradient></defs>
-        <circle cx="160" cy="168" r="150" fill="url(#oxGlow)" stroke="none"/>
-        <g class="orb orb-out"><circle cx="160" cy="168" r="124" stroke-width="2" stroke-dasharray="0 9" opacity=".3"/><circle cx="72" cy="256" r="9" stroke-width="2.6" opacity=".7"/></g>
-        <g class="orb orb-in"><circle cx="160" cy="168" r="76" stroke-width="2.4" stroke-dasharray="0 7" opacity=".45"/><circle cx="160" cy="168" r="76" stroke-width="2" stroke-dasharray="28 470" stroke-dashoffset="-80" opacity=".4"/><circle cx="221" cy="123" r="6" fill="#fff" stroke="none" opacity=".9"/></g>
-        <path d="M200 168A40 12 0 0 0 120 168" transform="rotate(-20 160 168)" stroke-width="4" opacity=".9"/>
-        <circle cx="160" cy="168" r="22" fill="#0c0d10" stroke-width="4"/>
-        <path d="M120 168A40 12 0 0 0 200 168" transform="rotate(-20 160 168)" stroke="#0c0d10" stroke-width="10"/>
-        <path d="M120 168A40 12 0 0 0 200 168" transform="rotate(-20 160 168)" stroke-width="4"/>
-        <circle cx="114" cy="236" r="3.4" fill="#fff" stroke="none" opacity=".55"/>
-        <g class="tw"><path d="M256 44v16M248 52h16" stroke-width="2.6" opacity=".8"/></g>
-        <g class="tw" style="animation-delay:-1.2s"><path d="M60 88v12M54 94h12" stroke-width="2.2" opacity=".55"/></g>
-        <g class="tw" style="animation-delay:-.6s"><path d="M272 280v12M266 286h12" stroke-width="2.2" opacity=".6"/></g>
-        <g fill="#fff" stroke="none" opacity=".5"><circle cx="44" cy="184" r="2"/><circle cx="292" cy="192" r="2.4"/><circle cx="192" cy="28" r="2"/><circle cx="140" cy="310" r="2"/></g>
-        <path class="comet" d="M88 24l-32 20" stroke-width="2.4"/>
-      </svg>
+    <div class="onix-stage">
+      <div class="onix-scene" aria-hidden="true">
+      
+      </div>
+      <figure class="tv">
+        <div class="tv-screen"><img class="" alt="Tela inicial do Onix 17.0.0 numa Google TV" src="../img/onix-inicio-1280.webp" srcset="../img/onix-inicio-640.webp 640w, ../img/onix-inicio-1280.webp 1280w" sizes="(max-width: 860px) 92vw, 640px" width="1280" height="720" fetchpriority="high" decoding="async"></div>
+        <span class="tv-foot" aria-hidden="true"></span>
+      </figure>
     </div>
   </section>
 
+  <ul class="facts">
+    <li><b>Grátis</b><span>sem anúncios e de código aberto</span></li>
+    <li><b>3 sistemas</b><span>Google TV, Samsung e LG</span></li>
+    <li><b>5 temas</b><span>10 fontes e 8 relógios</span></li>
+    <li><b>Sozinho</b><span>se atualiza pela própria TV</span></li>
+  </ul>
+
+  <section class="themes" id="temas">
+    <p class="eyebrow">Novo na 17.0.0</p>
+    <h3 class="t">5 temas, um Onix só</h3>
+    <p class="sub">Em <b>Configurações → Aparência → Tema</b>. Cada tema muda o vidro, as cores, o foco, os desenhos e a tela de descanso, e nada sai do lugar.</p>
+    <div class="th-tabs" role="tablist" aria-label="Temas do Onix">
+      <button role="tab" aria-selected="true" data-th="0" style="--c:#ffffff">Onix Escuro</button>
+      <button role="tab" aria-selected="false" data-th="1" style="--c:#3de1ff">Onix Cobalt</button>
+      <button role="tab" aria-selected="false" data-th="2" style="--c:#5ef2c4">Onix Aurora</button>
+      <button role="tab" aria-selected="false" data-th="3" style="--c:#f5c56a">Onix Rubi Cinema</button>
+      <button role="tab" aria-selected="false" data-th="4" style="--c:#dfe3ea">Onix White</button>
+    </div>
+    <div class="th-view reveal">
+      <div class="th-screens">
+        <img class="on" alt="Tema Onix Escuro" src="../img/onix-inicio-1280.webp" srcset="../img/onix-inicio-640.webp 640w, ../img/onix-inicio-1280.webp 1280w" sizes="(max-width: 860px) 92vw, 1000px" width="1280" height="720" loading="lazy" decoding="async">
+        <img class="" alt="Tema Onix Cobalt" src="../img/onix-tema-cobalt-1280.webp" srcset="../img/onix-tema-cobalt-640.webp 640w, ../img/onix-tema-cobalt-1280.webp 1280w" sizes="(max-width: 860px) 92vw, 1000px" width="1280" height="720" loading="lazy" decoding="async">
+        <img class="" alt="Tema Onix Aurora" src="../img/onix-tema-aurora-1280.webp" srcset="../img/onix-tema-aurora-640.webp 640w, ../img/onix-tema-aurora-1280.webp 1280w" sizes="(max-width: 860px) 92vw, 1000px" width="1280" height="720" loading="lazy" decoding="async">
+        <img class="" alt="Tema Onix Rubi Cinema" src="../img/onix-tema-rubi-1280.webp" srcset="../img/onix-tema-rubi-640.webp 640w, ../img/onix-tema-rubi-1280.webp 1280w" sizes="(max-width: 860px) 92vw, 1000px" width="1280" height="720" loading="lazy" decoding="async">
+        <img class="" alt="Tema Onix White" src="../img/onix-tema-white-1280.webp" srcset="../img/onix-tema-white-640.webp 640w, ../img/onix-tema-white-1280.webp 1280w" sizes="(max-width: 860px) 92vw, 1000px" width="1280" height="720" loading="lazy" decoding="async">
+      </div>
+      <p class="th-cap" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="split">
+    <div class="stack reveal">
+      <img class="shot" alt="Relógio Flip com a fonte Quicksand" src="../img/onix-relogio-1280.webp" srcset="../img/onix-relogio-640.webp 640w, ../img/onix-relogio-1280.webp 1280w" sizes="(max-width: 860px) 92vw, 640px" width="1280" height="720" loading="lazy" decoding="async">
+      <img class="shot" alt="Estilo Onix Cosmos da tela inicial" src="../img/onix-cosmos-1280.webp" srcset="../img/onix-cosmos-640.webp 640w, ../img/onix-cosmos-1280.webp 1280w" sizes="(max-width: 860px) 92vw, 640px" width="1280" height="720" loading="lazy" decoding="async">
+    </div>
+    <div>
+      <p class="eyebrow">Do seu jeito</p>
+      <h3>Relógio, fonte e tela inicial</h3>
+      <p class="lead">A fonte escolhida muda todas as palavras do Onix, do relógio aos menus. Todas vêm dentro do app e funcionam sem internet.</p>
+      <ul class="pills">
+        <li>Fino</li><li>Negrito</li><li>Empilhado</li><li>Analógico</li><li>Digital</li><li>Flip</li><li>Por extenso</li><li>Neon</li>
+      </ul>
+      <ul class="pills fonts">
+        <li style="font-family:Georgia,serif">Bodoni Moda</li><li>Cinzel</li><li>Butler</li><li style="font-family:Georgia,serif;font-style:italic">Playfair</li><li>Montserrat</li><li>Poppins</li><li>Bebas Neue</li><li>Orbitron</li><li>Quicksand</li><li>Press Start 2P</li>
+      </ul>
+      <p class="lead small">E três estilos de tela inicial: <b>Onix Glass</b>, <b>Clean Glass</b> e <b>Onix Cosmos</b>, com o planeta grande no lugar do destaque.</p>
+    </div>
+  </section>
+
+  <h3 class="t">O que tem no Onix</h3>
+  <div class="feat">
+    <div class="glass reveal"><i style="--c:#ff2d55"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M10 9l5 3-5 3z"/></svg></i><b>Indicações da semana</b><span>Netflix, Disney+, HBO Max e Globoplay, pelo que você assiste. O OK abre direto no título.</span></div>
+    <div class="glass reveal"><i style="--c:#5b2cff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10a5 5 0 0 1 4.6 7l-.6 1.4a2.5 2.5 0 0 1-4.2.6L15 15H9l-1.8 2a2.5 2.5 0 0 1-4.2-.6L2.4 15A5 5 0 0 1 7 8z"/><path d="M7 11v3M5.5 12.5h3"/></svg></i><b>Cobalt GameHub</b><span>Do Nintendinho ao PlayStation na TV, com capas, saves por perfil e o celular como controle.</span></div>
+    <div class="glass reveal"><i style="--c:#f472b0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19c0-3.5 2.5-5.5 5.5-5.5s5.5 2 5.5 5.5"/><circle cx="17" cy="9.5" r="2.3"/><path d="M15.5 13.8c3 0 5 1.8 5 4.7"/></svg></i><b>Perfis</b><span>Um para cada pessoa da casa, com Modo Infantil, PIN e limite de tempo.</span></div>
+    <div class="glass reveal"><i style="--c:#34ceae"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></i><b>Controle pelo celular</b><span>O Onix Controle comanda a TV inteira, dentro de qualquer app, pelo Wi-Fi.</span></div>
+    <div class="glass reveal"><i style="--c:#ffb35c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="M7.5 8.5h9M7.5 12h9M7.5 15.5h5"/></svg></i><b>Notícias dos games</b><span>As mais recentes da Adrenaline e da Eurogamer.pt, com resumo e QR code.</span></div>
+    <div class="glass reveal"><i style="--c:#7680ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4v4.5h-4.5"/></svg></i><b>Atualiza sozinho</b><span>As versões novas chegam pela própria TV, sem precisar instalar de novo.</span></div>
+  </div>
+
+  <section class="split flip">
+    <div class="reveal"><img class="shot" alt="Aba Jogos do Onix com o Cobalt GameHub" src="../img/onix-jogos-1280.webp" srcset="../img/onix-jogos-640.webp 640w, ../img/onix-jogos-1280.webp 1280w" sizes="(max-width: 860px) 92vw, 640px" width="1280" height="720" loading="lazy" decoding="async"></div>
+    <div>
+      <p class="eyebrow">Aba Jogos</p>
+      <h3>Clássicos, minijogos e notícias</h3>
+      <p class="lead">O cartão do <b>Cobalt GameHub</b> mostra os consoles e quantos jogos tem em cada um. Logo abaixo, os minijogos do Onix (Pong, Pinball, Tijolos e Cobrinha) para jogar com o controle remoto, e as notícias dos games.</p>
+      <div class="acts"><a class="btn" href="../gamehub/">Conhecer o Cobalt GameHub</a></div>
+    </div>
+  </section>
+
+  <section class="get" id="baixar">
   <p class="ask">Qual é a sua TV?</p>
   <div class="devices" id="devices">
     <!-- Android TV / Google TV -->
     <article class="dev glass" data-dev="tv">
-      <div class="ic" style="--c:#7680ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="12.5" rx="2.5"/><path d="M8 20.5h8M12 17v3.5"/><path d="M10 8.5l4 2.3-4 2.3z" fill="currentColor" stroke="none"/></svg></div>
+      <div class="ic" style="--c:#7680ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="12.5" rx="2.5"/><path d="M8 20.5h8M12 17v3.5"/><path d="M10 8.5l4 2.3-4 2.3z"/></svg></div>
       <h2>Google TV e Android TV</h2>
       <p class="req">Android 5.0 ou mais novo</p>
       <a class="btn primary" data-asset="onix-app.apk" href="https://github.com/ruan2311/onix/releases/latest/download/onix-app.apk">Onix App <span class="sz"></span></a>
@@ -83,7 +144,7 @@
     <article class="dev glass" data-dev="samsung">
       <div class="ic" style="--c:#4e8aff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="12.5" rx="2.5"/><path d="M8 20.5h8M12 17v3.5"/><path d="M7 10.8h10" opacity=".6"/></svg></div>
       <h2>TVs Samsung</h2>
-      <p class="req">Tizen, de 2022 em diante · 🧪 beta</p>
+      <p class="req">Tizen, de 2022 em diante · <svg class="beta-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 3.5h5M10.5 3.5v5.2L5.6 17.4A2.2 2.2 0 0 0 7.5 20.5h9a2.2 2.2 0 0 0 1.9-3.1l-4.9-8.7V3.5"/><path d="M7.8 14.5h8.4"/></svg>beta</p>
       <a class="btn primary" data-asset="onix-tizen.wgt" href="https://github.com/ruan2311/onix/releases/latest/download/onix-tizen.wgt">Baixar para Samsung <span class="sz"></span></a>
       <ol>
         <li>A Samsung só aceita apps assinados para a sua TV: o jeito mais fácil é pelo <b>celular Android</b>, com o app <b>Apps2Samsung</b>.</li>
@@ -97,7 +158,7 @@
     <article class="dev glass" data-dev="lg">
       <div class="ic" style="--c:#ff6868"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="12.5" rx="2.5"/><path d="M8 20.5h8M12 17v3.5"/><circle cx="12" cy="10.8" r="2.4"/></svg></div>
       <h2>TVs LG</h2>
-      <p class="req">webOS, de 2022 em diante · 🧪 beta</p>
+      <p class="req">webOS, de 2022 em diante · <svg class="beta-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 3.5h5M10.5 3.5v5.2L5.6 17.4A2.2 2.2 0 0 0 7.5 20.5h9a2.2 2.2 0 0 0 1.9-3.1l-4.9-8.7V3.5"/><path d="M7.8 14.5h8.4"/></svg>beta</p>
       <a class="btn primary" data-asset="onix-webos.ipk" href="https://github.com/ruan2311/onix/releases/latest/download/onix-webos.ipk">Baixar para LG <span class="sz"></span></a>
       <ol>
         <li>A instalação na LG é pelo <b>computador</b>, sem precisar de terminal.</li>
@@ -107,7 +168,7 @@
     </article>
   </div>
 
-  <article class="dev glass" data-dev="phone" style="margin-top:1.2rem">
+  <article class="dev glass" data-dev="phone" id="controle" style="margin-top:1.2rem">
     <div class="ic" style="--c:#34ceae"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></div>
     <h2>Onix Controle: o celular vira o controle</h2>
     <p class="req">Android e iPhone/iPad · TV no mesmo Wi-Fi (Google TV e Android TV)</p>
@@ -119,17 +180,7 @@
     </div>
   </article>
 
-  <h3 class="t">O que tem no Onix</h3>
-  <div class="feat">
-    <div class="glass reveal"><i style="--c:#a880ff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="3.5"/><path d="M7.5 8.5l3-3M7.5 13l7.5-7.5" opacity=".7"/></svg></i><b>Vidro escuro</b><span>Três estilos de tela inicial: Onix Glass, Clean Glass e Onix Cosmos.</span></div>
-    <div class="glass reveal"><i style="--c:#ff2d55"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></svg></i><b>Indicações</b><span>Netflix, Disney+, HBO Max e Globoplay, pelo que você assiste.</span></div>
-    <div class="glass reveal"><i style="--c:#5b2cff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10a5 5 0 0 1 4.6 7l-.6 1.4a2.5 2.5 0 0 1-4.2.6L15 15H9l-1.8 2a2.5 2.5 0 0 1-4.2-.6L2.4 15A5 5 0 0 1 7 8z"/><path d="M7 11v3M5.5 12.5h3"/></svg></i><b>Jogos</b><span>Notícias dos games, minijogos e o Cobalt GameHub, o hub de emulação.</span></div>
-    <div class="glass reveal"><i style="--c:#f472b0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19c0-3.5 2.5-5.5 5.5-5.5s5.5 2 5.5 5.5"/><circle cx="17" cy="9.5" r="2.3"/><path d="M15.5 13.8c3 0 5 1.8 5 4.7"/></svg></i><b>Perfis</b><span>Um para cada pessoa da casa, com Modo Infantil e limite de tempo.</span></div>
-  </div>
-  <div class="shots">
-    <img class="shot reveal" alt="Tela inicial do Onix" src="../img/onix-inicio-1280.webp" srcset="../img/onix-inicio-640.webp 640w, ../img/onix-inicio-1280.webp 1280w" sizes="(max-width: 860px) 92vw, 560px" width="1280" height="720" loading="lazy" decoding="async">
-    <img class="shot reveal" alt="Aba Jogos do Onix" src="../img/onix-jogos-1280.webp" srcset="../img/onix-jogos-640.webp 640w, ../img/onix-jogos-1280.webp 1280w" sizes="(max-width: 860px) 92vw, 560px" width="1280" height="720" loading="lazy" decoding="async">
-  </div>
+  </section>
   <p class="all"><a class="btn" href="https://github.com/ruan2311/onix/releases">Todas as versões e novidades</a> <a class="btn" href="https://github.com/ruan2311/onix#readme">Guia completo</a></p>
 </main>
 
@@ -176,6 +227,31 @@ document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click'
     setTimeout(() => { b.textContent = 'Copiar'; }, 1800);
   });
 }));
+/* Temas: os botões trocam o print; sozinho, passa para o próximo a cada 5 s até a pessoa escolher um. */
+const TH_CAP = [
+  '<b>Onix Escuro</b>: o vidro preto de sempre, com o Saturno do menu. É o tema padrão.',
+  '<b>Onix Cobalt</b>: pixel art inspirada no Cobalt GameHub, com nave, estrelas e planetas de pixel.',
+  '<b>Onix Aurora</b>: a aurora boreal se movendo sobre montanhas e pinheiros.',
+  '<b>Onix Rubi Cinema</b>: uma sala de cinema, com cortina, lâmpadas e o feixe do projetor.',
+  '<b>Onix White</b>: claro, sem cansar a vista.',
+];
+const thTabs = [...document.querySelectorAll('.th-tabs button')], thImgs = [...document.querySelectorAll('.th-screens img')], thCap = document.querySelector('.th-cap');
+let thAt = 0, thAuto = null, thPicked = false;
+const showTheme = i => {
+  thAt = i;
+  thTabs.forEach((b, k) => b.setAttribute('aria-selected', k === i));
+  thImgs.forEach((im, k) => im.classList.toggle('on', k === i));
+  thCap.innerHTML = TH_CAP[i];
+  document.querySelector('.themes').style.setProperty('--th', thTabs[i].style.getPropertyValue('--c'));
+};
+thTabs.forEach((b, i) => b.addEventListener('click', () => { thPicked = true; clearInterval(thAuto); showTheme(i); }));
+showTheme(0);
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  new IntersectionObserver(([e]) => {
+    clearInterval(thAuto);
+    if (e.isIntersecting && !thPicked) thAuto = setInterval(() => showTheme((thAt + 1) % thTabs.length), 5000);
+  }, { threshold: .4 }).observe(document.querySelector('.th-view'));
+}
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), { threshold: .15 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 // Relógio como o da tela inicial do Onix.

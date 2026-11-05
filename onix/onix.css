@@ -46,7 +46,7 @@ body.th-onix::before {
 .th-onix .shot { border-color: var(--line); }
 
 /* Apresentação: texto à esquerda, cena espacial à direita (no celular, a cena vem em cima). */
-.th-onix .page-hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 2rem; align-items: center; text-align: left; padding: 4rem 0 2.5rem; }
+.th-onix .page-hero { display: grid; grid-template-columns: .9fr 1.1fr; gap: 2rem; align-items: center; text-align: left; padding: 4rem 0 2.5rem; }
 .th-onix .page-hero p { margin-left: 0; }
 .th-onix .page-hero h1 { font-weight: 300; letter-spacing: -.01em; font-size: clamp(3rem, 8vw, 5.4rem); }
 .th-onix .page-hero h1 b { font-weight: 700; }
@@ -54,7 +54,8 @@ body.th-onix::before {
 .th-onix .page-hero .kick img { width: 2rem; height: 2rem; }
 .th-onix .clock { display: block; font-weight: 200; font-size: 1.05rem; letter-spacing: .08em; color: var(--mute); margin-top: 1.2rem; font-variant-numeric: tabular-nums; }
 
-.onix-scene { position: relative; aspect-ratio: 1; max-width: 28rem; width: 100%; justify-self: end; }
+.onix-stage { position: relative; display: grid; place-items: center; }
+.onix-scene { position: absolute; width: 112%; aspect-ratio: 1; left: 50%; top: 50%; transform: translate(-50%, -52%); opacity: .55; pointer-events: none; }
 .onix-scene svg { width: 100%; height: 100%; overflow: visible; }
 /* O desenho do menu lateral do Onix, maior: Saturno em linha branca nas órbitas pontilhadas, que
    giram devagar, com luas, brilhos em cruz e uma estrela cadente. */
@@ -66,15 +67,14 @@ body.th-onix::before {
 @keyframes oxTwinkle { from { opacity: .3; transform: scale(.8); } to { opacity: 1; transform: none; } }
 @keyframes oxComet { 0% { opacity: 0; stroke-dashoffset: 40; } 5% { opacity: .8; } 14% { opacity: 0; stroke-dashoffset: -60; } 100% { opacity: 0; stroke-dashoffset: -60; } }
 
-/* Cartões de recurso com um planetinha no traço do Onix. */
+/* Cartões de recurso com um planetinha no traço do Onix: só linha (círculo e anel), sem pintura. */
 .th-onix .feat .glass { position: relative; overflow: hidden; }
-.th-onix .feat .glass::after { content: ""; position: absolute; right: -1.6rem; top: -1.6rem; width: 5rem; height: 5rem; border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, .5), var(--h1) 30%, #05061a 80%); opacity: .14; }
-.th-onix .feat .glass:nth-child(2n)::after { background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, .5), var(--h2) 30%, #05061a 80%); }
-/* Ícones no traço do Onix: linha branca dentro de uma bolha de vidro com brilho de cor (como os avatares). */
-.th-onix .dev .ic, .th-onix .feat i { display: grid; place-items: center; border-radius: 50%; color: #fff;
-  background: radial-gradient(circle at 50% 38%, color-mix(in srgb, var(--c, #7680ff) 45%, transparent), transparent 74%), linear-gradient(160deg, #262832, #0b0c10);
-  border: 1px solid rgba(255, 255, 255, .2); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25); }
+.th-onix .feat .glass::after { content: ""; position: absolute; right: -.9rem; top: -.9rem; width: 5rem; height: 5rem; opacity: .32; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' fill='none' stroke='%23ff2d55' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='40' cy='40' r='15'/%3E%3Cpath d='M58 34c5 4 6 8 3 10-4 4-18 1-31-6S11 25 15 21c2-2 6-2 11 0'/%3E%3Ccircle cx='66' cy='14' r='2.5'/%3E%3C/svg%3E") center / contain no-repeat; }
+.th-onix .feat .glass:nth-child(2n)::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' fill='none' stroke='%237b5cff' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='40' cy='40' r='15'/%3E%3Cpath d='M58 34c5 4 6 8 3 10-4 4-18 1-31-6S11 25 15 21c2-2 6-2 11 0'/%3E%3Ccircle cx='66' cy='14' r='2.5'/%3E%3C/svg%3E"); }
+/* Ícones no traço do Onix: o desenho é só linha, na cor do item, dentro de um anel fino da mesma cor. */
+.th-onix .dev .ic, .th-onix .feat i { display: grid; place-items: center; border-radius: 50%; color: var(--c, #fff); background: none;
+  border: 1.5px solid color-mix(in srgb, var(--c, #fff) 55%, transparent); box-shadow: none; }
 .th-onix .dev .ic { width: 3.4rem; height: 3.4rem; }
 .th-onix .dev .ic svg { width: 1.7rem; height: 1.7rem; }
 .th-onix .feat i { width: 2.8rem; height: 2.8rem; margin-bottom: .4rem; }
@@ -86,9 +86,101 @@ body.th-onix::before {
 @media (max-width: 860px) {
   .th-onix .page-hero { grid-template-columns: 1fr; text-align: center; padding-top: 2.4rem; }
   .th-onix .page-hero p { margin-left: auto; }
-  .th-onix .hero-acts { justify-content: center; }
-  .onix-scene { order: -1; max-width: 17rem; justify-self: center; }
+  .th-onix .hero-acts, .th-onix .ver-row { justify-content: center; }
+  .onix-stage { margin-top: 1rem; }
+  .onix-scene { width: 100%; }
 }
 @media (max-width: 640px) {
   .th-onix .page-hero h1 { font-size: 3.2rem; }
 }
+
+/* A TV do topo: moldura fina preta, o print real e o pezinho, com o brilho roxo da tela. */
+.tv { position: relative; margin: 0; width: 100%; filter: drop-shadow(0 2.4rem 3rem rgba(0, 0, 0, .6)); animation: oxFloat 7s ease-in-out infinite alternate; }
+.tv-screen { position: relative; padding: .45rem; border-radius: 1rem; background: linear-gradient(160deg, #2a2c34, #0b0c10 40%, #16171c);
+  border: 1px solid rgba(255, 255, 255, .14); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 0 5rem rgba(91, 44, 255, .28); }
+.tv-screen img { width: 100%; border-radius: .6rem; }
+.tv-screen::after { content: ""; position: absolute; inset: .45rem; border-radius: .6rem; pointer-events: none;
+  background: linear-gradient(118deg, rgba(255, 255, 255, .1), transparent 32%); }
+.tv-foot { display: block; width: 34%; height: .9rem; margin: 0 auto; border-radius: 0 0 .7rem .7rem;
+  background: linear-gradient(#1c1d22, #0b0c10); border: 1px solid rgba(255, 255, 255, .08); border-top: 0; }
+@keyframes oxFloat { to { transform: translateY(-.6rem); } }
+
+.ver-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+.th-onix .chip.new { text-decoration: none; color: #fff; border-color: rgba(255, 255, 255, .28);
+  background: linear-gradient(90deg, rgba(255, 45, 85, .25), rgba(91, 44, 255, .3)); transition: filter .2s; }
+.th-onix .chip.new:hover { filter: brightness(1.25); }
+.th-onix .hero-acts .btn svg { width: 1.15rem; height: 1.15rem; }
+
+/* Faixa de destaques logo abaixo do topo. */
+.facts { list-style: none; margin: 1rem 0 0; padding: 1.2rem 1.4rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+  border-radius: var(--r); border: 1px solid var(--line); background: var(--glass); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2); }
+.facts li { display: flex; flex-direction: column; padding-left: 1rem; border-left: 1px solid var(--line); }
+.facts li:first-child { border-left: 0; padding-left: 0; }
+.facts b { font-size: 1.35rem; font-weight: 300; letter-spacing: -.01em; }
+.facts span { color: var(--mute); font-size: .9rem; }
+
+/* Títulos das seções. */
+.th-onix .eyebrow { margin: 0; font-size: .76rem; letter-spacing: .26em; text-transform: uppercase; font-weight: 700; color: var(--mute); }
+.th-onix section > .eyebrow { text-align: center; margin-top: 5rem; }
+.th-onix section > .eyebrow + h3.t { margin-top: .5rem; }
+.th-onix .sub { text-align: center; color: var(--dim); max-width: 40rem; margin: .8rem auto 0; }
+
+/* Temas: botões em pílula com a cor de cada um e o print grande, que troca com um esmaecer. */
+.themes { --th: #fff; }
+.th-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin: 1.8rem 0 1.4rem; }
+.th-tabs button { font: inherit; font-weight: 600; font-size: .95rem; color: var(--dim); cursor: pointer; display: inline-flex; align-items: center; gap: .55rem;
+  padding: .6rem 1.1rem; border-radius: 999px; border: 1px solid var(--line); background: var(--glass); transition: color .2s, border-color .2s, background .2s; }
+.th-tabs button::before { content: ""; width: .6rem; height: .6rem; border-radius: 50%; border: 2px solid var(--c); }
+.th-tabs button:hover { color: var(--ink); }
+.th-tabs button[aria-selected="true"] { color: #060709; background: #fff; border-color: #fff; }
+.th-tabs button[aria-selected="true"]::before { border-color: color-mix(in srgb, var(--c) 70%, #060709); }
+.th-tabs button[data-th="0"][aria-selected="true"]::before, .th-tabs button[data-th="4"][aria-selected="true"]::before { border-color: #060709; }
+.th-view { max-width: 62rem; margin: 0 auto; }
+.th-screens { position: relative; aspect-ratio: 16 / 9; border-radius: var(--r); overflow: hidden; border: 1px solid var(--line);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, .55), 0 0 6rem color-mix(in srgb, var(--th) 22%, transparent); transition: box-shadow .8s; }
+.th-screens img { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity .7s ease; }
+.th-screens img.on { opacity: 1; }
+.th-cap { text-align: center; color: var(--dim); margin: 1.1rem auto 0; max-width: 40rem; min-height: 3.1em; }
+.th-cap b { color: var(--ink); }
+
+/* Blocos de print + texto (o .stack do site põe o segundo print por cima, no canto). */
+.split { display: grid; grid-template-columns: 1.15fr .85fr; gap: 3rem; align-items: center; margin-top: 6rem; }
+.split.flip > :first-child { order: 2; }
+.split h3 { font-weight: 300; font-size: 2.1rem; line-height: 1.1; letter-spacing: -.01em; margin: .5rem 0 .8rem; }
+.split .lead { color: var(--dim); margin: 0 0 1.1rem; }
+.split .lead.small { font-size: .95rem; margin-top: 1.1rem; }
+.split .lead b { color: var(--ink); }
+.split .acts { display: flex; flex-wrap: wrap; gap: .7rem; }
+.pills { list-style: none; margin: 0 0 .6rem; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+.pills li { padding: .3rem .75rem; border-radius: 999px; font-size: .85rem; border: 1px solid var(--line); background: rgba(255, 255, 255, .05); color: var(--dim); }
+.pills.fonts li { border-style: dashed; }
+.th-onix .stack { margin-bottom: 2.2rem; }
+
+.th-onix .feat { grid-template-columns: repeat(3, 1fr); }
+.th-onix .get { margin-top: 5rem; padding-top: 1rem; scroll-margin-top: 4.2rem; }
+.th-onix #devices { scroll-margin-top: 9rem; }
+.th-onix #controle { scroll-margin-top: 6rem; }
+
+@media (max-width: 960px) {
+  .th-onix .feat { grid-template-columns: 1fr 1fr; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .facts li:nth-child(3) { border-left: 0; padding-left: 0; }
+}
+@media (max-width: 860px) {
+  .split, .split.flip { grid-template-columns: 1fr; gap: 2rem; margin-top: 4rem; }
+  .split.flip > :first-child { order: 0; }
+  .th-onix .stack { margin-bottom: 0; }
+}
+@media (max-width: 560px) {
+  .th-onix .feat { grid-template-columns: 1fr; }
+  .facts { padding: 1rem; }
+  .facts b { font-size: 1.15rem; }
+  .th-tabs button { font-size: .85rem; padding: .5rem .85rem; }
+  .split h3 { font-size: 1.7rem; }
+}
+@media (prefers-reduced-motion: reduce) { .tv { animation: none; } }
+
+/* Beta das TVs: frasco de linha no lugar do emoji. Aviso: setinha de linha no lugar do triângulo cheio. */
+.th-onix .beta-ic { width: 1em; height: 1em; vertical-align: -.15em; margin-right: .2em; color: #ffb35c; }
+.th-onix .dev summary::before { content: ""; width: .45rem; height: .45rem; border: solid currentColor; border-width: 0 1.8px 1.8px 0; transform: rotate(-45deg); margin-right: .15rem; }
+.th-onix .dev details[open] summary::before { transform: rotate(45deg); }
