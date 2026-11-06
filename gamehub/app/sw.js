@@ -1,7 +1,7 @@
 // Service worker do GameHub no iPhone: deixa o app abrir sem internet e entrega às telas as capas
 // e miniaturas, que ficam no IndexedDB. O build.sh preenche a lista de arquivos e a versão.
 'use strict';
-const CACHE = 'gamehub-967274db944a';
+const CACHE = 'gamehub-2eda6c556fc4';
 const FILES = ["./","./audio.js","./common.css","./common.js","./cores/fceumm.js","./cores/fceumm.wasm","./cores/gpgx.js","./cores/gpgx.wasm","./cores/mgba.js","./cores/mgba.wasm","./cores/pcsx_rearmed.js","./cores/pcsx_rearmed.wasm","./cores/snes9x.js","./cores/snes9x.wasm","./db/arcade.tsv","./db/atari.tsv","./db/gba.tsv","./db/gbc.tsv","./db/md.tsv","./db/nes.tsv","./db/snes.tsv","./edit.html","./game.html","./game.js","./hub.html","./icon-180.png","./icon-512.png","./index.html","./ios.css","./licenses/dolphin.txt","./licenses/fbneo.txt","./licenses/fceumm.txt","./licenses/genesis_plus_gx.txt","./licenses/libretro_database.txt","./licenses/melondsds.txt","./licenses/mgba.txt","./licenses/parallel_n64.txt","./licenses/pcsx2.txt","./licenses/pcsx_rearmed.txt","./licenses/ppsspp.txt","./licenses/prosystem.txt","./licenses/retroarch.txt","./licenses/snes9x.txt","./licenses/stella2014.txt","./manifest.webmanifest","./menu.html","./pc.css","./shell.js","./touch.js"];
 
 self.addEventListener('install', e => {
