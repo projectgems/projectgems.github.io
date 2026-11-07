@@ -134,7 +134,7 @@ body.th-onix::before {
 .th-tabs button:hover { color: var(--ink); }
 .th-tabs button[aria-selected="true"] { color: #060709; background: #fff; border-color: #fff; }
 .th-tabs button[aria-selected="true"]::before { border-color: color-mix(in srgb, var(--c) 70%, #060709); }
-.th-tabs button[data-th="0"][aria-selected="true"]::before, .th-tabs button[data-th="4"][aria-selected="true"]::before { border-color: #060709; }
+.th-tabs button[data-th="0"][aria-selected="true"]::before, .th-tabs button[data-th="8"][aria-selected="true"]::before { border-color: #060709; }
 .th-view { max-width: 62rem; margin: 0 auto; }
 .th-screens { position: relative; aspect-ratio: 16 / 9; border-radius: var(--r); overflow: hidden; border: 1px solid var(--line);
   box-shadow: 0 2rem 4rem rgba(0, 0, 0, .55), 0 0 6rem color-mix(in srgb, var(--th) 22%, transparent); transition: box-shadow .8s; }
