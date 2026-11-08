@@ -89,10 +89,12 @@ img { max-width: 100%; height: auto; display: block; }
 @keyframes pulse { to { transform: scale(1.05) rotate(-2deg); filter: brightness(1.12); } }
 .orbit .ring { position: absolute; inset: 0; animation: spin 26s linear infinite; }
 .orbit .ring img { position: absolute; width: 2.6rem; height: 2.6rem; animation: spin 26s linear infinite reverse; }
-.orbit .ring img:nth-child(1) { left: calc(50% - 1.3rem); top: .2rem; }
-.orbit .ring img:nth-child(2) { right: .2rem; top: calc(50% - 1.3rem); }
-.orbit .ring img:nth-child(3) { left: calc(50% - 1.3rem); bottom: .2rem; }
-.orbit .ring img:nth-child(4) { left: .2rem; top: calc(50% - 1.3rem); }
+/* Cinco planetinhas espaçados por igual na volta (a cada 72°), com o centro a 1,5rem da borda. */
+.orbit .ring img:nth-child(1) { left: calc(50% - 1.3rem); top: calc(50% - 1.000 * (50% - 1.5rem) - 1.3rem); }
+.orbit .ring img:nth-child(2) { left: calc(50% + 0.951 * (50% - 1.5rem) - 1.3rem); top: calc(50% - 0.309 * (50% - 1.5rem) - 1.3rem); }
+.orbit .ring img:nth-child(3) { left: calc(50% + 0.588 * (50% - 1.5rem) - 1.3rem); top: calc(50% + 0.809 * (50% - 1.5rem) - 1.3rem); }
+.orbit .ring img:nth-child(4) { left: calc(50% - 0.588 * (50% - 1.5rem) - 1.3rem); top: calc(50% + 0.809 * (50% - 1.5rem) - 1.3rem); }
+.orbit .ring img:nth-child(5) { left: calc(50% - 0.951 * (50% - 1.5rem) - 1.3rem); top: calc(50% - 0.309 * (50% - 1.5rem) - 1.3rem); }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* Uma seção por projeto */
@@ -122,6 +124,10 @@ img { max-width: 100%; height: auto; display: block; }
 .locked b { font-size: 1.3rem; }
 .locked span { color: var(--mute); display: block; margin-top: .4rem; }
 @keyframes float { 50% { transform: translateY(-.6rem) rotate(3deg); } }
+/* Emerald na página inicial: dois prints de celular, o segundo mais baixo. */
+.em-duo { display: flex; justify-content: center; gap: 1.2rem; }
+.em-duo .shot { width: min(14rem, 42%); border-radius: 1.8rem; border: .4rem solid #0b100d; }
+.em-duo .shot + .shot { margin-top: 3rem; }
 .sep { height: 1px; background: linear-gradient(90deg, transparent, var(--line), transparent); }
 
 /* Rodapé */

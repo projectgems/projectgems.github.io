@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emerald · a tela inicial para celulares Android</title>
+<meta name="description" content="Emerald Launcher: tela inicial para celulares Android com gaveta de apps por categorias, pastas grandes, widgets próprios, pacotes de ícones e uma galeria de papéis de parede. Grátis e sem anúncios.">
+<meta name="theme-color" content="#030a07">
+<link rel="icon" href="../img/emerald.svg">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="emerald.css">
+</head>
+<body class="th-emerald">
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../img/projectgems.svg" alt="">PROJECT GEMS <small>by Ruan</small></a>
+    <nav class="nav"><a href="../">← Todos os projetos</a></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="page-hero">
+    <div>
+      <span class="kick"><img src="../img/emerald.svg" alt="">Launcher para celulares Android</span>
+      <h1><b>Emerald</b></h1>
+      <p>A tela inicial do celular em <b>verde suave e vidro</b>: gaveta de apps que se organiza sozinha, pastas grandes, widgets próprios e uma galeria de papéis de parede feita para ele. Grátis e sem anúncios.</p>
+      <div class="ver-row"><span class="chip ver" id="ver">Versão 1.0.0</span><a class="chip new" href="#galeria">Novo: a primeira versão →</a><span class="chip closed">Código fechado</span></div>
+      <div class="hero-acts">
+        <a class="btn primary" href="#baixar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10.5l5 5 5-5M5 19.5h14"/></svg>Baixar o Emerald</a>
+        <a class="btn" href="#recursos">Ver o que ele faz</a>
+      </div>
+    </div>
+    <div class="em-stage" aria-hidden="true">
+      <div class="em-scene">
+        <svg viewBox="0 0 400 400" fill="none" stroke-linejoin="round" stroke-linecap="round">
+          <g class="orb-out orb"><ellipse cx="200" cy="200" rx="196" ry="196" stroke="#7fe6b0" stroke-opacity=".18" stroke-dasharray="2 9"/><circle cx="200" cy="4" r="4" fill="#c4ffe0"/></g>
+          <g class="orb"><ellipse cx="200" cy="200" rx="150" ry="150" stroke="#7fe6b0" stroke-opacity=".28" stroke-dasharray="1 6"/><circle cx="350" cy="200" r="3" fill="#7fe6b0"/></g>
+          <g stroke="#7fe6b0" stroke-opacity=".35" stroke-width="1.4">
+            <path d="M150.8 87.5H249.2L287.5 125.8V274.2L249.2 312.5H150.8L112.5 274.2V125.8Z"/>
+            <path d="M165.8 114.2H234.2L260.8 140.8V259.2L234.2 285.8H165.8L139.2 259.2V140.8Z" stroke-opacity=".22"/>
+            <path d="M180.4 140H219.6L235 155.4V244.6L219.6 260H180.4L165 244.6V155.4Z" stroke-opacity=".18"/>
+            <path d="M150.8 87.5L180.4 140M249.2 87.5L219.6 140M287.5 125.8L235 155.4M287.5 274.2L235 244.6M249.2 312.5L219.6 260M150.8 312.5L180.4 260M112.5 274.2L165 244.6M112.5 125.8L165 155.4" stroke-opacity=".16"/>
+          </g>
+          <path class="tw" d="M330 70l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#c4ffe0"/>
+          <path class="tw" d="M64 300l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#7fe6b0"/>
+          <path class="tw" d="M86 92l1.6 3.8 3.8 1.6-3.8 1.6L86 103l-1.6-3.8-3.8-1.6 3.8-1.6z" fill="#fff"/>
+          <path class="tw" d="M318 318l1.6 3.8 3.8 1.6-3.8 1.6-1.6 3.8-1.6-3.8-3.8-1.6 3.8-1.6z" fill="#c4ffe0"/>
+        </svg>
+      </div>
+      <div class="phone flutua"><img src="../img/emerald-inicio-720.webp" srcset="../img/emerald-inicio-360.webp 360w, ../img/emerald-inicio-720.webp 720w" sizes="18rem" width="720" height="1600" alt="Tela inicial do Emerald com widgets de clima, relógio, bateria e memória"></div>
+    </div>
+  </section>
+
+  <ul class="facts reveal">
+    <li><b>Grátis</b><span>sem anúncios e sem rastreio</span></li>
+    <li><b>Android 8+</b><span>celulares e tablets</span></li>
+    <li><b>16 papéis</b><span>em alta resolução, feitos para ele</span></li>
+    <li><b>Atualiza sozinho</b><span>pelos próprios Ajustes</span></li>
+  </ul>
+
+  <!-- Galeria: troca o papel de parede dentro do celular -->
+  <section class="galeria" id="galeria">
+    <p class="eyebrow reveal">Galeria Emerald</p>
+    <h3 class="t reveal">Oito estilos, cada um no claro e no escuro</h3>
+    <p class="sub reveal">Papéis de parede em <b>alta resolução</b> que já vêm dentro do Emerald, mais os degradês suaves. Toque para ver no celular.</p>
+    <div class="gal-tabs reveal" role="tablist"></div>
+    <div class="gal-modo reveal"><button type="button" data-modo="0" aria-pressed="true">Escuro</button><button type="button" data-modo="1" aria-pressed="false">Claro</button></div>
+    <div class="gal-view reveal">
+      <div class="lado esq"></div>
+      <div class="phone"><div class="gal-tela"><div class="gal-hora"><b id="galHora">16:54</b><span id="galData"></span></div></div></div>
+      <div class="lado dir"></div>
+    </div>
+    <p class="gal-cap reveal"></p>
+  </section>
+
+  <section class="split reveal">
+    <div class="phones">
+      <div class="phone sm"><img src="../img/emerald-pastas-720.webp" loading="lazy" width="720" height="1600" alt="Pastas grandes do Emerald: Jogos, Social, Compras e Finanças"></div>
+      <div class="phone sm"><img src="../img/emerald-pasta-720.webp" loading="lazy" width="720" height="1600" alt="Pasta Social aberta, transparente sobre o papel de parede"></div>
+    </div>
+    <div>
+      <p class="eyebrow">Pastas</p>
+      <h3>Pastas grandes que abrem os apps direto</h3>
+      <p class="lead">Na <b>pasta grande</b>, os primeiros apps aparecem já na tela inicial e abrem com um toque, sem abrir a pasta antes. O cantinho com os ícones menores abre o resto.</p>
+      <ul class="marcas">
+        <li><b>Grandes ou pequenas</b>, do tamanho que você quiser.</li>
+        <li>A pasta aberta pode ficar <b>num cartão de vidro</b> ou <b>transparente</b>, com os apps soltos sobre o papel de parede.</li>
+        <li>Nome, ordem e ícones mudam com um toque longo.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="split flip reveal">
+    <div class="phones">
+      <div class="phone sm"><img src="../img/emerald-gaveta-720.webp" loading="lazy" width="720" height="1600" alt="Gaveta de apps com mais usados, A a Z e a barra de letras"></div>
+    </div>
+    <div>
+      <p class="eyebrow">Gaveta de apps</p>
+      <h3>Seus apps se organizam sozinhos</h3>
+      <p class="lead">O Emerald separa os apps em <b>categorias</b> (jogos, social, compras, trabalho…) e você troca de uma para outra deslizando para o lado. No alto ficam os <b>mais usados</b>.</p>
+      <ul class="marcas">
+        <li><b>Barra de letras de A a Z</b> para pular direto, sem atrapalhar o gesto de voltar.</li>
+        <li><b>Busca</b> de apps, contatos, contas e da web, direto da tela inicial.</li>
+        <li>Crie categorias suas, escolha as colunas e o fundo de vidro.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="split reveal">
+    <div class="phones">
+      <div class="phone sm"><img src="../img/emerald-ajustes-720.webp" loading="lazy" width="720" height="1600" alt="Ajustes do Emerald"></div>
+      <div class="phone sm"><img src="../img/emerald-icones-720.webp" loading="lazy" width="720" height="1600" alt="Ajustes de ícones com a prévia ao vivo"></div>
+    </div>
+    <div>
+      <p class="eyebrow">Do seu jeito</p>
+      <h3>Ajuste tudo, vendo como fica</h3>
+      <p class="lead">Ao mudar colunas, linhas ou o tamanho dos ícones, a <b>prévia</b> no alto da tela mostra o resultado na hora, antes de voltar para a tela inicial.</p>
+      <p class="pills-t">Formatos de ícone</p>
+      <ul class="pills"><li>Do Android</li><li>Squircle</li><li>Círculo</li><li>Quadrado arredondado</li><li>Quadrado</li><li>Gota</li><li>Folha</li><li>Cápsula</li><li>Hexágono</li><li>Octógono</li><li>Flor</li></ul>
+      <p class="pills-t">Efeitos ao trocar de página</p>
+      <ul class="pills tracejado"><li>Deslizar</li><li>Cubo</li><li>Zoom</li><li>Sumir</li><li>Carta</li></ul>
+      <p class="lead small">Funciona com os <b>pacotes de ícones</b> da Play Store, tem tema claro e escuro, cor de destaque, vidro fosco, 8 fontes e o modo cinza.</p>
+    </div>
+  </section>
+
+  <section id="recursos">
+    <p class="eyebrow reveal">Tudo o que vem nele</p>
+    <h3 class="t reveal">Um launcher completo, sem anúncios</h3>
+    <div class="feat">
+      <div class="glass reveal"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="4" rx="1.6"/><rect x="13.5" y="10.5" width="7" height="10" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/></svg></i><b>Widgets do Emerald</b><span>Clima, agenda, música, bateria, espaço e memória, controles rápidos, lembretes, sugestões e 4 relógios. Os widgets dos seus apps também funcionam.</span></div>
+      <div class="glass reveal" style="--c:#8fd8ff"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="9" width="14" height="11" rx="2.5"/><path d="M8 6.5h8M10 4h4"/></svg></i><b>Pilha inteligente</b><span>Vários widgets no mesmo lugar, um em cima do outro. Deslize para trocar, ou deixe girar sozinha.</span></div>
+      <div class="glass reveal" style="--c:#c4ffe0"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V10m0-1.5a1.5 1.5 0 0 1 3 0V11m0-1a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1-6 6h-.7a6 6 0 0 1-4.7-2.3L5 15.4a1.5 1.5 0 0 1 2.3-1.9L9 15"/></svg></i><b>Gestos</b><span>Deslizar para cima e para baixo, dois dedos, dois toques e pinça. Cada gesto faz o que você escolher.</span></div>
+      <div class="glass reveal" style="--c:#ffd27a"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/><path d="M12 14.5v2.2"/></svg></i><b>Apps ocultos e bloqueados</b><span>Esconda apps da gaveta e da busca, ou peça o PIN para abrir os que você quiser.</span></div>
+      <div class="glass reveal" style="--c:#8fd8ff"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 12.5h8M8 16h5"/></svg></i><b>Página de notícias</b><span>À esquerda da tela inicial, com os temas que você escolher, ou o feed do Google.</span></div>
+      <div class="glass reveal" style="--c:#ff9fc4"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 20a2 2 0 0 0 3.4 0"/></svg></i><b>Notificações nos ícones</b><span>Um pontinho ou o número de avisos em cada app. Nada sai do celular.</span></div>
+      <div class="glass reveal" style="--c:#c4ffe0"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v10M7.5 9 12 13.5 16.5 9"/><path d="M4.5 15.5v2.5a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-2.5"/></svg></i><b>Backup</b><span>Salve a tela inicial num arquivo e leve para outro celular, com as páginas, os apps e as pastas no lugar.</span></div>
+      <div class="glass reveal" style="--c:#7fe6b0"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.3-4.3"/></svg></i><b>Barra de busca</b><span>Inteira, de um lado ao outro, ou só um botão pequeno no meio da tela.</span></div>
+      <div class="glass reveal" style="--c:#ffd27a"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4.5V9h-4.5"/></svg></i><b>Atualizações</b><span>Ao abrir os Ajustes, o Emerald procura versão nova e instala com um toque.</span></div>
+    </div>
+  </section>
+
+  <section class="get" id="baixar">
+    <p class="ask">Baixe o Emerald</p>
+    <p class="sub">Grátis, para celulares e tablets com <b>Android 8.0 ou mais novo</b>.</p>
+    <article class="dev glass baixar" data-dev="phone">
+      <div class="linha">
+        <div class="icone"><img src="../img/emerald.svg" alt=""></div>
+        <div>
+          <h2>Emerald Launcher</h2>
+          <p class="req" id="req">Android 8.0 ou mais novo · versão 1.0.0</p>
+        </div>
+      </div>
+      <p class="so-android">O Emerald é só para <b>Android</b>. Abra esta página no celular Android para baixar, ou toque em Copiar e mande o link para ele.</p>
+      <div class="acts">
+        <a class="btn primary" data-asset="emerald-launcher.apk" href="https://github.com/ruan2311/emerald/releases/latest/download/emerald-launcher.apk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10.5l5 5 5-5M5 19.5h14"/></svg>Baixar o Emerald <span class="sz"></span></a>
+      </div>
+      <ol>
+        <li>Toque em <b>Baixar o Emerald</b> no celular e abra o arquivo quando terminar.</li>
+        <li>Se o Android pedir, permita <b>instalar apps desta fonte</b> e volte.</li>
+        <li>Toque em <b>Instalar</b>, abra o Emerald e toque em <b>Usar como tela inicial</b>.</li>
+      </ol>
+      <div class="code"><code id="apkLink">github.com/ruan2311/emerald/releases/latest/download/emerald-launcher.apk</code><button class="btn" data-copy="apkLink">Copiar</button></div>
+      <details>
+        <summary>Se aparecer um aviso</summary>
+        <ol>
+          <li>Se o <b>Play Protect</b> avisar, toque em <b>Mais detalhes → Instalar mesmo assim</b>: o Emerald ainda não está na Play Store.</li>
+          <li>Para voltar à tela inicial antiga, vá em <b>Configurações → Apps → Apps padrão → App de tela inicial</b>.</li>
+          <li>Depois de instalado, o Emerald avisa nos Ajustes quando sai uma versão nova.</li>
+        </ol>
+      </details>
+    </article>
+    <div class="all">
+      <a class="btn" href="https://github.com/ruan2311/emerald/releases">Todas as versões</a>
+      <a class="btn" href="../onix/">Conheça o Onix, para a TV</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot wrap">
+  <p>O Emerald é gratuito, mas o código é fechado: todos os direitos reservados.</p>
+  <p><a href="../">Project Gems</a> · feito por Ruan Amaral</p>
+</footer>
+
+<script>
+/* Fora de um celular Android, avisa que o Emerald é só para Android (o botão continua ali, para quem quiser baixar e mandar). */
+const ua = navigator.userAgent;
+const card = document.querySelector('.baixar');
+if (/Android/i.test(ua)) card.insertAdjacentHTML('afterbegin', '<span class="badge">Para este celular</span>');
+else card.classList.add('iphone');
+
+const mb = n => (n / 1048576).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + ' MB';
+fetch('https://api.github.com/repos/ruan2311/emerald/releases/latest')
+  .then(r => (r.ok ? r.json() : null))
+  .then(rel => {
+    if (!rel) return;
+    const v = (rel.tag_name || '').replace(/^v/, '');
+    document.getElementById('ver').textContent = 'Versão ' + v;
+    document.getElementById('req').textContent = 'Android 8.0 ou mais novo · versão ' + v;
+    for (const a of rel.assets) {
+      const btn = document.querySelector('[data-asset="' + a.name + '"]');
+      if (!btn) continue;
+      btn.href = a.browser_download_url;
+      btn.querySelector('.sz').textContent = mb(a.size);
+    }
+  })
+  .catch(() => { });
+
+document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', () => {
+  navigator.clipboard.writeText('https://' + document.getElementById(b.dataset.copy).textContent).then(() => {
+    b.textContent = 'Copiado!';
+    setTimeout(() => { b.textContent = 'Copiar'; }, 1800);
+  });
+}));
+
+/* Galeria: 8 estilos × claro/escuro (os mesmos 16 papéis do app, na mesma ordem: par = escuro, ímpar = claro). */
+const GAL = [
+  ['Esmeralda líquida', 'manchas de verde desfocadas e suaves, que não brigam com os ícones.'],
+  ['Facetas', 'a esmeralda vista de perto, em triângulos lapidados.'],
+  ['Aurora', 'a aurora verde descendo sobre as montanhas.'],
+  ['Relevo', 'linhas de relevo, como um mapa visto do alto.'],
+  ['Vidro', 'placas de vidro fosco, como os cartões do Emerald.'],
+  ['Órbita', 'a pedra do Emerald com o anel do Project Gems, num céu de estrelas.'],
+  ['Folhagem', 'folhas grandes caindo em tons de verde.'],
+  ['Nebulosa', 'um céu de estrelas com névoa verde.'],
+];
+const tabs = document.querySelector('.gal-tabs'), tela = document.querySelector('.gal-tela'), cap = document.querySelector('.gal-cap');
+const esq = document.querySelector('.lado.esq'), dir = document.querySelector('.lado.dir');
+const modoBtns = [...document.querySelectorAll('.gal-modo button')];
+const papel = n => '../img/emerald-papel-' + String(n).padStart(2, '0') + '.webp';
+const imgs = [];
+for (let n = 0; n < 16; n++) {
+  const im = new Image(); im.alt = ''; im.loading = n < 2 ? 'eager' : 'lazy'; im.src = papel(n);
+  tela.appendChild(im); imgs.push(im);
+}
+GAL.forEach(([nome], i) => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.role = 'tab'; b.textContent = nome;
+  b.addEventListener('click', () => { escolheu = true; clearInterval(auto); mostra(i, modo); });
+  tabs.appendChild(b);
+});
+const tabBtns = [...tabs.children];
+let at = 0, modo = 0, auto = null, escolheu = false;
+const mini = (i, m, onde) => {
+  const im = new Image(); im.src = papel(i * 2 + m); im.alt = GAL[i][0]; im.loading = 'lazy';
+  im.addEventListener('click', () => { escolheu = true; clearInterval(auto); mostra(i, modo); });
+  onde.appendChild(im);
+};
+const mostra = (i, m) => {
+  at = i; modo = m;
+  const n = i * 2 + m;
+  imgs.forEach((im, k) => im.classList.toggle('on', k === n));
+  tela.classList.toggle('claro', m === 1);
+  tabBtns.forEach((b, k) => b.setAttribute('aria-selected', k === i));
+  modoBtns.forEach((b, k) => b.setAttribute('aria-pressed', k === m));
+  cap.innerHTML = '<b>' + GAL[i][0] + (m ? ' · claro' : '') + '</b>: ' + GAL[i][1];
+  esq.replaceChildren(); dir.replaceChildren();
+  [i + 7, i + 6].forEach(k => mini(k % 8, m, esq));
+  [i + 1, i + 2].forEach(k => mini(k % 8, m, dir));
+};
+modoBtns.forEach((b, m) => b.addEventListener('click', () => mostra(at, m)));
+mostra(0, 0);
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  new IntersectionObserver(([e]) => {
+    clearInterval(auto);
+    if (e.isIntersecting && !escolheu) auto = setInterval(() => mostra((at + 1) % 8, modo), 4500);
+  }, { threshold: .4 }).observe(document.querySelector('.gal-view'));
+}
+// Relógio do celular da galeria, como o widget do Emerald.
+const tick = () => {
+  const d = new Date();
+  document.getElementById('galHora').textContent = d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+  document.getElementById('galData').textContent = d.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
+};
+tick(); setInterval(tick, 30000);
+
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), { threshold: .15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
