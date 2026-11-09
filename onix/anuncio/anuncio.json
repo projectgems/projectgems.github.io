@@ -3,7 +3,7 @@
   "pt": {
     "kicker": "Project Gems · Novidades do Ruan",
     "titulo": "Chegou o Emerald - Alpha",
-    "texto": "A nova gema é a tela inicial do celular Android: verde suave, vidro, pastas grandes e widgets próprios. Grátis e sem anúncios.",
+    "texto": "Um launcher para celulares Android, com muitas funções. Em breve irei colocar integrações com o Onix e com o Cobalt para todos se interagirem e partilharem entre sí como um ecossistema, está em testes iniciais :)",
     "botao": "Saiba mais",
     "qr": "Aponte a câmera do celular para o código e veja o Emerald e as últimas novidades dos projetos do Ruan."
   },
@@ -20,5 +20,6 @@
   "imagens": [
     "imagem-1.webp",
     "imagem-2.webp"
-  ]
+  ],
+  "layout": "h2"
 }
