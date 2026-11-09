@@ -184,3 +184,7 @@ body.th-onix::before {
 .th-onix .beta-ic { width: 1em; height: 1em; vertical-align: -.15em; margin-right: .2em; color: #ffb35c; }
 .th-onix .dev summary::before { content: ""; width: .45rem; height: .45rem; border: solid currentColor; border-width: 0 1.8px 1.8px 0; transform: rotate(-45deg); margin-right: .15rem; }
 .th-onix .dev details[open] summary::before { transform: rotate(45deg); }
+
+/* Botão do vídeo tutorial no cartão da Google TV. */
+.th-onix .dev .btn.video { display: flex; justify-content: center; gap: .55rem; margin-top: 1rem; border-color: rgba(255, 70, 70, .55); }
+.th-onix .dev .btn.video svg { width: 1.3rem; height: 1.3rem; color: #ff4d4d; }
