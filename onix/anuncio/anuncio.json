@@ -2,7 +2,7 @@
   "ativo": true,
   "pt": {
     "kicker": "Project Gems · Novidades do Ruan",
-    "titulo": "Chegou o Emerald",
+    "titulo": "Chegou o Emerald - Alpha",
     "texto": "A nova gema é a tela inicial do celular Android: verde suave, vidro, pastas grandes e widgets próprios. Grátis e sem anúncios.",
     "botao": "Saiba mais",
     "qr": "Aponte a câmera do celular para o código e veja o Emerald e as últimas novidades dos projetos do Ruan."
@@ -17,5 +17,8 @@
   "link": "https://projectgems.github.io/",
   "cor1": "#7fe6b0",
   "cor2": "#0f5c3d",
-  "imagens": ["imagem-1.webp", "imagem-2.webp"]
+  "imagens": [
+    "imagem-1.webp",
+    "imagem-2.webp"
+  ]
 }
