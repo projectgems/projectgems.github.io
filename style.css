@@ -125,7 +125,7 @@ img { max-width: 100%; height: auto; display: block; }
 .locked span { color: var(--mute); display: block; margin-top: .4rem; }
 @keyframes float { 50% { transform: translateY(-.6rem) rotate(3deg); } }
 /* Emerald na página inicial: dois prints de celular, o segundo mais baixo. */
-.em-duo { display: flex; justify-content: center; gap: 1.2rem; }
+.em-duo { display: flex; justify-content: center; align-items: flex-start; gap: 1.2rem; }
 .em-duo .shot { width: min(14rem, 42%); border-radius: 1.8rem; border: .4rem solid #0b100d; }
 .em-duo .shot + .shot { margin-top: 3rem; }
 .sep { height: 1px; background: linear-gradient(90deg, transparent, var(--line), transparent); }
