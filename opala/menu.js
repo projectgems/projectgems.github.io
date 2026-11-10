@@ -106,9 +106,10 @@
       ['dono', 'fala com o dono do bot'],
       ['addcmdvip', 'o dono cadastra um comando VIP'],
     ]],
-    menudono: ['🤖', 'Dono', 'Os comandos só do meu dono ♡', 130, [
+    menudono: ['🤖', 'Dono', 'Os comandos só do meu dono ♡', 131, [
       ['nomebot <nome>', 'meu nome'],
       ['prefixo <símbolo>', 'meu prefixo'],
+      ['criador', 'quem desenvolveu o projeto (@ruan_amarl)'],
       ['fotomenu', 'a imagem do menu'],
       ['designmenu', 'muda o visual do menu'],
       ['reiniciar', 'me reinicia'],
@@ -130,6 +131,7 @@
     menuadm: 'menuadm', menuadmin: 'menuadm', menuadmins: 'menuadm', admmenu: 'menuadm',
     menuvip: 'menuvip', vip: 'menuvip', vipmenu: 'menuvip',
     menudono: 'menudono',
+    criador: 'criador', dev: 'criador',
   };
 
   const HEADER = '╭─── ⋆｡˚ 💎 <b>Opala</b> 💎 ˚｡⋆ ───╮\n│ Oi! ♡\n╰──────────────────────╯';
@@ -202,6 +204,11 @@
     const comPrefixo = limpo.startsWith(P);
     const nome = limpo.replace(/^[!./#]\s*/, '').split(/\s+/)[0];
     const chave = APELIDOS[nome];
+
+    if (nome === 'criador' || nome === 'dev' || nome === 'desenvolvedor') {
+      responder(`╭─── ⋆｡˚ 💎 <b>Opala</b> 💎 ˚｡⋆ ───╮\n│\n│ Esse projeto foi desenvolvido pelo\n│ <b>Ruan</b> (<a href="https://www.instagram.com/ruan_amarl" target="_blank" rel="noopener">@ruan_amarl</a>) ♡\n│\n│ 🌐 <a href="https://projectgems.github.io/opala">projectgems.github.io/opala</a>\n│ 💻 <a href="https://github.com/ruan2311/opala" target="_blank" rel="noopener">github.com/ruan2311/opala</a>\n│\n╰──────────────────────╯`, 500);
+      return;
+    }
 
     if (chave && comPrefixo) responder(chave === 'menu' ? desenharMenu() : desenharResumo(chave));
     else if (chave) responder(`Quase! Faltou o <b>${P}</b> na frente ♡\nTenta ${cmd(nome)}`, 500);
