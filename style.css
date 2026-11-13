@@ -128,6 +128,8 @@ img { max-width: 100%; height: auto; display: block; }
 .em-duo { display: flex; justify-content: center; align-items: flex-start; gap: 1.2rem; }
 .em-duo .shot { width: min(14rem, 42%); border-radius: 1.8rem; border: .4rem solid #0b100d; }
 .em-duo .shot + .shot { margin-top: 3rem; }
+/* Próximo projeto (Sapphire): botão no degradê azul do app. */
+.proximo .btn.primary { background: linear-gradient(100deg, #c4f1ff, #6fd6ff 45%, #3f8cff); color: #02132a; box-shadow: 0 .6rem 1.8rem rgba(63, 140, 255, .3); }
 .sep { height: 1px; background: linear-gradient(90deg, transparent, var(--line), transparent); }
 
 /* Rodapé */

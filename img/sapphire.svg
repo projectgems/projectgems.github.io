@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <defs>
+    <!-- fundo do mar do tema Safira do Onix -->
+    <linearGradient id="mar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#07305a"/><stop offset=".42" stop-color="#04193a"/><stop offset=".78" stop-color="#020b1c"/><stop offset="1" stop-color="#010610"/>
+    </linearGradient>
+    <radialGradient id="superficie" cx=".62" cy="0" r=".7">
+      <stop offset="0" stop-color="#5abeff" stop-opacity=".38"/><stop offset="1" stop-color="#5abeff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="raio" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8cd2ff" stop-opacity=".16"/><stop offset="1" stop-color="#8cd2ff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="traco" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c4f1ff"/><stop offset=".45" stop-color="#6fd6ff"/><stop offset="1" stop-color="#3f8cff"/>
+    </linearGradient>
+    <linearGradient id="safira" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e2f8ff"/><stop offset=".35" stop-color="#6fd6ff"/><stop offset=".7" stop-color="#2f6dff"/><stop offset="1" stop-color="#0a2a6b"/>
+    </linearGradient>
+    <filter id="brilho" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+    <clipPath id="canto"><rect width="256" height="256" rx="56"/></clipPath>
+  </defs>
+  <g clip-path="url(#canto)">
+    <rect width="256" height="256" fill="url(#mar)"/>
+    <rect width="256" height="256" fill="url(#superficie)"/>
+    <path d="M70 0 H86 L120 256 H92 Z M140 0 H162 L214 256 H178 Z M196 0 H206 L250 256 H230 Z" fill="url(#raio)"/>
+    <path d="M0 18 Q16 12 32 18 T64 18 T96 18 T128 18 T160 18 T192 18 T224 18 T256 18" fill="none" stroke="#bfeaff" stroke-opacity=".12" stroke-width="2"/>
+  </g>
+  <!-- livro aberto em forma de raia-manta: as páginas são as asas, a lombada vira corpo e cauda -->
+  <g fill="none" stroke="url(#traco)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M128 92 C108 84 72 86 34 112 C62 118 92 132 112 160 L128 170 L144 160 C164 132 194 118 222 112 C184 86 148 84 128 92 Z" stroke-width="10" fill="#041a38" fill-opacity=".55"/>
+    <path d="M118 90 C116 80 112 74 106 70 M138 90 C140 80 144 74 150 70" stroke-width="8"/>
+    <path d="M128 92 V170 C128 192 136 210 152 224" stroke-width="7"/>
+    <path d="M66 110 C84 108 100 112 112 120 M80 126 C92 126 102 130 112 138" stroke-width="6" opacity=".75"/>
+    <path d="M190 110 C172 108 156 112 144 120 M176 126 C164 126 154 130 144 138" stroke-width="6" opacity=".75"/>
+  </g>
+  <!-- safira em losango, como o marcador do tema -->
+  <rect x="113" y="113" width="30" height="30" rx="4" transform="rotate(45 128 128)" fill="#6fd6ff" opacity=".7" filter="url(#brilho)"/>
+  <rect x="115" y="115" width="26" height="26" rx="3" transform="rotate(45 128 128)" fill="url(#safira)" stroke="#e2f8ff" stroke-width="2.5"/>
+  <!-- plâncton e brilho -->
+  <circle cx="58" cy="182" r="3" fill="#9fe2ff" opacity=".6"/><circle cx="200" cy="196" r="2.5" fill="#9fe2ff" opacity=".5"/>
+  <circle cx="188" cy="58" r="3.2" fill="#c4f1ff" opacity=".85"/>
+</svg>
