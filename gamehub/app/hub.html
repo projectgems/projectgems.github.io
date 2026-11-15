@@ -184,6 +184,7 @@ main{flex:1;position:relative;overflow:hidden;margin-top:1rem}
 .settings .body{flex:1;min-width:0;overflow:hidden;padding:.7rem .7rem 2rem;margin:0}
 .settings .body h2{font-size:2rem;font-weight:800;margin-bottom:.4rem}
 .settings .body .hint{font-size:1.15rem;color:var(--mute);margin-bottom:1rem}
+.btn.off{opacity:.5}
 .scopes{display:flex;gap:.6rem;margin:.4rem 0 1rem}
 .credits{font-size:1.2rem;color:var(--dim);line-height:1.6}
 .pnum{flex:none;width:2.4rem;height:2.4rem;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:1.2rem;background:var(--grad);color:#14082c}
@@ -434,7 +435,7 @@ function renderStore() {
   const room = (s.used || 0) + (s.available || 0);
   const pct = room > 0 ? Math.round((s.used || 0) / room * 100) : 100;
   const low = (s.available || 0) < 200 * 1048576;
-  const chip = h('button', { class: 'f chip pill store-chip' + (low ? ' low' : ''), title: t('Armazenamento'), act: () => { setSection = 'storage'; show('settings'); } },
+  const chip = h('button', { class: 'f chip pill store-chip' + (low ? ' low' : ''), title: t('Armazenamento'), act: () => openSettings('storage') },
     icon('disk'), t('{n} livres', { n: fmtBytes(s.available || 0) }), h('span', { class: 'mini' }, h('i', { style: { width: pct + '%' } })));
   if (INFO.kids) chip.classList.remove('f');
   el.replaceChildren(chip);
@@ -809,7 +810,9 @@ function openGame(g) {
     kid._act = () => { call('setKids', g.id, !g.kids); g.kids = !g.kids; kid.classList.toggle('on', g.kids); kid.lastChild.textContent = g.kids ? t('Liberado') : t('Bloqueado'); loadLibrary(); };
     list.append(kid);
     list.append(h('button', { class: 'f item', act: () => renameSheet(g) }, icon('edit'), h('span', { class: 'grow', text: t('Renomear') })));
-    list.append(h('button', { class: 'f item', act: () => ask(t('Apagar {n}?', { n: g.name }), t(INFO.web ? 'O jogo, os saves e os estados salvos dele saem deste aparelho. Não dá para desfazer.' : INFO.pc ? 'O jogo sai da biblioteca, com os saves e os estados salvos dele. O arquivo continua na pasta do computador.' : g.path ? 'O jogo sai da biblioteca, com os saves e os estados salvos dele. O arquivo continua no pendrive.' : 'O jogo, os saves e os estados salvos dele saem da TV. Não dá para desfazer.'),
+    if (hasSaves()) list.append(h('button', { class: 'f item', act: () => saveSheet(saveOf(g)) }, icon('save'),
+      h('span', { class: 'grow' }, t('Save'), h('span', { class: 'sub', text: t('Levar, trazer ou passar para outra versão do jogo.') })), icon('chev')));
+    list.append(h('button', { class: 'f item', act: () => ask(t('Apagar {n}?', { n: g.name }), t(INFO.web ? 'O jogo, os saves e os estados salvos dele saem deste aparelho. Não dá para desfazer.' : INFO.pc ? 'O jogo sai da biblioteca, com os saves e os estados salvos dele. O arquivo continua na pasta do computador.' : g.path ? 'O jogo sai da biblioteca e os estados salvos dele são apagados. O arquivo continua no pendrive, e o save fica guardado em Configurações → Saves e backup.' : 'O jogo e os estados salvos dele são apagados. O save fica guardado em Configurações → Saves e backup: se você adicionar o mesmo jogo de novo, ele volta.'),
       [[t('Apagar'), () => { call('remove', g.id); loadLibrary(); closeAllLayers(); show(PAGE, true); toast(t('Jogo apagado')); }, 'danger'], [t('Cancelar')]]) },
       icon('trash'), h('span', { class: 'grow', text: t('Apagar jogo') })));
   }
@@ -1331,18 +1334,26 @@ function settingRow(scope, key, effective, done) {
 }
 
 let setSection = 'image', setScope = 'global', redrawSettings = () => { }, bodyTimer = 0;
+/** Abre as Configurações já numa seção: o foco no primeiro item do menu trocaria para Imagem. */
+function openSettings(sec) {
+  setSection = sec;
+  show('settings');
+  const it = $$('.settings .menu .item').find(x => x.dataset.sec === sec);
+  if (it) { focus(it); it._act(); }
+}
 function settingsPage() {
   CFG = json(call('config'), {});
   const page = h('section', { class: 'page set' });
   const sections = [
     ['image', t('Imagem'), 'img'], ['sound', t('Som'), 'sound'], ['game', t('Jogo'), 'play'], ['pads', t('Controles'), 'pad'], ['ui', t('Interface'), 'sliders'],
+    ...(hasSaves() ? [['saves', t('Saves e backup'), 'save']] : []),
     ...CONSOLES.map(c => ['console:' + c.id, t(c.name), null, c.color]),
     ['storage', t('Armazenamento'), 'disk'], ['about', t('Sobre'), 'info'],
   ];
   const menu = h('div', { class: 'menu' });
   const body = h('div', { class: 'body scroll' });
   const drawMenu = () => menu.replaceChildren(...sections.map(([id, label, ic, color]) => {
-    const it = h('button', { class: 'f item' + (setSection === id ? ' cur' : '') },
+    const it = h('button', { class: 'f item' + (setSection === id ? ' cur' : ''), 'data-sec': id },
       ic ? icon(ic) : h('span', { class: 'dot', style: { background: color, width: '1.1rem', height: '1.1rem', margin: '0 .35rem' } }), h('span', { class: 'grow', text: label }));
     it._act = () => { clearTimeout(bodyTimer); setSection = id; drawMenu(); drawBody(); ensureFocus($('.f', body)); };
     // Andar pelo menu só marca a seção; o conteúdo troca quando o foco para (segurar ▼ não
@@ -1382,7 +1393,12 @@ function settingsPage() {
     } else if (sec === 'storage') {
       inner.append(h('h2', { text: t('Armazenamento') }), h('div', { class: 'store', id: 'store' }));
       if (INFO.web) inner.append(backupRows());
+      if (hasSaves()) inner.append(h('div', { class: 'list', style: { marginTop: '1rem' } },
+        h('button', { class: 'f item', act: () => openSettings('saves') }, icon('save'),
+          h('span', { class: 'grow' }, t('Saves e backup'), h('span', { class: 'sub', text: t('Onde ficam os saves, backup e troca de versão do jogo.') })), icon('chev'))));
       setTimeout(drawStore, 0);
+    } else if (sec === 'saves') {
+      inner.append(savesBody());
     } else if (sec === 'about') {
       inner.append(aboutBody());
     }
@@ -1747,6 +1763,187 @@ handlers.backup = b => {
   else if (b.state === 'badfile') toast(t('Esse arquivo não é um backup do GameHub.'));
   else toast(t('Não deu para fazer o backup.'));
 };
+/* ---------------- Saves e backup (TV e celular) ----------------
+   Os saves ficam dentro do GameHub, numa pasta que o Android não mostra no gerenciador de arquivos.
+   No celular, o backup e o save de um jogo usam o "Salvar como" e o "Abrir" do Android; na TV, um
+   QR code abre a página /saves no celular (algumas TVs nem têm o seletor de arquivos). */
+const hasSaves = () => !!(Hub && typeof Hub.savesList === 'function') && !INFO.kids;
+const SAVE_TEXT = {
+  backup: 'Aponte a câmera do celular para o QR code. Na página que abrir, toque em Baixar backup: o arquivo fica guardado no celular.',
+  restore: 'Aponte a câmera do celular para o QR code. Na página que abrir, toque em Restaurar backup e escolha o arquivo .zip.',
+  export: 'Aponte a câmera do celular para o QR code. Na página que abrir, toque em {n} e depois em Baixar save.',
+  import: 'Aponte a câmera do celular para o QR code. Na página que abrir, toque em {n} e depois em Enviar save.',
+};
+function saveOf(g) {
+  const s = json(call('savesList'), { games: [] });
+  return (s.games || []).find(x => x.id === g.id) || { id: g.id, name: g.name, console: g.console, lib: true, srm: false, states: 0, size: 0 };
+}
+function saveSub(g) {
+  const c = g.console ? t(consoleOf(g.console).name) : '';
+  return [c, g.size ? fmtBytes(g.size) : '', g.time ? ago(g.time) : '', g.lib ? '' : t('fora da biblioteca')].filter(Boolean).join(' · ');
+}
+function savesBody() {
+  const s = json(call('savesList'), { games: [] });
+  const row = (ic, title, sub, act, extra) => h('button', { class: 'f item', act }, icon(ic),
+    h('span', { class: 'grow' }, title, sub ? h('span', { class: 'sub', text: sub }) : null), extra || null);
+  const list = h('div', { class: 'list' },
+    h('div', { class: 'sep', text: t('Backup') }),
+    row('save', t('Fazer backup'), t('Um arquivo .zip com os saves, estados salvos, tempo jogado e trapaças. Dá para levar todos ou só os jogos que você escolher. Os jogos ficam de fora.'), () => backupAsk(s.games || [])),
+    row('load', t('Restaurar backup'), t('Traz de volta um backup, neste ou em outro aparelho, inteiro ou só os jogos que você escolher. O save de um jogo que ainda não está aqui volta quando você adicionar o jogo.'), () => savesGo('restore')),
+    h('div', { class: 'sep', text: t('Jogos com save') }));
+  for (const g of s.games || []) {
+    const c = g.console ? consoleOf(g.console) : null;
+    list.append(h('button', { class: 'f item', act: () => saveSheet(g) },
+      h('span', { class: 'dot', style: { background: c ? c.color : 'var(--mute)', width: '1.1rem', height: '1.1rem', margin: '0 .35rem' } }),
+      h('span', { class: 'grow' }, g.name || t('Jogo sem nome'), h('span', { class: 'sub', text: saveSub(g) })), icon('chev')));
+  }
+  if (!(s.games || []).length) list.append(h('div', { class: 'item' }, h('span', { class: 'grow', style: { color: 'var(--mute)' }, text: t('Nenhum save ainda. Os jogos aparecem aqui depois que você joga.') })));
+  if (s.other >= 1024) list.append(h('div', { class: 'item' }, icon('info'),
+    h('span', { class: 'grow' }, t('PSP, GameCube, Wii e PS2'), h('span', { class: 'sub', text: t('Esses emuladores guardam os saves de todos os jogos numa pasta só deles. Ela vai inteira no backup.') })),
+    h('span', { class: 'val', text: fmtBytes(s.other) })));
+  return h('div', null, h('h2', { text: t('Saves e backup') }),
+    h('div', { class: 'hint', text: t('Os saves ficam guardados dentro do GameHub, numa pasta protegida do Android. Ela não aparece no gerenciador de arquivos, e isso é normal: é o que protege os seus saves. Use esta tela para fazer backup, trazer saves de outro aparelho ou passar o save para outra versão do jogo.') }),
+    list);
+}
+/** Fazer backup: de tudo, ou só dos jogos marcados. */
+function backupAsk(games) {
+  picker(t('Fazer backup de quais saves?'), [
+    { value: 'all', label: t('Todos os saves'), sub: t('Todos os jogos, as pastas do PSP, GameCube, Wii e PS2 e as conquistas.') },
+    { value: 'pick', label: t('Escolher jogos'), sub: t('Marque só os jogos que você quer levar.') },
+  ], null, v => {
+    if (v === 'all') savesGo('backup');
+    else chooseGames(t('Escolha os jogos do backup'), games, [], t('Fazer backup'), ids => savesGo('backup', null, ids));
+  });
+}
+/** Lista para marcar jogos ([{id, name, console, size, lib}]); done(ids) com pelo menos um marcado. */
+function chooseGames(title, games, preset, okLabel, done, note) {
+  const on = new Set(preset);
+  const list = h('div', { class: 'list' });
+  const ok = h('button', { class: 'f btn primary' });
+  const all = h('button', { class: 'f btn' });
+  const sync = () => {
+    ok.textContent = on.size ? okLabel + ' (' + on.size + ')' : okLabel;
+    ok.classList.toggle('off', !on.size);
+    all.textContent = on.size === games.length ? t('Desmarcar todos') : t('Marcar todos');
+  };
+  for (const g of games) {
+    const c = g.console ? consoleOf(g.console) : null;
+    const it = h('button', { class: 'f item' + (on.has(g.id) ? ' on' : '') },
+      h('span', { class: 'dot', style: { background: c ? c.color : 'var(--mute)', width: '1.1rem', height: '1.1rem', margin: '0 .35rem' } }),
+      h('span', { class: 'grow' }, g.name || t('Jogo sem nome'), h('span', { class: 'sub', text: saveSub(g) })),
+      h('span', { class: 'val', text: on.has(g.id) ? '✓' : '' }));
+    it._act = () => {
+      if (on.has(g.id)) on.delete(g.id); else on.add(g.id);
+      it.classList.toggle('on', on.has(g.id)); it.lastChild.textContent = on.has(g.id) ? '✓' : '';
+      sync();
+    };
+    list.append(it);
+  }
+  all._act = () => {
+    const mark = on.size !== games.length;
+    games.forEach(g => mark ? on.add(g.id) : on.delete(g.id));
+    $$('.item', list).forEach(it => { it.classList.toggle('on', mark); it.lastChild.textContent = mark ? '✓' : ''; });
+    sync();
+  };
+  ok._act = () => { if (!on.size) { toast(t('Marque pelo menos um jogo.')); return; } closeLayer(); done([...on]); };
+  sync();
+  openLayer(h('div', { class: 'layer' }, h('div', { class: 'sheet', style: { width: '60rem', maxWidth: '94vw' } },
+    h('h2', { text: title }), note ? h('p', { text: note }) : null,
+    h('div', { class: 'scroll', style: { maxHeight: '52vh', overflowY: 'auto' } }, list),
+    h('div', { style: { display: 'flex', gap: '1rem', marginTop: '1rem', flexWrap: 'wrap' } }, ok, all, h('button', { class: 'f btn', text: t('Cancelar'), act: closeLayer })))));
+}
+/** Celular: seletor do Android. TV: QR code para o celular (e o seletor da TV, se ela tiver). ids: jogos escolhidos do backup. */
+function savesGo(action, g, ids) {
+  const arg = g ? g.id : (ids || []).join(',');
+  if (INFO.mobile) { if (!call('savesPick', action, arg)) toast(t('Este aparelho não abriu a escolha de arquivos.')); return; }
+  const info = json(call('savesPhone'), { url: '' });
+  if (info.url && ids && ids.length) info.url += '&ids=' + ids.join(',');
+  const close = () => { call('uploadStop'); closeLayer(); };
+  openLayer(h('div', { class: 'layer' }, h('div', { class: 'sheet', style: { width: '64rem', maxWidth: '94vw' } },
+    h('h2', { text: t('Pelo celular') }),
+    h('div', { class: 'ra-qr' },
+      info.url ? h('div', { class: 'qrbox' }, qrSvg(info.url)) : h('div', { class: 'qrbox', style: { background: 'var(--glass)', color: 'var(--dim)', fontSize: '1.2rem', padding: '1rem' } }, t('Sem rede: conecte a TV ao Wi-Fi.')),
+      h('div', { class: 'col' },
+        h('p', { text: t(SAVE_TEXT[action], { n: g ? g.name : '' }) + (ids && ids.length ? ' ' + t('Os {n} jogos que você marcou já vêm marcados.', { n: ids.length }) : '') }),
+        h('p', { style: { color: 'var(--dim)' }, text: t('O celular precisa estar no mesmo Wi-Fi da TV.') }),
+        info.ip ? h('p', { class: 'url', text: t('Ou digite no navegador: {u}', { u: 'http://' + info.ip + '/saves' }) }) : null,
+        info.ip && info.code ? h('p', null, t('Código para quem digitar o endereço:') + ' ', h('b', { class: 'code', text: info.code })) : null)),
+    h('div', { style: { display: 'flex', gap: '1rem' } },
+      h('button', { class: 'f btn', text: t('Escolher arquivo na TV'), act: () => { if (call('savesPick', action, arg)) close(); else toast(t('Esta TV não tem a escolha de arquivos. Use o celular.')); } }),
+      h('button', { class: 'f btn', text: t('Fechar'), act: close })))), { onClose: () => { call('uploadStop'); setTimeout(refreshSaves, 0); } });
+}
+function saveSheet(g) {
+  const list = h('div', { class: 'list' });
+  const row = (ic, title, sub, act, cls) => list.append(h('button', { class: 'f item' + (cls ? ' ' + cls : ''), act }, icon(ic),
+    h('span', { class: 'grow' }, title, sub ? h('span', { class: 'sub', text: sub }) : null)));
+  if (g.srm) row('up', t('Levar o save'), t('Copia o save (.srm) para guardar ou usar em outro aparelho.'), () => savesGo('export', g));
+  row('load', t('Trazer um save'), t('Usa um save de outro aparelho ou emulador (.srm ou .sav). O save de agora fica guardado para voltar.'), () => savesGo('import', g));
+  if (g.srm) row('reset', t('Passar para outro jogo'), t('Para trocar a ISO ou a ROM por outra versão (um mod, uma tradução) sem perder o progresso.'), () => moveSheet(g));
+  if (g.undo) row('reset', t('Voltar o save anterior'), t('Desfaz a última troca, importação ou exclusão do save.'), () => {
+    if (call('savesUndo', g.id)) { closeAllLayers(); toast(t('Save anterior de volta')); refreshSaves(); }
+  });
+  if (g.srm || g.states) row('trash', t('Apagar save'), t('O save sai, mas dá para voltar com Voltar o save anterior. Os estados salvos são apagados de vez.'), () =>
+    ask(t('Apagar o save de {n}?', { n: g.name || t('Jogo sem nome') }), t('O jogo começa do zero. Dá para voltar o save depois, nesta mesma tela.'),
+      [[t('Apagar'), () => { call('savesDelete', g.id); closeAllLayers(); toast(t('Save apagado')); refreshSaves(); }, 'danger'], [t('Cancelar')]]));
+  if (!g.srm && !g.states) list.append(h('div', { class: 'item' }, h('span', { class: 'grow', style: { color: 'var(--mute)' }, text: t('Este jogo ainda não tem save. Jogue um pouco, ou traga um save de outro aparelho.') })));
+  openLayer(h('div', { class: 'layer' }, h('div', { class: 'sheet', style: { width: '60rem', maxWidth: '94vw' } },
+    h('h2', { text: g.name || t('Jogo sem nome') }), h('p', { text: saveSub(g) || t('Sem save ainda') }),
+    h('div', { class: 'scroll', style: { maxHeight: '60vh', overflowY: 'auto' } }, list))));
+}
+/** O caso da ISO modificada: o jogo novo entra na biblioteca, e o save do antigo vai para ele. */
+function moveSheet(g) {
+  const others = LIB.filter(x => x.id !== g.id && (!g.console || x.console === g.console));
+  if (!others.length) {
+    ask(t('Adicione o outro jogo primeiro'), t('Adicione o arquivo novo (a ISO modificada, por exemplo) em Adicionar jogos e volte aqui para passar o save para ele. Não precisa apagar o jogo antigo antes.'), [[t('Entendi')]]);
+    return;
+  }
+  picker(t('Passar o save para…'), others.map(x => ({ label: x.name, value: x.id, sub: t(consoleOf(x.console).name) })), null, id => {
+    const to = others.find(x => x.id === id);
+    ask(t('Passar o save para {n}?', { n: to.name }), t('Se {n} já tiver um save, ele fica guardado para voltar. Os estados salvos não vão junto: eles só funcionam no arquivo exato do jogo.', { n: to.name }),
+      [[t('Passar'), () => {
+        if (!call('savesCopy', g.id, to.id)) { toast(t('Não deu para passar o save.')); return; }
+        closeAllLayers(); refreshSaves();
+        if (!g.lib) { toast(t('Save passado para {n}', { n: to.name })); return; }
+        ask(t('Save passado para {n}', { n: to.name }), t('Quer apagar {o} da biblioteca? O save dele continua guardado nesta tela.', { o: g.name }),
+          [[t('Apagar {o}', { o: g.name }), () => { call('remove', g.id); loadLibrary(); refreshSaves(); toast(t('Jogo apagado')); }, 'danger'], [t('Manter os dois')]]);
+      }, 'primary'], [t('Cancelar')]]);
+  });
+}
+/** Atualiza a lista sem tirar o foco do lugar (redesenhar a página inteira mandava o foco para o topo). */
+function refreshSaves() {
+  if (PAGE !== 'settings' || setSection !== 'saves' || layers.length) return;
+  const f = focused, inBody = !!(f && f.closest && f.closest('.settings .body'));
+  redrawSettings(inBody ? f : null);
+  if (!inBody && f && document.body.contains(f)) focus(f, true);
+}
+handlers.saves = e => {
+  if (e.state === 'pick') {
+    const games = e.games || [];
+    if (!games.length) { savesRestoreAll(e); return; }
+    chooseGames(t('Restaurar quais jogos?'), games, games.map(g => g.id), t('Restaurar'),
+      ids => call('savesRestore', ids.length === games.length ? '' : ids.join(',')),
+      e.other >= 1024 ? t('As pastas do PSP, GameCube, Wii e PS2 e as conquistas só voltam com todos marcados.') : null);
+    return;
+  }
+  if (e.state === 'working') { toast(t(e.type === 'restore' ? 'Restaurando o backup…' : e.type === 'backup' ? 'Preparando o backup…' : 'Um momento…')); return; }
+  if (e.ok) {
+    if (e.type === 'backup') toast(t('Backup guardado'));
+    else if (e.type === 'export') toast(t('Save copiado'));
+    else if (e.type === 'import') toast(t('Save trazido. O jogo já abre com ele.'));
+    else if (e.type === 'restore' && e.phone) toast(t('Backup restaurado: saves de {n} jogos voltaram.', { n: e.games || 0 }));   // a janela do QR fica aberta: o celular ainda usa
+    else if (e.type === 'restore') {
+      closeAllLayers();
+      ask(t('Backup restaurado'), t('Saves de {n} jogos voltaram.', { n: e.games || 0 }) + (e.missing ? ' ' + t('{m} são de jogos que não estão aqui: eles voltam quando você adicionar esses jogos.', { m: e.missing }) : ''), [[t('Entendi')]]);
+      loadLibrary();
+    }
+  } else toast(t(e.error === 'badfile' ? 'Esse arquivo não é um backup do GameHub.' : e.error === 'space' ? 'Falta espaço para restaurar o backup.' : e.error || 'Não deu certo. Tente de novo.'));
+  refreshSaves();
+};
+/** Backup sem jogos soltos (só as pastas dos emuladores): nada para escolher. */
+function savesRestoreAll(e) {
+  ask(t('Restaurar o backup?'), t('Os saves do backup substituem os de agora (os de agora ficam guardados para voltar).'),
+    [[t('Restaurar'), () => call('savesRestore', ''), 'primary'], [t('Cancelar')]]);
+}
 handlers.toast = text => toast(t(text));
 function licenseSheet(name, file) {
   const pre = h('pre', { style: { whiteSpace: 'pre-wrap', fontSize: '1.05rem', color: 'var(--dim)', lineHeight: 1.45, fontFamily: 'inherit' } }, t('Carregando…'));
@@ -1856,6 +2053,7 @@ function applyOpen() {
   const o = INFO.open || 'home';
   if (o.startsWith('console:')) show(o);
   else if (o.startsWith('game:')) { show('home'); const g = LIB.find(x => x.id === o.slice(5)); if (g) openGame(g); }
+  else if (o === 'settings:saves') openSettings('saves');
   else show('home');
 }
 
