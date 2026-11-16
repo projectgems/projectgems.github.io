@@ -1,67 +1,64 @@
-/* Página do Sapphire: a identidade do app (tema Safira do Onix). Fundo do mar em azul profundo,
-   raios de luz descendo da superfície, neon azul-claro e gelo, vidro azulado e o losango de
-   safira como marcador, igual ao ícone e às telas do app. */
-body.th-sapphire {
-  --bg: #020e1f;
-  --ink: #eef7ff;
-  --dim: rgba(205, 228, 255, .76);
-  --mute: rgba(190, 220, 255, .55);
-  --neon: #6fd6ff;
-  --ice: #c4f1ff;
-  --royal: #3f8cff;
-  --glass: linear-gradient(160deg, rgba(10, 52, 98, .62), rgba(4, 22, 46, .78));
-  --glass-hi: rgba(111, 214, 255, .12);
-  --line: rgba(130, 210, 255, .18);
-  --grad: linear-gradient(100deg, #c4f1ff, #6fd6ff 45%, #3f8cff);
-  --gem: #6fd6ff;
-  --r: 1.2rem;
+/* Página do Quartz Academy: grafite quase preto, branco e o azul do cristal, iguais ao app.
+   Um feixe de luz atravessa o fundo, como no prisma da gema. */
+body.th-quartz {
+  --bg: #06070a;
+  --ink: #f2f5fb;
+  --dim: rgba(220, 228, 245, .74);
+  --mute: rgba(200, 212, 235, .52);
+  --neon: #8fb0ff;
+  --ice: #e9edf5;
+  --royal: #5d8bff;
+  --glass: linear-gradient(160deg, rgba(30, 34, 46, .6), rgba(10, 12, 18, .82));
+  --glass-hi: rgba(143, 176, 255, .1);
+  --line: rgba(170, 190, 235, .15);
+  --grad: linear-gradient(100deg, #ffffff, #b9cdff 45%, #5d8bff);
+  --gem: #8fb0ff;
+  --r: .8rem;
 }
-body.th-sapphire::after {
+body.th-quartz::after {
   background:
-    radial-gradient(1.5px 1.5px at 12% 22%, #9fe2ffaa, transparent), radial-gradient(1px 1px at 28% 68%, #9fe2ff77, transparent),
-    radial-gradient(1px 1px at 46% 40%, #fff5, transparent), radial-gradient(1.5px 1.5px at 64% 82%, #9fe2ff88, transparent),
-    radial-gradient(1px 1px at 82% 30%, #fff6, transparent), radial-gradient(1px 1px at 92% 66%, #9fe2ff77, transparent),
-    radial-gradient(60% 45% at 70% 0%, rgba(90, 190, 255, .22), transparent 70%),
-    radial-gradient(50% 40% at 10% 100%, rgba(20, 90, 160, .25), transparent 70%),
-    linear-gradient(180deg, #07305a 0%, #04193a 32%, #020b1c 70%, #010610 100%);
+    radial-gradient(1px 1px at 14% 24%, #ffffff66, transparent), radial-gradient(1px 1px at 33% 72%, #b9cdff55, transparent),
+    radial-gradient(1px 1px at 58% 36%, #ffffff44, transparent), radial-gradient(1px 1px at 86% 62%, #b9cdff55, transparent),
+    radial-gradient(55% 40% at 78% 4%, rgba(93, 139, 255, .16), transparent 70%),
+    radial-gradient(45% 35% at 8% 96%, rgba(93, 139, 255, .1), transparent 70%),
+    linear-gradient(180deg, #0d0f15 0%, #07080c 45%, #040406 100%);
 }
-/* Raios de luz da superfície, como no ícone e no topo do app. */
-body.th-sapphire::before {
+/* O feixe do prisma: entra branco e sai azul. */
+body.th-quartz::before {
   inset: 0;
   background:
-    linear-gradient(104deg, transparent 18%, rgba(140, 210, 255, .07) 18.5%, rgba(140, 210, 255, .07) 21%, transparent 21.5%),
-    linear-gradient(104deg, transparent 47%, rgba(140, 210, 255, .06) 47.5%, rgba(140, 210, 255, .06) 52%, transparent 52.5%),
-    linear-gradient(104deg, transparent 71%, rgba(140, 210, 255, .05) 71.5%, rgba(140, 210, 255, .05) 73%, transparent 73.5%);
-  -webkit-mask: linear-gradient(180deg, #000, transparent 75%); mask: linear-gradient(180deg, #000, transparent 75%);
+    linear-gradient(162deg, transparent 30%, rgba(255, 255, 255, .045) 30.4%, rgba(255, 255, 255, .045) 31.4%, transparent 31.8%),
+    linear-gradient(170deg, transparent 52%, rgba(93, 139, 255, .07) 52.4%, rgba(143, 176, 255, .07) 55%, transparent 55.4%);
+  -webkit-mask: linear-gradient(180deg, #000, transparent 80%); mask: linear-gradient(180deg, #000, transparent 80%);
 }
-.th-sapphire .top { background: rgba(2, 14, 31, .72); }
-.th-sapphire .btn.primary { color: #02132a; box-shadow: 0 .6rem 1.8rem rgba(63, 140, 255, .3); }
-.th-sapphire .btn.primary:hover { box-shadow: 0 .8rem 2.4rem rgba(111, 214, 255, .35); }
-.th-sapphire .glass { background: var(--glass); border: 1px solid var(--line);
-  box-shadow: inset 0 1px 0 rgba(196, 241, 255, .16), 0 1rem 2.4rem rgba(0, 0, 0, .45); }
+.th-quartz .top { background: rgba(6, 7, 10, .74); }
+.th-quartz .btn.primary { color: #060a18; box-shadow: 0 .6rem 1.8rem rgba(93, 139, 255, .28); }
+.th-quartz .btn.primary:hover { box-shadow: 0 .8rem 2.4rem rgba(143, 176, 255, .32); }
+.th-quartz .glass { background: var(--glass); border: 1px solid var(--line);
+  box-shadow: inset 0 1px 0 rgba(220, 228, 245, .1), 0 1rem 2.4rem rgba(0, 0, 0, .5); }
 
 /* Apresentação: texto à esquerda e o app (PC com o celular na frente) à direita. */
 .sp-hero { display: grid; grid-template-columns: 1fr 1.08fr; gap: 3rem; align-items: center; padding: 4.5rem 0 3rem; }
 .sp-kick { display: inline-flex; align-items: center; gap: .7rem; font-size: .8rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 800; color: var(--neon); }
-.sp-kick img { width: 3rem; height: 3rem; border-radius: .8rem; box-shadow: 0 0 1.6rem rgba(111, 214, 255, .35); }
+.sp-kick img { width: 3rem; height: 3rem; border-radius: .8rem; box-shadow: 0 0 1.6rem rgba(143, 176, 255, .35); }
 .sp-hero h1 { font-size: clamp(2.8rem, 7vw, 4.6rem); line-height: 1; margin: 1.1rem 0 .9rem; letter-spacing: -.02em; }
 .sp-hero h1 b { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .sp-hero p { color: var(--dim); font-size: 1.15rem; margin: 0 0 1.3rem; max-width: 34rem; }
 .sp-hero p b { color: var(--ink); }
 .sp-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.6rem; }
-.sp-chips .chip { background: rgba(111, 214, 255, .07); border-color: var(--line); }
-.chip.breve { color: #02132a; background: var(--grad); border: 0; }
-.chip.breve::before { content: ""; width: .45rem; height: .45rem; border-radius: 50%; background: #02132a; animation: pisca 1.6s ease-in-out infinite; }
+.sp-chips .chip { background: rgba(143, 176, 255, .07); border-color: var(--line); }
+.chip.breve { color: #060a18; background: var(--grad); border: 0; }
+.chip.breve::before { content: ""; width: .45rem; height: .45rem; border-radius: 50%; background: #060a18; animation: pisca 1.6s ease-in-out infinite; }
 @keyframes pisca { 50% { opacity: .25; } }
 .sp-acts { display: flex; flex-wrap: wrap; gap: .7rem; }
 
 .sp-palco { position: relative; padding: 0 2.2rem 2.4rem 0; }
-.sp-palco .shot { border-color: rgba(130, 210, 255, .25); }
+.sp-palco .shot { border-color: rgba(170, 190, 235, .25); }
 .sp-cel { position: absolute; right: 0; bottom: 0; width: 27%; border-radius: 1.5rem; overflow: hidden;
-  border: .35rem solid #01060f; box-shadow: 0 1.6rem 3rem rgba(0, 0, 0, .6), 0 0 0 1px rgba(130, 210, 255, .2); animation: float 6s ease-in-out infinite; }
+  border: .35rem solid #040406; box-shadow: 0 1.6rem 3rem rgba(0, 0, 0, .6), 0 0 0 1px rgba(170, 190, 235, .2); animation: float 6s ease-in-out infinite; }
 .sp-joia { position: absolute; top: -1.4rem; left: -1.4rem; width: 3rem; height: 3rem; transform: rotate(45deg); border-radius: .45rem;
-  background: linear-gradient(135deg, #e2f8ff, #6fd6ff 35%, #2f6dff 70%, #0a2a6b); border: 2px solid #e2f8ff;
-  box-shadow: 0 0 2rem rgba(111, 214, 255, .6); animation: joia 5s ease-in-out infinite; }
+  background: linear-gradient(135deg, #f2f5fb, #8fb0ff 35%, #2f6dff 70%, #0a2a6b); border: 2px solid #f2f5fb;
+  box-shadow: 0 0 2rem rgba(143, 176, 255, .6); animation: joia 5s ease-in-out infinite; }
 @keyframes joia { 50% { transform: rotate(45deg) translate(-.3rem, -.3rem); } }
 
 /* Números rápidos */
@@ -72,7 +69,7 @@ body.th-sapphire::before {
 
 /* Títulos de seção com o losango de safira */
 .sp-eye { display: flex; align-items: center; justify-content: center; gap: .55rem; margin: 4.5rem 0 .4rem; font-size: .8rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 800; color: var(--neon); }
-.sp-eye::before, .sp-split .sp-eye::before { content: ""; width: .6rem; height: .6rem; border-radius: 2px; transform: rotate(45deg); background: var(--grad); box-shadow: 0 0 .7rem rgba(111, 214, 255, .7); }
+.sp-eye::before, .sp-split .sp-eye::before { content: ""; width: .6rem; height: .6rem; border-radius: 2px; transform: rotate(45deg); background: var(--grad); box-shadow: 0 0 .7rem rgba(143, 176, 255, .7); }
 .sp-t { text-align: center; font-size: clamp(1.6rem, 3.6vw, 2.2rem); margin: 0 0 .5rem; line-height: 1.15; }
 .sp-sub { text-align: center; color: var(--dim); max-width: 42rem; margin: 0 auto 1.8rem; }
 .sp-sub b { color: var(--ink); }
@@ -99,30 +96,30 @@ body.th-sapphire::before {
 .sp-lista { margin: 0; padding: 0; list-style: none; display: grid; gap: .5rem; }
 .sp-lista li { position: relative; padding-left: 1.4rem; color: var(--dim); }
 .sp-lista li::before { content: ""; position: absolute; left: 0; top: .6em; width: .5rem; height: .5rem; border-radius: 2px; transform: rotate(45deg); background: var(--neon); }
-.sp-split .shot { border-color: rgba(130, 210, 255, .25); }
-.sp-fone { width: min(17rem, 70%); margin: 0 auto; border-radius: 2rem; overflow: hidden; border: .45rem solid #01060f;
-  box-shadow: 0 2rem 4rem rgba(0, 0, 0, .6), 0 0 0 1px rgba(130, 210, 255, .2), 0 0 4rem rgba(63, 140, 255, .18); }
+.sp-split .shot { border-color: rgba(170, 190, 235, .25); }
+.sp-fone { width: min(17rem, 70%); margin: 0 auto; border-radius: 2rem; overflow: hidden; border: .45rem solid #040406;
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, .6), 0 0 0 1px rgba(170, 190, 235, .2), 0 0 4rem rgba(93, 139, 255, .18); }
 
 /* Passos de estudo */
 .sp-passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; counter-reset: p; }
 .sp-passos div { padding: 1.4rem; }
 .sp-passos div::before { counter-increment: p; content: counter(p); display: grid; place-items: center; width: 2.2rem; height: 2.2rem; border-radius: 50%;
-  font-weight: 800; color: var(--neon); background: rgba(111, 214, 255, .1); border: 1px solid var(--line); margin-bottom: .8rem; }
+  font-weight: 800; color: var(--neon); background: rgba(143, 176, 255, .1); border: 1px solid var(--line); margin-bottom: .8rem; }
 .sp-passos b { display: block; font-size: 1.1rem; margin-bottom: .3rem; }
 .sp-passos span { color: var(--dim); font-size: .95rem; }
 
 /* Recursos */
 .sp-feat { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
 .sp-feat div { padding: 1.2rem; }
-.sp-feat i { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: .8rem; color: var(--c, var(--neon)); background: color-mix(in srgb, var(--c, #6fd6ff) 14%, transparent); margin-bottom: .7rem; }
+.sp-feat i { display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: .8rem; color: var(--c, var(--neon)); background: color-mix(in srgb, var(--c, #8fb0ff) 14%, transparent); margin-bottom: .7rem; }
 .sp-feat i svg { width: 1.35rem; height: 1.35rem; }
 .sp-feat b { display: block; margin-bottom: .25rem; }
 .sp-feat span { color: var(--mute); font-size: .92rem; }
 
 /* Em breve: sem download por enquanto */
 .sp-breve { margin: 5rem auto 0; max-width: 46rem; padding: 2.6rem 2rem; text-align: center; position: relative; overflow: hidden; }
-.sp-breve::before { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 70% at 50% 0%, rgba(111, 214, 255, .16), transparent 70%); pointer-events: none; }
-.sp-breve img { width: 5.5rem; height: 5.5rem; margin: 0 auto 1rem; border-radius: 1.3rem; box-shadow: 0 0 2.6rem rgba(111, 214, 255, .4); animation: float 5s ease-in-out infinite; }
+.sp-breve::before { content: ""; position: absolute; inset: 0; background: radial-gradient(60% 70% at 50% 0%, rgba(143, 176, 255, .16), transparent 70%); pointer-events: none; }
+.sp-breve img { width: 5.5rem; height: 5.5rem; margin: 0 auto 1rem; border-radius: 1.3rem; box-shadow: 0 0 2.6rem rgba(143, 176, 255, .4); animation: float 5s ease-in-out infinite; }
 .sp-breve h2 { margin: 0 0 .5rem; font-size: clamp(1.6rem, 3.6vw, 2.1rem); }
 .sp-breve p { color: var(--dim); margin: 0 auto 1.5rem; max-width: 34rem; position: relative; }
 .sp-breve p b { color: var(--ink); }

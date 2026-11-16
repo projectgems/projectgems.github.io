@@ -89,12 +89,13 @@ img { max-width: 100%; height: auto; display: block; }
 @keyframes pulse { to { transform: scale(1.05) rotate(-2deg); filter: brightness(1.12); } }
 .orbit .ring { position: absolute; inset: 0; animation: spin 26s linear infinite; }
 .orbit .ring img { position: absolute; width: 2.6rem; height: 2.6rem; animation: spin 26s linear infinite reverse; }
-/* Cinco planetinhas espaçados por igual na volta (a cada 72°), com o centro a 1,5rem da borda. */
-.orbit .ring img:nth-child(1) { left: calc(50% - 1.3rem); top: calc(50% - 1.000 * (50% - 1.5rem) - 1.3rem); }
-.orbit .ring img:nth-child(2) { left: calc(50% + 0.951 * (50% - 1.5rem) - 1.3rem); top: calc(50% - 0.309 * (50% - 1.5rem) - 1.3rem); }
-.orbit .ring img:nth-child(3) { left: calc(50% + 0.588 * (50% - 1.5rem) - 1.3rem); top: calc(50% + 0.809 * (50% - 1.5rem) - 1.3rem); }
-.orbit .ring img:nth-child(4) { left: calc(50% - 0.588 * (50% - 1.5rem) - 1.3rem); top: calc(50% + 0.809 * (50% - 1.5rem) - 1.3rem); }
-.orbit .ring img:nth-child(5) { left: calc(50% - 0.951 * (50% - 1.5rem) - 1.3rem); top: calc(50% - 0.309 * (50% - 1.5rem) - 1.3rem); }
+/* Seis planetinhas espaçados por igual na volta (a cada 60°), com o centro a 1,5rem da borda. */
+.orbit .ring img:nth-child(1) { left: calc(50% + 0.000 * (50% - 1.5rem) - 1.3rem); top: calc(50% - 1.000 * (50% - 1.5rem) - 1.3rem); }
+.orbit .ring img:nth-child(2) { left: calc(50% + 0.866 * (50% - 1.5rem) - 1.3rem); top: calc(50% - 0.500 * (50% - 1.5rem) - 1.3rem); }
+.orbit .ring img:nth-child(3) { left: calc(50% + 0.866 * (50% - 1.5rem) - 1.3rem); top: calc(50% + 0.500 * (50% - 1.5rem) - 1.3rem); }
+.orbit .ring img:nth-child(4) { left: calc(50% + 0.000 * (50% - 1.5rem) - 1.3rem); top: calc(50% + 1.000 * (50% - 1.5rem) - 1.3rem); }
+.orbit .ring img:nth-child(5) { left: calc(50% - 0.866 * (50% - 1.5rem) - 1.3rem); top: calc(50% + 0.500 * (50% - 1.5rem) - 1.3rem); }
+.orbit .ring img:nth-child(6) { left: calc(50% - 0.866 * (50% - 1.5rem) - 1.3rem); top: calc(50% - 0.500 * (50% - 1.5rem) - 1.3rem); }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* Uma seção por projeto */
@@ -128,8 +129,8 @@ img { max-width: 100%; height: auto; display: block; }
 .em-duo { display: flex; justify-content: center; align-items: flex-start; gap: 1.2rem; }
 .em-duo .shot { width: min(14rem, 42%); border-radius: 1.8rem; border: .4rem solid #0b100d; }
 .em-duo .shot + .shot { margin-top: 3rem; }
-/* Próximo projeto (Sapphire): botão no degradê azul do app. */
-.proximo .btn.primary { background: linear-gradient(100deg, #c4f1ff, #6fd6ff 45%, #3f8cff); color: #02132a; box-shadow: 0 .6rem 1.8rem rgba(63, 140, 255, .3); }
+/* Próximo projeto (Quartz Academy): botão no degradê branco e azul do cristal. */
+.proximo .btn.primary { background: linear-gradient(100deg, #ffffff, #b9cdff 45%, #5d8bff); color: #060a18; box-shadow: 0 .6rem 1.8rem rgba(93, 139, 255, .28); }
 .sep { height: 1px; background: linear-gradient(90deg, transparent, var(--line), transparent); }
 
 /* Rodapé */
